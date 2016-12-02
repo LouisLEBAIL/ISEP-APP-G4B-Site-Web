@@ -42,3 +42,4 @@ if(isset($_POST['formvalider']))
 } 
 ?>
 
+<?php require '../vue/preinscription_client_par_administrateur.php'?>

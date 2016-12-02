@@ -11,7 +11,7 @@
 	<body>
 		<?php include("En_tete_administrateur.php");?>
 			<div id="container_3">
-				<form method="post" action="cible_administrateur.php">
+				<form method="post" action="">
         			<fieldset>
           				<P>
           					<label for="Identifiant">Identifiant:</label>

@@ -7,7 +7,7 @@
     </head>
     <body>
         <div>
-            <?php include 'en_tete_administrateur.php';?>
+            <?php include 'en_tete.php';?>
 
             <div id="container">
               <div id="login">

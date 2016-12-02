@@ -16,7 +16,7 @@ if(isset($_POST['formconnexionadministrateur']))
       $admininfo = $reqadmin -> fetch();
       $_SESSION['id_administrateur'] = $admininfo['id_administrateur'];
       $_SESSION['login_administrateur'] = $admininfo['login_administrateur'];
-      $etat_connection = 'connecte';
+      header("Location: index_administrateur.php?id_administrateur=".$_SESSION['id_administrateur']);
     }
     else
     {
