@@ -1,0 +1,4 @@
+AuthName "Page d'administration protégée"
+AuthType Basic
+AuthUserFile "ISEP-APP-G4B-Site-Web/.htpasswd"
+Require valid-user
