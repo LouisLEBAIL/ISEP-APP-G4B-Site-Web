@@ -3,7 +3,7 @@
 <html>
 
     <head>
-        <meta charset="utf-8" /> <link rel="stylesheet" href="../style/accueil_admin.css" />
+        <meta charset="utf-8" /> <link rel="stylesheet" href="style/accueil_admin.css" />
         <title>Page de connexion</title>
         <title>Présentation de DomLab</title>
     </head>

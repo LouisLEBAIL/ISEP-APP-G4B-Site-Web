@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="../style/page_de_connexion.css" />
+        <link rel="stylesheet" href="style/page_de_connexion.css" />
         <title>Page de connexion</title>
     </head>
     <body>

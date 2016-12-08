@@ -3,11 +3,11 @@
 
     <head>
         <meta charset="utf-8" /> 
-        <link rel="stylesheet" href="../Style/accueil.css" />
+        <link rel="stylesheet" href="style/accueil.css" />
         <title>Page d'accueil</title>
     </head>
 	<body>
-		<?php include("../vue/en_tete_client.php");?>
+		<?php include("vue/en_tete_client.php");?>
 
 		<div id="container_2">
 			<div id="navigation">
@@ -31,6 +31,6 @@
 				</nav>
 			</div>
 		</div>
-		<?php include("../vue/pied_de_page.php");?>
+		<?php include("vue/pied_de_page.php");?>
 	</body>
 </html>
