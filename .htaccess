@@ -1,4 +1,8 @@
-AuthName "Page d'administration protégée"
-AuthType Basic
-AuthUserFile "ISEP-APP-G4B-Site-Web/.htpasswd"
-Require valid-user
+Options +FollowSymlinks
+RewriteEngine On
+RewriteRule	^foo.html$	index.html	[L]	
+
+#AuthName "Page d'administration protégée"
+#AuthType Basic
+#AuthUserFile "ISEP-APP-G4B-Site-Web/.htpasswd"
+#Require valid-user
