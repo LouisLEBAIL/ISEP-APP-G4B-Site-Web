@@ -1,6 +1,6 @@
 Options +FollowSymlinks
 RewriteEngine On
-RewriteRule	^foo.html$	index.html	[L]	
+RewriteRule	^foo.phpo$	index.php	[L]	
 
 #AuthName "Page d'administration protégée"
 #AuthType Basic
