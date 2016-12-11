@@ -1,8 +1,0 @@
-Options +FollowSymlinks
-RewriteEngine On
-RewriteRule	^foo.phpo$	index.php	[L]	
-
-#AuthName "Page d'administration protégée"
-#AuthType Basic
-#AuthUserFile "ISEP-APP-G4B-Site-Web/.htpasswd"
-#Require valid-user
