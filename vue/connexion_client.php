@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="style/page_de_connexion.css" />
-        <title>Page de connexion</title>
+        <title>Page d'accueil'</title>
     </head>
     <body>
       <div>

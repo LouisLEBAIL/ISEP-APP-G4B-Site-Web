@@ -3,13 +3,12 @@
 <html>
 
     <head>
-        <meta charset="utf-8" /> <link rel="stylesheet" href="style/accueil_admin.css" />
-        <title>Page de connexion</title>
-        <title>Présentation de DomLab</title>
+        <meta charset="utf-8" /> <link rel="stylesheet" href="../style/accueil_admin.css" />
+        <title>Page d'accueil</title>
     </head>
 
 	<body>
-		<?php include("En_tete_administrateur.php");?>
+		<?php include("../vue/en_tete_administrateur.php");?>
 			<div id="container_3">
         <?php include("navigation_administrateur.php");?>
         <div id="preinscription">
@@ -63,7 +62,7 @@
 
 
 
-	<?php include("pied_de_page.php");?>
+	<?php include("../vue/pied_de_page.php");?>
 
 			
 

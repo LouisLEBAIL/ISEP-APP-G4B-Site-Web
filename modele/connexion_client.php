@@ -14,7 +14,7 @@ if(isset($_POST['formconnexionclient']))
       $utilisateurinfo = $requtilisateur -> fetch();
       $_SESSION['id_client'] = $utilisateurinfo['id_client'];
       $_SESSION['login_client'] = $utilisateurinfo['login_client'];
-      header("Location: index.php?id_client=".$_SESSION['id_client']);
+      header("Location: index.php?redirection=connecte");
 
     }
     else

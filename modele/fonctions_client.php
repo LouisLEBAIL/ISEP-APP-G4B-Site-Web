@@ -2,7 +2,7 @@
 function modifier_donnees(){
     
    if(isset($_SESSION['id_client']))
-        {   $bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        {   require 'modele/connexion_bdd.php'; // Connexion a la base de donnee
 
             $requser = $bdd -> prepare('SELECT * FROM client WHERE id_client=?');
             $requser -> execute(array($_SESSION['id_client']));
@@ -47,17 +47,17 @@ function modifier_donnees(){
 function redirection(){// le formulaire doit être complètement rempli
         if(isset($_POST['logement']) && $_POST['logement'] == "appartement" && !empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['date_de_naissance']) AND !empty($_POST['telephone_mobile']) AND !empty($_POST['telephone_fixe']) AND isset($_POST['newmdp']) AND !empty($_POST['newmdp']) AND isset($_POST['confirmmdp']) AND !empty($_POST['confirmmdp']) )
         {          #mttre ici le SQL
-           header("Location:profil_formulaire_d_inscription_immeuble.php");
+           header("Location: index.php?redirection=formulaire_immeuble");
         }
     else if (isset($_POST['logement']) && $_POST['logement'] == "maison" && !empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['date_de_naissance']) AND !empty($_POST['telephone_mobile']) AND !empty($_POST['telephone_fixe']) AND isset($_POST['newmdp']) AND !empty($_POST['newmdp']) AND isset($_POST['confirmmdp']) AND !empty($_POST['confirmmdp']) ) 
         {
                                 #mettre ici le SQL
-             header("Location:profil_formulaire_d_inscription_maison.php");        
+             header("Location: index.php?redirection=formulaire_maison");        
          }  
 }
 
 function client_info(){
-$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            require 'modele/connexion_bdd.php'; // Connexion a la base de donnee
 
             $requser = $bdd -> prepare('SELECT * FROM client WHERE id_client=?');
             $requser -> execute(array($_SESSION['id_client']));

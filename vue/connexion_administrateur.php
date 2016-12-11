@@ -2,12 +2,12 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="style/page_de_connexion.css" />
-        <title>Page de connexion</title>
+        <link rel="stylesheet" href="../style/page_de_connexion.css" />
+        <title>Page d'accueil administrateur</title>
     </head>
     <body>
         <div>
-            <?php include 'en_tete.php';?>
+            <?php include '../vue/en_tete_administrateur_non_connecte.php';?>
 
             <div id="container">
               <div id="login">
@@ -37,7 +37,7 @@
               </div>
             </div>
 
-            <?php include 'pied_de_page.php';?>
+            <?php include '../vue/pied_de_page.php';?>
         </div>
     </body>
 </html>
