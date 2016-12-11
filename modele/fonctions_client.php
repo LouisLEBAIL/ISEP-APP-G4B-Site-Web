@@ -40,7 +40,7 @@ function modifier_donnees(){
         }
         else
         {
-            header("Location:site_page_de_connexion_client.php");
+            header("Location: index.php?redirection=deconnexion");
         } 
 }
 
