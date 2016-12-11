@@ -11,6 +11,8 @@
 	<body>
 		<?php include("En_tete_administrateur.php");?>
 			<div id="container_3">
+        <?php include("navigation_administrateur.php");?>
+        <div id="preinscription">
 				<form method="post" action="">
         			<fieldset>
           				<P>
@@ -55,7 +57,8 @@
                   echo $erreur;
                 }
           ?>
-
+          </div>
+        </div>
 	
 
 
@@ -64,6 +67,6 @@
 
 			
 
-			</div>
+			
 	</body>
 </html>
