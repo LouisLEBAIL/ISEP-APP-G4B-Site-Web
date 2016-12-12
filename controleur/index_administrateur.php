@@ -12,9 +12,13 @@ else
 {
 	$redirection = htmlspecialchars($_GET["redirection"]);
 
-	if ($redirection == 'connecte') /*Pour aller vers la paege d accueil du site*/
+	if ($redirection == 'ajouter_client') /*Pour aller vers la page d ajout de client*/
 	{
 		require '../modele/preinscription_client_par_administrateur.php';
+	}
+	if ($redirection == 'visualisation_client') /*Pour voir la liste de tous les clients*/
+	{
+		require '../vue/administrateur_visualisation_client.php';
 	}
 	if ($redirection == 'deconnexion') /*Pour se deconnecter de la session*/
 	{
