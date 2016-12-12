@@ -31,7 +31,7 @@ if(isset($_SESSION['id_client']))
                 'etage' => $etage,
                 'numero' => $numero
                 ));
-            $erreur='good';
+            header('Location: index.php?redirection=connecte');
 
 
 

@@ -28,7 +28,7 @@ if(isset($_SESSION['id_client']))
                     'id_client' => $_SESSION['id_client'],
                     'surface' => $surface
                     ));
-            $erreur='good';
+            header('Location: index.php?redirection=connecte');
 
         }
         else
