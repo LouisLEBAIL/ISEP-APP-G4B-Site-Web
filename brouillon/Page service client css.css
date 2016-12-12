@@ -1,0 +1,94 @@
+Page service client css
+
+#PageServiceClient
+{
+	margin:auto;
+	width:900px;
+}
+
+
+#logo img
+{
+	width:250px;
+	height:250px;
+}
+
+#DHomelab{
+	display:flex;
+	flex-direction:column;
+	
+}
+#logo
+{
+	display: flex;
+	justify-content: center;
+}
+
+
+.titre
+{
+	margin-left:47%;
+	margin-right:46%;
+	margin-top:-5%;
+}
+
+
+html,body
+{
+	width:100%;
+	height:100%;
+}
+header
+{
+	background-image: url('../picture/image_de_fond.jpg');
+	background-repeat: no-repeat;
+	background-attachment: scroll;	
+}
+
+
+#tableau {
+
+ text-decoration:underline;
+ font-family:TimesNewRoman;
+ text-align: left;
+ border-collapse:collapse;
+ width:100%;
+ border:1px solid black;
+ background-color:blue;
+ vertical-align:middle;
+ border-width:1px; 
+ border-style:solid; 
+ border-color:black;
+ width:50%;
+ }
+td { 
+ text-align:center;
+ border-width:1px;
+ border-style:solid; 
+ padding: 8px;
+ border-bottom: 1px solid #fff;
+ color: #669;
+ border-top: 1px solid #fff;
+ background: #e8edff url
+ width:50%;
+ }
+caption {
+ font-weight:bold
+ }
+
+footer
+{
+	background-image: url('../picture/image_de_fond.jpg');
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	padding:30px;
+}
+
+
+
+
+
+
+
+
+
