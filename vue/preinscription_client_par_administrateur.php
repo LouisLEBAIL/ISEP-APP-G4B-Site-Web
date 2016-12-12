@@ -8,9 +8,9 @@
     </head>
 
 	<body>
-		<?php include("../vue/en_tete_administrateur.php");?>
+		<?php include("../vue/en_tete_administrateur_connecte.php");?>
 			<div id="container_3">
-        <?php include("navigation_administrateur.php");?>
+        <?php include("../vue/navigation_administrateur.php");?>
         <div id="preinscription">
 				<form method="post" action="">
         			<fieldset>
