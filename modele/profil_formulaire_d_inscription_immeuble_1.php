@@ -1,6 +1,7 @@
 <?php
 
-include('fonctions.php');
+include('modele/fonctions_client.php');
+
 
 if(isset($_SESSION['id_client']))
 {
@@ -34,6 +35,8 @@ if(isset($_SESSION['id_client']))
         }
     }
 }
+
+
 
 
 ?>

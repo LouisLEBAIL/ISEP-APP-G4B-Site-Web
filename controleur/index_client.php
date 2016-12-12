@@ -27,8 +27,8 @@ else
 	}
 	elseif ($redirection == 'formulaire_immeuble_2') /*Pour aller le formulaire d inscription immeuble 2*/
 	{
-		require "modele/profil_formulaire_ddinscription_immeuble_2.php";
-		require "vue/profil_formulaire_ddinscription_immeuble_2.php";
+		require "modele/profil_formulaire_d_inscription_immeuble_2.php";
+		require "vue/profil_formulaire_d_inscription_immeuble_2.php";
 	}
 	elseif ($redirection == 'formulaire_maison') /*Pour aller vers le formulaire d inscription maison*/
 	{

@@ -47,7 +47,7 @@ function modifier_donnees(){
 function redirection(){// le formulaire doit être complètement rempli
         if(isset($_POST['logement']) && $_POST['logement'] == "appartement" && !empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['date_de_naissance']) AND !empty($_POST['telephone_mobile']) AND !empty($_POST['telephone_fixe']) AND isset($_POST['newmdp']) AND !empty($_POST['newmdp']) AND isset($_POST['confirmmdp']) AND !empty($_POST['confirmmdp']) )
         {          #mttre ici le SQL
-           header("Location: index.php?redirection=formulaire_immeuble");
+           header("Location: index.php?redirection=formulaire_immeuble_1");
         }
     else if (isset($_POST['logement']) && $_POST['logement'] == "maison" && !empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['date_de_naissance']) AND !empty($_POST['telephone_mobile']) AND !empty($_POST['telephone_fixe']) AND isset($_POST['newmdp']) AND !empty($_POST['newmdp']) AND isset($_POST['confirmmdp']) AND !empty($_POST['confirmmdp']) ) 
         {
