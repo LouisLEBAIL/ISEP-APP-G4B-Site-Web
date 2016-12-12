@@ -9,7 +9,7 @@
 					<li><a href="#">Ajouter/Supprimer capteur ou piece</a></li>
 				</ul>
 			</li>
-			<li><a href="#">Contact</a></li>
+			<li><a href="index.php?redirection=page_de_contact">Contact</a></li>
 		</ul>
 	</nav>
 </div>

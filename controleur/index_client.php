@@ -35,6 +35,10 @@ else
 		require "modele/profil_formulaire_d_inscription_maison.php";
 		require "vue/profil_formulaire_d_inscription_maison.php";
 	}
+	elseif ($redirection == 'page_de_contact') /*Pour aller vers la page de contact*/
+	{
+		require "vue/page_de_contact.php";
+	}
 	elseif ($redirection == 'deconnexion') /*Pour se deconnecter de la session*/
 	{
 		$_SESSION = array(); /*vider la variable session*/
