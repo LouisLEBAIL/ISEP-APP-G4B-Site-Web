@@ -19,12 +19,13 @@ if(isset($_SESSION['id_client']))
             $adresse_2=htmlspecialchars($_POST['adresse_2']);
             $codepostal=htmlspecialchars($_POST['codepostal']);
             
-            $insertimmeuble = $bdd->prepare('INSERT INTO immeuble(code_postal, ville, adresse_1, adresse_2) VALUES(:code_postal, :ville, :adresse_1,:adresse_2)');
+            $insertimmeuble = $bdd->prepare('INSERT INTO immeuble(code_postal, ville, adresse_1, adresse_2, id_client) VALUES(:code_postal, :ville, :adresse_1,:adresse_2,:id_client)');
             $insertimmeuble->execute(array(
                     'code_postal' => $codepostal,
                     'ville' => $ville,
                     'adresse_1' =>$adresse_1,
-                    'adresse_2' => $adresse_2));
+                    'adresse_2' => $adresse_2,
+                    'id_client' => $user['id_client']));
 
             header('Location: index.php?redirection=formulaire_immeuble_2');
 

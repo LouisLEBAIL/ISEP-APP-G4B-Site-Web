@@ -13,7 +13,7 @@ if(isset($_POST['formvalider']))
     {
       if($password_client == $password_client_verification)
       {
-        $insertclient = $bdd->prepare('INSERT INTO client (nom, prenom, sexe, date_de_naissance, email, telephone_mobile, telephone_fixe, login_client, password_client) VALUES(NULL, NULL, NULL, NULL, :email, NULL, NULL, :login_client, :password_client)');
+        $insertclient = $bdd->prepare('INSERT INTO client (nom, prenom, date_de_naissance, email, telephone_mobile, telephone_fixe, login_client, password_client) VALUES(NULL, NULL, NULL, :email, NULL, NULL, :login_client, :password_client)');
         $insertclient->execute(array(
           'email' => $email,
           'login_client' => $login_client,
