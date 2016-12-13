@@ -22,7 +22,7 @@
               <p><?php 
                 if(isset($erreur))
                 {
-                  echo '<font color=yellow>'.$erreur.'</font>';
+                  echo '<font color=#c0392b>'.$erreur.'</font>';
                 }
                 ?>
               </p>

@@ -39,12 +39,18 @@ else
 	{
 		require "vue/page_de_contact.php";
 	}
+	elseif ($redirection == 'ajout_piece_client')
+	{
+		require"modele/ajout_piece_client.php";
+		require"vue/ajout_piece_client.php";
+	}
 	elseif ($redirection == 'deconnexion') /*Pour se deconnecter de la session*/
 	{
 		$_SESSION = array(); /*vider la variable session*/
 		session_destroy(); /*detruit la session*/
 		header("Location: index.php"); /*redirige vers la page d'accueil*/
 	}
+
 }
 
 ?>
