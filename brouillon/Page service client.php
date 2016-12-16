@@ -13,9 +13,9 @@ Page service client
 
     </head>
     	<body>
-    		<div id="bloc_page_4">
+    		<div id="bloc_page_3">
                 <?php include("en_tete.php");?>
-                <div id="container_4">
+                <div id="container_3">
                 <?php include("navigation_client.php");?>
 
                     <form method="post" action="#">
@@ -77,7 +77,7 @@ Page service client
                                 <input type="submit" value="Envoyer" />
                             
                             </p>
-            
+                      </fieldset>
 
 
 <?php 
@@ -141,7 +141,7 @@ try
 
 }
 // On récupère tout le contenu de la table jeux_video
-$reponse = $bdd->query('SELECT * FROM etat_des_fonctionnalités');
+$reponse = $bdd->query('SELECT * FROM Vue_globale_client_en_cours');
 
 while ($donnees = $reponse->fetch())
 {

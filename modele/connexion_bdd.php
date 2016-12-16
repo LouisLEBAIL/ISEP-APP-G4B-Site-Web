@@ -1,5 +1,5 @@
 <?php
-	// connection a la base de donee 
+	// connection a la base de donnee 
 
     $dbname = "bdd_site";
     $host='localhost';
