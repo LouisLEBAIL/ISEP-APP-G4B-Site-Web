@@ -44,6 +44,11 @@ else
 		require"modele/ajout_piece_client.php";
 		require"vue/ajout_piece_client.php";
 	}
+	elseif ($redirection == 'ajout_capteur_client')
+	{
+		require "modele/ajout_capteur_client.php";
+		require "vue/ajout_capteur_client.php";
+	}
 	elseif ($redirection == 'deconnexion') /*Pour se deconnecter de la session*/
 	{
 		$_SESSION = array(); /*vider la variable session*/
