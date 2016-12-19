@@ -59,7 +59,7 @@ function liste_capteurs($nombre_de_capteur,$idpiece){// Pour la salle $idpiece, 
 if($nombre_de_capteur == 0){
 	return 0; // $nombre_de_capteur doit être entre compris 1 et 10 inclus
 }
-                    echo '<form method="post" action="test_1.php" >';
+                    echo '<form method="post" action="index.php?redirection=ajout_capteur_client" >';
 					for($i=1;$i<=$nombre_de_capteur;$i++)
                     {
 
