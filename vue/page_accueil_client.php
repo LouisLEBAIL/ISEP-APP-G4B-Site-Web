@@ -6,14 +6,6 @@
         <title>Page d'accueil</title>
     </head>
     <body>
-    	<script>
-    		if (confirm('Voulez-vous compléter vos informations personnelles ?'))
-    		{
-    			document.location.href="index.php?redirection=inscription"
-    		}
-
-    	</script>
-
 		<?php include("vue/en_tete_client.php");?>
 
 		<div id="container_2">

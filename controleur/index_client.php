@@ -14,6 +14,7 @@ else
 	
 	if ($redirection == 'connecte') /*Pour aller vers la paege d accueil du site*/
 	{
+		require 'modele/test_donnees_client_incompletes.php';
 		require 'vue/page_accueil_client.php';
 	}
 	elseif ($redirection == 'inscription') /*Pour aller vers la paege d accueil du site*/

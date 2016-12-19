@@ -31,10 +31,6 @@
                   </p>       
 						  </fieldset>
             </form>
-            <?php
-                $reqpiece=$bdd->prepare('SELECT * FROM piece WHERE id_client=?');
-                $reqpiece->execute(array($_SESSION['id_client']));?>
-
                 <div id="decalage">
                 <?php
                 while($piece = $reqpiece -> fetch())

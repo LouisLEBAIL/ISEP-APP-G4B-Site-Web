@@ -21,11 +21,11 @@ if(isset($_POST['ajouter']) AND !empty($_POST['pieces']))
     'id_maison'=>$maison['id_maison'],
     'id_client'=>$user['id_client']
     ));
-  $erreur="Ajouter!";
+  $erreur="Ajouté !";
 }
 else
 {
-  $erreur="veuillez remplir le champs";
+  $erreur="Veuillez remplir le champs.";
 }
 if(isset($_POST['supprimer']))
 {
@@ -34,4 +34,9 @@ if(isset($_POST['supprimer']))
     ));
 
 }
+
+
+$reqpiece=$bdd->prepare('SELECT * FROM piece WHERE id_client=?');
+$reqpiece->execute(array($_SESSION['id_client']));
+
 ?>
