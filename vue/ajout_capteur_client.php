@@ -8,7 +8,7 @@
     </head>
 
   <body>
-    <?php include("vue/en_tete.php");?>
+    <?php include("vue/en_tete_client.php");?>
       <div id="container_3">
         <?php include("vue/navigation_client.php");?>
           <div id="preinscription">
