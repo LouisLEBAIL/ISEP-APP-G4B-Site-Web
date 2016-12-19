@@ -46,6 +46,7 @@ else
 	}
 	elseif ($redirection == 'ajout_capteur_client')
 	{
+		require "modele/fonctions_ajout_capteur.php";
 		require "modele/ajout_capteur_client.php";
 		require "vue/ajout_capteur_client.php";
 	}

@@ -1,8 +1,8 @@
 <?php
 
-if(isset($_POST)){//débugage
-	var_dump($_POST);
-}
+#if(isset($_POST)){//débugage
+#	var_dump($_POST);
+#}
 /*####################################################################################################################################################################################################################
 #############################LA FONCTION SUPER BALEZE#############################################################################################################
 ####################################################################################################################################################################################################################*/
@@ -16,7 +16,7 @@ if(isset($_POST)){//débugage
 
 
 function piece($id_utilisateur){//Ici $id_utilisateur = $_SESSION['id_client'] ///  La fonction affiche les formulaires et traite les données
-	$bdd = new PDO('mysql:host=localhost;dbname=bdd_site;charset=utf8', 'root', '',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+	include 'modele/connexion_bdd.php';
 	$i = 1;//compteur (pas besoins de 2 variable si j = i )
 	
 	//on selectionne les salles qui appartiennent au client possédant l' $id_utilisateur
@@ -48,7 +48,7 @@ function piece($id_utilisateur){//Ici $id_utilisateur = $_SESSION['id_client'] /
 
 function formulaire_par_piece($nom,$idpiece,$j){// le formulaire appropriés à la salle $idpiece qui porte le nom $nom et le formulaire est indéxé par le <input submit> avec valider1, valider2,..., validerN
 
-	echo '<form method="post" action="test_1.php" > '  .  $nom . '<input type="hidden" name="idpiece" value="'.$idpiece.'"></input>
+	echo '<form method="post" action="index.php?redirection=ajout_capteur_client" > '  .  $nom . '<input type="hidden" name="idpiece" value="'.$idpiece.'"></input>
 	<input type="number" name="nombredecapteur" min="1" max="10"/>';
 	 echo'<input type="submit" name="valider'.$j.'" value="valider" /></form>';
 
@@ -86,8 +86,7 @@ if($nombre_de_capteur == 0){
 
 function insertion_capteur($choix,$idpiece,$session){// cette fonction ajouter une seule ligne dans la base de données : (type,etat = 0,id_piece,id_client) 
 
-	$bdd = new PDO('mysql:host=localhost;dbname=bdd_site;charset=utf8', 'root', '',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-
+    include 'modele/connexion_bdd.php';
     $a=0;
     $reqcapteur=$bdd->prepare('INSERT INTO capteur(type,etat,id_piece,id_client) VALUES(:type, :etat, :id_piece, :id_client)') ;
     $reqcapteur->execute(array(
