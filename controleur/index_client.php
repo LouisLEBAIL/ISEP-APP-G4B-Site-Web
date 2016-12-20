@@ -51,6 +51,11 @@ else
 		require "modele/ajout_capteur_client.php";
 		require "vue/ajout_capteur_client.php";
 	}
+	elseif ($redirection == 'voir_profil')
+	{
+		require "modele/voir_profil.php";
+		require "vue/voir_profil.php";
+	}
 	elseif ($redirection == 'deconnexion') /*Pour se deconnecter de la session*/
 	{
 		$_SESSION = array(); /*vider la variable session*/
