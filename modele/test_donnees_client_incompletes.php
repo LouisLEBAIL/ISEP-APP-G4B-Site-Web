@@ -1,13 +1,19 @@
 <?php
 
-$req = $bdd -> prepare('SELECT nom,prenom,telephone_mobile,telephone_fixe FROM client WHERE id_client=?');
-$req->execute(array($_SESSION['id_client']));
-$reqinfo=$req->fetch();
+$req1 = $bdd -> prepare('SELECT nom,prenom,telephone_mobile,telephone_fixe FROM client WHERE id_client=?');
+$req1->execute(array($_SESSION['id_client']));
+$reqinfo1=$req1->fetch();
 
-$nom=$reqinfo['nom'];
-$prenom=$reqinfo['prenom'];
-$telephone_mobile=$reqinfo['telephone_mobile'];
-$telephone_fixe=$reqinfo['telephone_fixe'];
+$req2 = $bdd -> prepare('SELECT nom_piece  FROM piece WHERE id_client=?');
+$req2->execute(array($_SESSION['id_client']));
+$reqinfo2=$req2->fetch();
+
+
+$nom=$reqinfo1['nom'];
+$prenom=$reqinfo1['prenom'];
+$telephone_mobile=$reqinfo1['telephone_mobile'];
+$telephone_fixe=$reqinfo1['telephone_fixe'];
+$nom_piece=$reqinfo2['nom_piece'];
 
 
 if ($nom == '')
@@ -55,7 +61,19 @@ else if ($telephone_fixe == '')
     		document.location.href="index.php?redirection=inscription"
     	}
     </script>
-    <?php
+    <?php    
+}
+
+else if ($nom_piece == '')
+{
+    ?>
+    <script>
+        if (confirm("Vous n\'avez actuellemnt pas de pieces enregistrées dans votre domicile."+"\nVoulez-vous ajouter des pièces à votre domicile ?"))
+        {
+            document.location.href="index.php?redirection=ajout_piece_client"
+        }
+    </script>
+    <?php    
 }
 
 ?>
