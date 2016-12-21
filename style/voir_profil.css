@@ -6,6 +6,10 @@
 .cadre
 {
   padding:40px;
+  background: #3498db;
+  color: #fff;
+  margin: 15px;
+  border-radius: 6px;
 }
 
 
