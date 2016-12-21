@@ -1,7 +1,7 @@
 <div id="navigation">
 	<nav >
 		<ul id="menu_navigation_verticale">
-			<li><a href="#">Pieces</a></li>
+			<li><a href="index.php?redirection=connecte">Pieces</a></li>
 			<li><a href="index.php?redirection=voir_profil">Profil</a>
 				<ul>
 					<li><a href="index.php?redirection=voir_profil">Voir Profil</a></li>

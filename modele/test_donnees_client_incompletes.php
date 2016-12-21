@@ -68,7 +68,7 @@ else if ($nom_piece == '')
 {
     ?>
     <script>
-        if (confirm("Vous n\'avez actuellemnt pas de pieces enregistrées dans votre domicile."+"\nVoulez-vous ajouter des pièces à votre domicile ?"))
+        if (confirm("Vous n\'avez actuellement pas de pièces enregistrées dans votre domicile."+"\nVoulez-vous ajouter des pièces à votre domicile ?"))
         {
             document.location.href="index.php?redirection=ajout_piece_client"
         }
