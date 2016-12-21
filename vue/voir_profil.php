@@ -7,7 +7,7 @@
         <title>Profil</title>
     </head>
     	<body>
-    		<div id="bloc_page_3">
+    		<div id="bloc_page">
                 <?php include("en_tete_client.php");?>
                 <div id="container_3">
                 <?php include("navigation_client.php");?>
