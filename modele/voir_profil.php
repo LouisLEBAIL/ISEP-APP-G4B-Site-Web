@@ -1,5 +1,7 @@
 <?php 
-$bdd = new PDO('mysql:host=localhost;dbname=bdd_site;charset=utf8', 'root', '',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+
+#include "modele/connexion_bdd.php" ;
+
 $reqinfouser=$bdd->prepare('SELECT * FROM client WHERE id_client=?');
 $reqinfouser->execute(array($_SESSION['id_client']));
 $reqadressemaison=$bdd->prepare('SELECT * FROM maison WHERE id_client=?');

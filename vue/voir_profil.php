@@ -4,9 +4,8 @@
 <html>
 
     <head>
-        <meta charset="utf-8" /> <link rel="stylesheet" href="Style/client_modifier_profil.css" />
-        <title>Page de connexion</title>
-        <title>Présentation de DomLab</title>
+        <meta charset="utf-8" /> <link rel="stylesheet" href="style/client_modifier_profil.css" />
+        <title>Profil</title>
     </head>
     	<body>
     		<div id="bloc_page_3">

@@ -2,7 +2,7 @@
 	<nav >
 		<ul id="menu_navigation_verticale">
 			<li><a href="#">Pieces</a></li>
-			<li><a href="#">Profil</a>
+			<li><a href="index.php?redirection=voir_profil">Profil</a>
 				<ul>
 					<li><a href="index.php?redirection=voir_profil">Voir Profil</a></li>
 					<li><a href="index.php?redirection=inscription">Modifier Profil</a></li>
