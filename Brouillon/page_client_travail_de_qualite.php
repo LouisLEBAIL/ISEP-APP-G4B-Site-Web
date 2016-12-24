@@ -9,15 +9,10 @@ $bdd=1;
 $reponse=1;
 $donnees=1;
 include ("connexion_bdd.php");
-if
+if 
 {
-    $reponse = $bdd->prepare('SELECT * FROM piece WHERE $id_client=? AND $id_maison=?')
+    $reponse = $bdd->prepare('SELECT * FROM piece WHERE $id_client=?')
     $reponse->execute(array);
-}
-else
-{
-    $reponse = $bdd->prepare('SELECT * FROM piece WHERE $id_client=? AND $id_appartement=?')
-    $reponse = $bdd->execute(array);
 }
 ?>
 <!DOCTYPE html>
@@ -43,6 +38,27 @@ else
                     while ($donnees = $reponse->fetch())
                     {
                     ?>
+                    <tr>
+                        <td>
+                            <?php
+                                echo $donnees['nom_piece']
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            if ($securite_1==true)
+                            {
+                                echo "Aucun problème de sécurité";
+                            }
+                            else
+                            {
+                                echo "Attention, problème de sécurité";
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                    </table>
+                    }
 
                     <table border="1" id="volet">
                         <caption>Volets</caption>
