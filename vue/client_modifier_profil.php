@@ -3,7 +3,7 @@
 include("modele/fonctions_client.php");
 
 modifier_donnees();
-$user = client_info();//recupere tout les donnes du client dans la table client
+$user = client_info();//recupere toutes les donnees du client dans la table client
 redirection();// redirige le client vers la page client...maison ou client....appartement
 
 ?>

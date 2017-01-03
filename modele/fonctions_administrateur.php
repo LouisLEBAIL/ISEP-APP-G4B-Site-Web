@@ -17,8 +17,8 @@ $req->closeCursor();
 }
 
 function search_bar($keyword){
-echo '<form action="../vue/administrateur_visualisation_client.php" method="get"> ';//les info sera visible sur la barre de navigation
-echo '<input type="text" name="search" value="'.$keyword.'"> '; // ceci crera une variable $_GET['search'] , noublie pas de faire un isset($_GET['search']) avant d'appeler la fonction search($_GET['search'])
+echo '<form action="../vue/administrateur_visualisation_client.php" method="get"> ';//les info seront visibles sur la barre de navigation
+echo '<input type="text" name="search" value="'.$keyword.'"> '; // ceci creera une variable $_GET['search'] , noublie pas de faire un isset($_GET['search']) avant d'appeler la fonction search($_GET['search'])
 echo '<input type="submit"  name ="valider" value="valider"/>';
 echo '</form> ';
 }
