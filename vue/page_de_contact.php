@@ -18,7 +18,7 @@
                                 <label for="email">Votre E-mail: </label>
                             </p>
                             <p>
-                                <input type="text" name="email">
+                                <input type="text" name="email" />
                             </p>
                             <p>
                                 <label for="produits">Produits</label><br/>
