@@ -16,7 +16,7 @@
             	<a href="luminosite">Luminosité</a>
             	<a href="autres">Autres</a>
             </div>
-            </br>
+
         	<div id='table1'> 
         	<caption>Volets</caption>
         	<table border="1">
@@ -45,8 +45,8 @@
         	?>
         	</table>
         	</div>
+
         	<div id='table2'>
-        	</br>
         	<caption>Sécurité</caption>
         	<table border="1">
         	<?php
