@@ -105,8 +105,8 @@ footer
 
 #container_2
 {
-  background-color:yellow;
-  
+  display:flex;
+  flex-direction:row;
 }
 
 #bloc_page

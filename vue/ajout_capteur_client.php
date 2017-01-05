@@ -11,9 +11,9 @@
     <?php include("vue/en_tete_client.php");?>
       <div id="container_3">
         <?php include("vue/navigation_client.php");?>
-          <div id="preinscription">
-           <?php piece($_SESSION['id_client']);?>
-          </div>
+        <div id="preinscription">
+          <?php piece($_SESSION['id_client']);?>
+        </div>
       </div>
     <?php include("vue/pied_de_page.php");?>   
     </body>
