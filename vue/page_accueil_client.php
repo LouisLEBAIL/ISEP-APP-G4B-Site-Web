@@ -20,29 +20,46 @@
         	<div id='table1'> 
         	<caption>Volets</caption>
         	<table border="1">
-        	<?php
-        	while ($piece = $reponse1->fetch())
-        	{
-        		?>
-        		<tr>
-        			<td><?php echo $piece[0] ;?></td>
-        			<td>
-        				<?php
-        				$i = rand (0,1) ;
-        				if ($i == 0)
-        				{
-        					echo 'Ouvert';
-        				}
-        				else
-        				{
-        					echo 'Fermé';
-        				}
-        				?>
-        			</td>
-        		</tr>
-        		<?php
-        	}
-        	?>
+
+
+                <?php
+                $i=0;
+            while ($piece = $reponse1->fetch())
+            {
+                $i++;
+                ?>
+                <tr>
+                    <td><?php echo $piece[0] ;?></td>
+                    <td>
+                    <?php
+                            
+                                echo'<div class="onoffswitch">';
+                                echo'<input type="checkbox" name="onoffswitch'.$i.'" class="onoffswitch-checkbox" id="myonoffswitch">';
+                                echo'<label class="onoffswitch-label" for="myonoffswitch">';
+                                echo'<span class="onoffswitch-inner">';
+                                echo'</span>';
+                                echo'<span class="onoffswitch-switch">';
+                                echo'</span>';
+                                echo'</label>';
+                                echo '</div>';
+
+                            
+            ?>
+
+                    </td>
+                </tr>
+                
+
+
+
+
+
+
+
+            <?php
+            }
+            ?>
+        	
         	</table>
         	</div>
 
