@@ -29,22 +29,24 @@
                 $i++;
                 ?>
                 <tr>
-                    <td><?php echo $piece[0] ;?></td>
+                    <td><?php echo $piece['nom_piece'] ;?></td>
                     <td>
                     <?php
                             
                                 echo'<div class="onoffswitch">';
-                                echo'<input type="checkbox" name="onoffswitch'.$i.'" class="onoffswitch-checkbox" id="myonoffswitch">';
-                                echo'<label class="onoffswitch-label" for="myonoffswitch">';
+                                echo'<input type="checkbox" name="onoffswitch[]" class="onoffswitch-checkbox" id="myonoffswitch'.$i.'" value="valeur">';
+                                echo'<label class="onoffswitch-label" for="myonoffswitch'.$i.'">';
                                 echo'<span class="onoffswitch-inner">';
                                 echo'</span>';
                                 echo'<span class="onoffswitch-switch">';
                                 echo'</span>';
                                 echo'</label>';
                                 echo '</div>';
-
-                            
+                                
+                                
+                         
             ?>
+
 
                     </td>
                 </tr>
@@ -58,6 +60,9 @@
 
             <?php
             }
+            
+
+
             ?>
         	
         	</table>
