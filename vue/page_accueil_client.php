@@ -42,27 +42,24 @@
                                 echo'</span>';
                                 echo'</label>';
                                 echo '</div>';
-                                
-                                
-                         
-            ?>
-
-
+                                ?>
+                    </td>            
+                    <td>
+                        <?php
+                        $j = rand (0,1) ;
+                        if ($j == 0)
+                        {
+                            echo 'Ouvert';
+                        }
+                        else
+                        {
+                            echo 'Fermé';
+                        }
+                        ?>
                     </td>
                 </tr>
-                
-
-
-
-
-
-
-
             <?php
             }
-            
-
-
             ?>
         	
         	</table>
@@ -79,7 +76,7 @@
         			<td><?php echo $pieces[0] ;?></td>
         			<td>
         				<?php
-        				$j = rand (0,1) ;
+        				$j = rand (0,4) ;
         				if ($j == 0)
         				{
         					echo 'Alerte sécurité';
