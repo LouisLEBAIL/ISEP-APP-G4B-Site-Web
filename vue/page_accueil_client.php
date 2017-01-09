@@ -57,6 +57,29 @@
                         }
                         ?>
                     </td>
+                    <td class=pre_circle>
+                        <?php
+                        $j = rand (0,9) ;
+                        if ($j == 0)
+                        {
+                            ?>
+                            <div class=circle_red></div>
+                            <?php
+                        }
+                        elseif ($j == 1 or $j==2)
+                        {
+                            ?>
+                            <div class=circle_orange></div>
+                            <?php
+                        }
+                        else
+                        {
+                            ?>
+                            <div class=circle_green></div>
+                            <?php
+                        }
+                        ?>
+                    </td>
                 </tr>
             <?php
             }
@@ -87,6 +110,29 @@
         				}
         				?>
         			</td>
+                    <td class=pre_circle>
+                        <?php
+                        $j = rand (0,9) ;
+                        if ($j == 0)
+                        {
+                            ?>
+                            <div class=circle_red></div>
+                            <?php
+                        }
+                        elseif ($j == 1 or $j==2)
+                        {
+                            ?>
+                            <div class=circle_orange></div>
+                            <?php
+                        }
+                        else
+                        {
+                            ?>
+                            <div class=circle_green></div>
+                            <?php
+                        }
+                        ?>
+                    </td>
         		</tr>
         		<?php
         	}
