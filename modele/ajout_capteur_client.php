@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 include("modele/connexion_bdd.php");
 

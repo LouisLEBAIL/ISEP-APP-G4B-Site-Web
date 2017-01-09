@@ -1,4 +1,4 @@
-<?php
+ <?php
 include("modele/connexion_bdd.php");
 
 $requser = $bdd -> prepare('SELECT * FROM client WHERE id_client=?');

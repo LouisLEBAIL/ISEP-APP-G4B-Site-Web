@@ -1,6 +1,10 @@
 <footer>
 	 <div id="Copyrights">
-        <p>Copyright DomISEP - Tous droits réservés</p>
+<<<<<<< HEAD
+        <p>Copyright DOMISEP - Tous droits réservés</p>
+=======
+        <p>Copyright DOMISEP - Tous droits réservés</p>
+>>>>>>> origin/master
      </div>
      <div id="Contacts">
      	<a href="index.php?redirection=page_de_contact">Contacts</a>

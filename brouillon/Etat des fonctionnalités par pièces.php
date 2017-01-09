@@ -58,7 +58,7 @@ Etat des fonctionnalités par pièces.php
             </tr>
             <tr>
               <tbody><td>Luminosité</td>
-              <td>ouverture/fermeture des volets</td>
+              <td>ouverture/fermeture des volets <button class="onoff" onclick="onoff(this)"><div>off</div></button></td>
             </tr>
             <tr>
               <td>Batterie capteur</td>
@@ -72,7 +72,7 @@ Etat des fonctionnalités par pièces.php
               <td>Batterie capteur</td>
               <td colspan="3">Faible/Normale/Pleine</td>
             <tr>
-              <td>Intrusion/présence</td>
+              <td>Intrusion/présence/mouvement</td>
               <td>caméra, alarme alluméé/éteinte</td>
             </tr>
             <td>Batterie actionneur</td>
@@ -105,6 +105,7 @@ Etat des fonctionnalités par pièces.php
         </body>
 
  <script src="../cours1.js"></script>
+ <script src="../bouton_on_off.js"></script>
 
 </html>
 
