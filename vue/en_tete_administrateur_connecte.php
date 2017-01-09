@@ -1,7 +1,13 @@
 <header>
-	<div id="DHomeLab">
+    <div id="favicon">
+<<<<<<< HEAD
+                     <link rel="icon" type="image/gif" href="picture/animated_favicon.gif">
+=======
+                     <link rel="icon" type="image/gif" href="image/animated_favicon.gif">
+>>>>>>> origin/master
+    <div id="DHomeLab">
         <div id="logo">
-            <img  src="../picture/logo transparent.png" alt="Logo DomLab" title="DomLab"/>
+            <a href="index.php?redirection=connecte"><img  src="../picture/logo_transparent.png" alt="logo DomLab" title="DomLab"/></a>
         </div>
         <h2 class="titre">DHomeLab</h2>
         <h4><a href="index_administrateur.php?redirection=deconnexion">Déconnexion</a></h4>

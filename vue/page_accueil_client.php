@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="style/accueil.css" />
         <title>Page d'accueil</title>
     </head>
-	<body>
+    <body>
 		<?php include("vue/en_tete_client.php");?>
 
 		<div id="container_2">

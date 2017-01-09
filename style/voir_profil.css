@@ -1,31 +1,40 @@
+.zone_centre
+{
+  display: flex;
+  margin-left: 60px;
+}
+.cadre
+{
+  padding:40px;
+  background: #3498db;
+  color: #fff;
+  margin: 15px;
+  border-radius: 6px;
+}
+
+
 #PageDeconnexion
 {
 	margin:auto;
 	width:900px;
 }
-
-
 #logo img
 {
 	width:250px;
 	height:250px;
 }
-
 #DHomelab{
 	display:flex;
-	flex-direction:column;
-	
+	flex-direction:column;	
 }
 #logo
 {
 	display: flex;
 	justify-content: center;
 }
-
-
 .titre
 {
-  margin-left:45.5%;
+	margin-left:45.5%;
 	margin-right:46%;
 	margin-top:-5%;
 }
@@ -51,6 +60,7 @@ footer
 	background-attachment: scroll;
 	padding:30px;
 }
+
 
 #menu_navigation_verticale{
   padding:0;
@@ -88,7 +98,6 @@ footer
   padding: 8px 0;
   font-size:1.2em
 }
-
 #menu_navigation_verticale li:hover {
    background: #34495e
 }
@@ -102,39 +111,8 @@ footer
 #menu_navigation_verticale li:hover li {
   max-height: 20em;
 }
-
 #container_3
 {
   display:flex;
   flex-direction:row;
-
-
 }
-form
-{
-  padding-left:200px;
-}
-input
-{
-  background-image:none;  
-}
-
-
-#profil_formulaire_d_inscription fieldset
-{
-  background: #3498db;
-  border-radius: 0px 0px 20px 20px;
-  padding:50px 50px;
-}
-#profil_formulaire_d_inscription fieldset p
-{
-  color:#fff;
-
-}
-
-#profil_formulaire_d_inscription fieldset input
-{
-  border-radius:5px;
-
-}
-

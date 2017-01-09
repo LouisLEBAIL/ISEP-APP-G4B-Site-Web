@@ -13,11 +13,11 @@ Etat des fonctionnalités par pièces.php
 
 </head>
     	<body>
-    		<div id="bloc_page_4">
+    		<div id="bloc_page_3">
                 <?php include("en_tete.php");?>
-                <div id="container_4">
+                <div id="container_3">
                 <?php include("navigation_client.php");?>
-
+        <div id="preinscription">
                     
             <table id="tableau" border="1">
             <caption>Description pièce par pièce</caption>
@@ -33,28 +33,52 @@ Etat des fonctionnalités par pièces.php
             Chambres (1,2,3)
             Salles de bain (2)
 </td>
+</thead>
+</tr>
+</table>
+</div>
+
+
+<form method="post" action="index.php?redirection=Etat des fonctionnalités par pièces" >
+
+<?php echo $piece['nom_piece']; ?> 
+                  <?php $idpiece=$piece['id_piece'];?>
+                  <input type="number" name="luminosite"/>
+                  <input type="submit" name="volets" value="valider">
+                  </input>
+                  <input type="number" name="batterie_capteur"/>
+
+                  <input type="number" name="temperature"/>
+                  <input type="submit" name="chauffage" value="valider">
+                  </input>
+                        
+                  </form>
+
               <td>fonctionnalités par pièces</td></thead>
             </tr>
             <tr>
               <tbody><td>Luminosité</td>
-              <td>valeur</td>
+              <td>ouverture/fermeture des volets</td>
             </tr>
             <tr>
               <td>Batterie capteur</td>
               <td colspan="3">Faible/Normale/Pleine</td>
             </tr>
             <tr>
-              <td>température</td>
-              <td>valeur</td>
+              <td>température/humidité</td>
+              <td colspan="2">valeur/Programmaton du chauffage</td>
             </tr>
             <tr>
               <td>Batterie capteur</td>
               <td colspan="3">Faible/Normale/Pleine</td>
-
-            <p>Ouverture/Fermeture des volets</p>
-
-
-            <p>Ouverture/fermeture des volets</p>
+            <tr>
+              <td>Intrusion/présence</td>
+              <td>caméra, alarme alluméé/éteinte</td>
+            </tr>
+            <td>Batterie actionneur</td>
+              <td colspan="3">Faible/Normale/Pleine</td>
+            </tr>
+              
 
  <table id="tableau" border="1">
             <caption>Programmation chauffage</caption>
@@ -63,13 +87,25 @@ Etat des fonctionnalités par pièces.php
              <td>Matin</td>
              <td>Après-midi</td>
              <td>Soir</td>
+             </tr>
+  </table>
            
-
+  <?php
+                }
+                ?>
+                </div>
+                <?php
+                $reqpiece->closeCursor();
+            ?>
 
 
 <?php include("pied_de_page.php");?>
             </div>
+            </div>
         </body>
+
+ <script src="../cours1.js"></script>
+
 </html>
 
 

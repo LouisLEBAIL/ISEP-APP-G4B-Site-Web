@@ -14,6 +14,7 @@ else
 	
 	if ($redirection == 'connecte') /*Pour aller vers la paege d accueil du site*/
 	{
+		require 'modele/test_donnees_client_incompletes.php';
 		require 'vue/page_accueil_client.php';
 	}
 	elseif ($redirection == 'inscription') /*Pour aller vers la paege d accueil du site*/
@@ -46,8 +47,14 @@ else
 	}
 	elseif ($redirection == 'ajout_capteur_client')
 	{
+		require "modele/fonctions_ajout_capteur.php";
 		require "modele/ajout_capteur_client.php";
 		require "vue/ajout_capteur_client.php";
+	}
+	elseif ($redirection == 'voir_profil')
+	{
+		require "modele/voir_profil.php";
+		require "vue/voir_profil.php";
 	}
 	elseif ($redirection == 'deconnexion') /*Pour se deconnecter de la session*/
 	{
