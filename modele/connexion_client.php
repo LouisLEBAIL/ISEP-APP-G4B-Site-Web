@@ -6,14 +6,14 @@ if(isset($_POST['formconnexionclient']))
 
   if(!empty($_POST['login_client_connect']) AND !empty($_POST['mdpconnect']))
   {
-    $requtilisateur = $bdd->prepare("SELECT * FROM client WHERE login_client = ? AND password_client = ? ");
+    $requtilisateur = $bdd->prepare("SELECT * FROM client WHERE email = ? AND password_client = ? ");
     $requtilisateur->execute(array($login_client_connect, $mdpconnect));
     $utilisateurexist = $requtilisateur->rowCount();
     if($utilisateurexist == 1)
     {
       $utilisateurinfo = $requtilisateur -> fetch();
       $_SESSION['id_client'] = $utilisateurinfo['id_client'];
-      $_SESSION['login_client'] = $utilisateurinfo['login_client'];
+      $_SESSION['email'] = $utilisateurinfo['email'];
       header("Location: index.php?redirection=connecte");
 
     }
@@ -24,7 +24,7 @@ if(isset($_POST['formconnexionclient']))
   }
   else
   {
-    $erreur='tous les champs doivent être remplies';
+    $erreur='Tous les champs doivent être remplies';
 
   }
 }

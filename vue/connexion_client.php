@@ -14,7 +14,7 @@
           <h2>Connexion Client</h2>
           <form method="post" action="">
             <fieldset>
-              <p><label for="identifiant">Identifiant:</label></p>
+              <p><label for="identifiant">Email:</label></p>
               <p><input type="text" name="login_client_connect"></p>
               <p><label for="mot de passe">Mot de passe:</label></p>
               <p><input type="password" name="mdpconnect"></p>

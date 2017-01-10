@@ -20,7 +20,13 @@
         	<div id='table1'> 
         	<caption>Volets</caption>
         	<table border="1">
-
+            <tr>
+                <th>Pièce</th>
+                <th>Volets Ouverts/Fermés</th>
+                <th>Position des volets</th>
+                <th>Normal ?</th>
+                <th>Etat des</br>batteries</th>
+            </tr>
 
                 <?php
                 $i=0;
@@ -29,20 +35,19 @@
                 $i++;
                 ?>
                 <tr>
-                    <td><?php echo $piece['nom_piece'] ;?></td>
+                    <th><?php echo $piece['nom_piece'] ;?></th>
                     <td>
-                    <?php
-                            
-                                echo'<div class="onoffswitch">';
-                                echo'<input type="checkbox" name="onoffswitch[]" class="onoffswitch-checkbox" id="myonoffswitch'.$i.'" value="valeur">';
-                                echo'<label class="onoffswitch-label" for="myonoffswitch'.$i.'">';
-                                echo'<span class="onoffswitch-inner">';
-                                echo'</span>';
-                                echo'<span class="onoffswitch-switch">';
-                                echo'</span>';
-                                echo'</label>';
-                                echo '</div>';
-                                ?>
+                        <?php
+                        echo'<div class="onoffswitch">';
+                        echo'<input type="checkbox" name="onoffswitch[]" class="onoffswitch-checkbox" id="myonoffswitch'.$i.'" value="valeur">';
+                        echo'<label class="onoffswitch-label" for="myonoffswitch'.$i.'">';
+                        echo'<span class="onoffswitch-inner">';
+                        echo'</span>';
+                        echo'<span class="onoffswitch-switch">';
+                        echo'</span>';
+                        echo'</label>';
+                        echo '</div>';
+                        ?>
                     </td>            
                     <td>
                         <?php
@@ -80,6 +85,28 @@
                         }
                         ?>
                     </td>
+                    <td class=pre_circle>
+                        <?php
+                        if ($etat_capteur['etat'] == 3)
+                        {
+                            ?>
+                            <div class=circle_red></div>
+                            <?php                            
+                        }
+                        elseif ($etat_capteur['etat'] == 2)
+                        {
+                            ?>
+                            <div class=circle_orange></div>
+                            <?php
+                        }
+                        else
+                        {
+                            ?>
+                            <div class=circle_green></div>
+                            <?php
+                        }
+                        ?>
+                    </td>
                 </tr>
             <?php
             }
@@ -91,12 +118,18 @@
         	<div id='table2'>
         	<caption>Sécurité</caption>
         	<table border="1">
+            <tr>
+                <th>Pièce</th>
+                <th>Niveau</br>d'alerte</th>
+                <th>Normal ?</th>
+            </tr>
+
         	<?php
         	while ($pieces = $reponse2->fetch())
         	{
         		?>
         		<tr>
-        			<td><?php echo $pieces[0] ;?></td>
+        			<th><?php echo $pieces['nom_piece'] ;?></th>
         			<td>
         				<?php
         				$j = rand (0,4) ;
