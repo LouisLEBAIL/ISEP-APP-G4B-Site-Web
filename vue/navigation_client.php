@@ -11,6 +11,7 @@
 				</ul>
 			</li>
 			<li><a href="index.php?redirection=page_de_contact">Contact</a></li>
+			<li><a href="index.php?redirection=suivi_consommation_energetique">Consommation énergétique</a></li>
 		</ul>
 	</nav>
 </div>
