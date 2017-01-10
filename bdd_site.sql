@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 12 Décembre 2016 à 16:02
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Généré le :  Mar 10 Janvier 2017 à 18:01
+-- Version du serveur :  5.7.14
+-- Version de PHP :  5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données :  `bdd_site`
@@ -26,13 +26,18 @@ SET time_zone = "+00:00";
 -- Structure de la table `administrateur`
 --
 
-CREATE TABLE IF NOT EXISTS `administrateur` (
-  `id_administrateur` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+CREATE TABLE `administrateur` (
+  `id_administrateur` int(10) UNSIGNED ZEROFILL NOT NULL,
   `login_administrateur` varchar(255) NOT NULL,
-  `password_administrateur` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_administrateur`),
-  UNIQUE KEY `login` (`login_administrateur`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `password_administrateur` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `administrateur`
+--
+
+INSERT INTO `administrateur` (`id_administrateur`, `login_administrateur`, `password_administrateur`) VALUES
+(0000000001, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997');
 
 -- --------------------------------------------------------
 
@@ -40,17 +45,21 @@ CREATE TABLE IF NOT EXISTS `administrateur` (
 -- Structure de la table `appartement`
 --
 
-CREATE TABLE IF NOT EXISTS `appartement` (
-  `id_appartement` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
-  `id_client` int(10) unsigned zerofill DEFAULT NULL,
-  `id_immeuble` int(10) unsigned zerofill DEFAULT NULL,
-  `surface` int(10) unsigned NOT NULL COMMENT 'Surface de l''appartement',
-  `etage` int(10) unsigned NOT NULL COMMENT 'Etage de l''appartement',
-  `numero` int(10) unsigned NOT NULL COMMENT 'Numero de l''apartement',
-  PRIMARY KEY (`id_appartement`),
-  KEY `id_client` (`id_client`),
-  KEY `id_immeuble` (`id_immeuble`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE `appartement` (
+  `id_appartement` int(10) UNSIGNED ZEROFILL NOT NULL,
+  `id_client` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
+  `id_immeuble` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
+  `surface` int(10) UNSIGNED NOT NULL COMMENT 'Surface de l''appartement',
+  `etage` int(10) UNSIGNED NOT NULL COMMENT 'Etage de l''appartement',
+  `numero` int(10) UNSIGNED NOT NULL COMMENT 'Numero de l''apartement'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `appartement`
+--
+
+INSERT INTO `appartement` (`id_appartement`, `id_client`, `id_immeuble`, `surface`, `etage`, `numero`) VALUES
+(0000000001, 0000000001, 0000000001, 30, 2, 24);
 
 -- --------------------------------------------------------
 
@@ -58,16 +67,24 @@ CREATE TABLE IF NOT EXISTS `appartement` (
 -- Structure de la table `capteur`
 --
 
-CREATE TABLE IF NOT EXISTS `capteur` (
-  `id_capteur` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+CREATE TABLE `capteur` (
+  `id_capteur` int(10) UNSIGNED ZEROFILL NOT NULL,
   `type` varchar(255) NOT NULL,
-  `etat` int(10) unsigned NOT NULL COMMENT 'chiffre entre 0(bon) et 3(mauvais)',
-  `id_piece` int(10) unsigned zerofill DEFAULT NULL,
-  `id_client` int(10) unsigned zerofill DEFAULT NULL,
-  PRIMARY KEY (`id_capteur`),
-  KEY `id_piece` (`id_piece`,`id_client`),
-  KEY `id_client` (`id_client`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `numero_serie_capteur` varchar(20) NOT NULL,
+  `etat` int(10) UNSIGNED NOT NULL COMMENT 'chiffre entre 0(bon) et 3(mauvais)',
+  `id_piece` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
+  `id_client` int(10) UNSIGNED ZEROFILL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cemac`
+--
+
+CREATE TABLE `cemac` (
+  `numero_serie_ceMAC` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -75,22 +92,25 @@ CREATE TABLE IF NOT EXISTS `capteur` (
 -- Structure de la table `client`
 --
 
-CREATE TABLE IF NOT EXISTS `client` (
-  `id_client` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+CREATE TABLE `client` (
+  `id_client` int(10) UNSIGNED ZEROFILL NOT NULL,
   `nom` varchar(255) DEFAULT NULL,
   `prenom` varchar(255) DEFAULT NULL,
   `date_de_naissance` date DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `telephone_mobile` int(11) DEFAULT NULL,
   `telephone_fixe` int(11) DEFAULT NULL,
-  `login_client` varchar(255) NOT NULL,
-  `password_client` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_client`),
-  UNIQUE KEY `login` (`login_client`),
-  UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `telephone_mobile` (`telephone_mobile`),
-  UNIQUE KEY `telephone_fixe` (`telephone_fixe`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `numero_serie_ceMAC` varchar(20) NOT NULL,
+  `password_client` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `client`
+--
+
+INSERT INTO `client` (`id_client`, `nom`, `prenom`, `date_de_naissance`, `email`, `telephone_mobile`, `telephone_fixe`, `numero_serie_ceMAC`, `password_client`) VALUES
+(0000000001, 'LE BAIL', 'louis', '1996-10-31', 'louis@gmail.com', 629440180, 629440180, '', 'd82ece8d514aca7e24d3fc11fbb8dada57f2966c'),
+(0000000002, NULL, NULL, NULL, 'jean@gmail.com', NULL, NULL, '', '51f8b1fa9b424745378826727452997ee2a7c3d7');
 
 -- --------------------------------------------------------
 
@@ -98,16 +118,13 @@ CREATE TABLE IF NOT EXISTS `client` (
 -- Structure de la table `donnee_capteur`
 --
 
-CREATE TABLE IF NOT EXISTS `donnee_capteur` (
-  `id_donnee_capteur` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+CREATE TABLE `donnee_capteur` (
+  `id_donnee_capteur` int(10) UNSIGNED ZEROFILL NOT NULL,
   `date` datetime NOT NULL,
-  `donnee` text NOT NULL,
-  `id_capteur` int(10) unsigned zerofill DEFAULT NULL,
-  `id_client` int(10) unsigned zerofill DEFAULT NULL,
-  PRIMARY KEY (`id_donnee_capteur`),
-  KEY `id_capteur` (`id_capteur`,`id_client`),
-  KEY `id_client` (`id_client`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `trame` text NOT NULL,
+  `id_capteur` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
+  `id_client` int(10) UNSIGNED ZEROFILL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -115,16 +132,21 @@ CREATE TABLE IF NOT EXISTS `donnee_capteur` (
 -- Structure de la table `immeuble`
 --
 
-CREATE TABLE IF NOT EXISTS `immeuble` (
-  `id_immeuble` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
-  `code_postal` int(10) unsigned NOT NULL,
+CREATE TABLE `immeuble` (
+  `id_immeuble` int(10) UNSIGNED ZEROFILL NOT NULL,
+  `code_postal` int(10) UNSIGNED NOT NULL,
   `ville` varchar(255) NOT NULL,
   `adresse_1` varchar(255) NOT NULL,
   `adresse_2` varchar(255) NOT NULL,
-  `id_client` int(10) unsigned zerofill DEFAULT NULL,
-  PRIMARY KEY (`id_immeuble`),
-  KEY `id_client` (`id_client`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `id_client` int(10) UNSIGNED ZEROFILL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `immeuble`
+--
+
+INSERT INTO `immeuble` (`id_immeuble`, `code_postal`, `ville`, `adresse_1`, `adresse_2`, `id_client`) VALUES
+(0000000001, 94100, 'St Maur', '18 bis av rene david', '', 0000000001);
 
 -- --------------------------------------------------------
 
@@ -132,18 +154,33 @@ CREATE TABLE IF NOT EXISTS `immeuble` (
 -- Structure de la table `maison`
 --
 
-CREATE TABLE IF NOT EXISTS `maison` (
-  `id_maison` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
-  `code_postal` int(10) unsigned NOT NULL,
+CREATE TABLE `maison` (
+  `id_maison` int(10) UNSIGNED ZEROFILL NOT NULL,
+  `code_postal` int(10) UNSIGNED NOT NULL,
   `ville` varchar(255) NOT NULL,
   `adresse_1` varchar(255) NOT NULL,
   `adresse_2` varchar(255) NOT NULL,
-  `id_client` int(10) unsigned zerofill DEFAULT NULL,
-  `surface` int(11) NOT NULL COMMENT 'Surface de la maison',
-  PRIMARY KEY (`id_maison`),
-  KEY `id_client` (`id_client`),
-  KEY `id_client_2` (`id_client`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `id_client` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
+  `surface` int(11) NOT NULL COMMENT 'Surface de la maison'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `maison`
+--
+
+INSERT INTO `maison` (`id_maison`, `code_postal`, `ville`, `adresse_1`, `adresse_2`, `id_client`, `surface`) VALUES
+(0000000001, 94100, 'St Maur', '18bis av rene david', '', 0000000001, 150),
+(0000000002, 94100, 'St maur', '18bis av rene david', '', 0000000001, 150);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `numero_serie_capteur`
+--
+
+CREATE TABLE `numero_serie_capteur` (
+  `numero_serie_capteur` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -151,19 +188,21 @@ CREATE TABLE IF NOT EXISTS `maison` (
 -- Structure de la table `piece`
 --
 
-CREATE TABLE IF NOT EXISTS `piece` (
-  `id_piece` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+CREATE TABLE `piece` (
+  `id_piece` int(10) UNSIGNED ZEROFILL NOT NULL,
   `nom_piece` varchar(255) NOT NULL,
-  `id_appartement` int(10) unsigned zerofill DEFAULT NULL,
-  `id_maison` int(10) unsigned zerofill DEFAULT NULL,
-  `id_client` int(10) unsigned zerofill DEFAULT NULL,
-  PRIMARY KEY (`id_piece`),
-  KEY `id_client` (`id_client`,`id_appartement`),
-  KEY `id_immeuble` (`id_appartement`),
-  KEY `id_maison` (`id_maison`),
-  KEY `id_appartement` (`id_appartement`),
-  KEY `id_maison_2` (`id_maison`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `id_appartement` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
+  `id_maison` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
+  `id_client` int(10) UNSIGNED ZEROFILL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `piece`
+--
+
+INSERT INTO `piece` (`id_piece`, `nom_piece`, `id_appartement`, `id_maison`, `id_client`) VALUES
+(0000000001, 'Cuisine', 0000000001, 0000000001, 0000000001),
+(0000000002, 'Salon', 0000000001, 0000000001, 0000000001);
 
 -- --------------------------------------------------------
 
@@ -171,14 +210,153 @@ CREATE TABLE IF NOT EXISTS `piece` (
 -- Structure de la table `service_client`
 --
 
-CREATE TABLE IF NOT EXISTS `service_client` (
-  `id_service_client` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+CREATE TABLE `service_client` (
+  `id_service_client` int(10) UNSIGNED ZEROFILL NOT NULL,
   `login_service_client` varchar(255) NOT NULL,
-  `password_service_client` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_service_client`),
-  UNIQUE KEY `login` (`login_service_client`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `password_service_client` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `administrateur`
+--
+ALTER TABLE `administrateur`
+  ADD PRIMARY KEY (`id_administrateur`),
+  ADD UNIQUE KEY `login` (`login_administrateur`);
+
+--
+-- Index pour la table `appartement`
+--
+ALTER TABLE `appartement`
+  ADD PRIMARY KEY (`id_appartement`),
+  ADD KEY `id_client` (`id_client`),
+  ADD KEY `id_immeuble` (`id_immeuble`);
+
+--
+-- Index pour la table `capteur`
+--
+ALTER TABLE `capteur`
+  ADD PRIMARY KEY (`id_capteur`),
+  ADD KEY `id_piece` (`id_piece`,`id_client`),
+  ADD KEY `id_client` (`id_client`),
+  ADD KEY `numero_serie_capteur` (`numero_serie_capteur`);
+
+--
+-- Index pour la table `cemac`
+--
+ALTER TABLE `cemac`
+  ADD PRIMARY KEY (`numero_serie_ceMAC`);
+
+--
+-- Index pour la table `client`
+--
+ALTER TABLE `client`
+  ADD PRIMARY KEY (`id_client`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `telephone_mobile` (`telephone_mobile`),
+  ADD UNIQUE KEY `telephone_fixe` (`telephone_fixe`),
+  ADD KEY `numero_serie_ceMAC` (`numero_serie_ceMAC`),
+  ADD KEY `numero_serie_ceMAC_2` (`numero_serie_ceMAC`);
+
+--
+-- Index pour la table `donnee_capteur`
+--
+ALTER TABLE `donnee_capteur`
+  ADD PRIMARY KEY (`id_donnee_capteur`),
+  ADD KEY `id_capteur` (`id_capteur`,`id_client`),
+  ADD KEY `id_client` (`id_client`);
+
+--
+-- Index pour la table `immeuble`
+--
+ALTER TABLE `immeuble`
+  ADD PRIMARY KEY (`id_immeuble`),
+  ADD KEY `id_client` (`id_client`);
+
+--
+-- Index pour la table `maison`
+--
+ALTER TABLE `maison`
+  ADD PRIMARY KEY (`id_maison`),
+  ADD KEY `id_client` (`id_client`),
+  ADD KEY `id_client_2` (`id_client`);
+
+--
+-- Index pour la table `numero_serie_capteur`
+--
+ALTER TABLE `numero_serie_capteur`
+  ADD PRIMARY KEY (`numero_serie_capteur`);
+
+--
+-- Index pour la table `piece`
+--
+ALTER TABLE `piece`
+  ADD PRIMARY KEY (`id_piece`),
+  ADD KEY `id_client` (`id_client`,`id_appartement`),
+  ADD KEY `id_immeuble` (`id_appartement`),
+  ADD KEY `id_maison` (`id_maison`),
+  ADD KEY `id_appartement` (`id_appartement`),
+  ADD KEY `id_maison_2` (`id_maison`);
+
+--
+-- Index pour la table `service_client`
+--
+ALTER TABLE `service_client`
+  ADD PRIMARY KEY (`id_service_client`),
+  ADD UNIQUE KEY `login` (`login_service_client`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `administrateur`
+--
+ALTER TABLE `administrateur`
+  MODIFY `id_administrateur` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `appartement`
+--
+ALTER TABLE `appartement`
+  MODIFY `id_appartement` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `capteur`
+--
+ALTER TABLE `capteur`
+  MODIFY `id_capteur` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `client`
+--
+ALTER TABLE `client`
+  MODIFY `id_client` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `donnee_capteur`
+--
+ALTER TABLE `donnee_capteur`
+  MODIFY `id_donnee_capteur` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `immeuble`
+--
+ALTER TABLE `immeuble`
+  MODIFY `id_immeuble` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `maison`
+--
+ALTER TABLE `maison`
+  MODIFY `id_maison` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `piece`
+--
+ALTER TABLE `piece`
+  MODIFY `id_piece` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `service_client`
+--
+ALTER TABLE `service_client`
+  MODIFY `id_service_client` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
 --
 -- Contraintes pour les tables exportées
 --
@@ -187,22 +365,23 @@ CREATE TABLE IF NOT EXISTS `service_client` (
 -- Contraintes pour la table `appartement`
 --
 ALTER TABLE `appartement`
-  ADD CONSTRAINT `appartement_ibfk_2` FOREIGN KEY (`id_immeuble`) REFERENCES `immeuble` (`id_immeuble`),
-  ADD CONSTRAINT `appartement_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`);
+  ADD CONSTRAINT `appartement_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`),
+  ADD CONSTRAINT `appartement_ibfk_2` FOREIGN KEY (`id_immeuble`) REFERENCES `immeuble` (`id_immeuble`);
 
 --
 -- Contraintes pour la table `capteur`
 --
 ALTER TABLE `capteur`
+  ADD CONSTRAINT `capteur_ibfk_1` FOREIGN KEY (`id_piece`) REFERENCES `piece` (`id_piece`),
   ADD CONSTRAINT `capteur_ibfk_2` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`),
-  ADD CONSTRAINT `capteur_ibfk_1` FOREIGN KEY (`id_piece`) REFERENCES `piece` (`id_piece`);
+  ADD CONSTRAINT `capteur_ibfk_3` FOREIGN KEY (`numero_serie_capteur`) REFERENCES `numero_serie_capteur` (`numero_serie_capteur`);
 
 --
 -- Contraintes pour la table `donnee_capteur`
 --
 ALTER TABLE `donnee_capteur`
-  ADD CONSTRAINT `donnee_capteur_ibfk_2` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`),
-  ADD CONSTRAINT `donnee_capteur_ibfk_1` FOREIGN KEY (`id_capteur`) REFERENCES `capteur` (`id_capteur`);
+  ADD CONSTRAINT `donnee_capteur_ibfk_1` FOREIGN KEY (`id_capteur`) REFERENCES `capteur` (`id_capteur`),
+  ADD CONSTRAINT `donnee_capteur_ibfk_2` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`);
 
 --
 -- Contraintes pour la table `immeuble`
@@ -220,9 +399,9 @@ ALTER TABLE `maison`
 -- Contraintes pour la table `piece`
 --
 ALTER TABLE `piece`
-  ADD CONSTRAINT `piece_ibfk_3` FOREIGN KEY (`id_maison`) REFERENCES `maison` (`id_maison`),
   ADD CONSTRAINT `piece_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`),
-  ADD CONSTRAINT `piece_ibfk_2` FOREIGN KEY (`id_appartement`) REFERENCES `appartement` (`id_appartement`);
+  ADD CONSTRAINT `piece_ibfk_2` FOREIGN KEY (`id_appartement`) REFERENCES `appartement` (`id_appartement`),
+  ADD CONSTRAINT `piece_ibfk_3` FOREIGN KEY (`id_maison`) REFERENCES `maison` (`id_maison`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
