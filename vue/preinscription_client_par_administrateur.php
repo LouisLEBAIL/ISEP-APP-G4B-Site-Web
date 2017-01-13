@@ -15,10 +15,10 @@
 				<form method="post" action="">
         			<fieldset>
           				<P>
-          					<label for="Identifiant">Identifiant:</label>
+          					<label for="Identifiant">Numero Série ceMAC:</label>
           				</P>
                         	<p>
-                        		<input type="text" name="login_client">
+                        		<input type="text" name="numeroseriecemac">
                         	</p>
                         	<p>
                         		<label for="Email">Email:</label>

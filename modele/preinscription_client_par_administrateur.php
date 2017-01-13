@@ -2,36 +2,64 @@
 
 if(isset($_POST['formvalider']))
 {
-  if(!empty($_POST['login_client']) AND !empty($_POST['email']) AND !empty($_POST['password_client']))
+  if(!empty($_POST['numeroseriecemac']) AND !empty($_POST['email']) AND !empty($_POST['password_client']))
   {
-    $login_client = htmlspecialchars($_POST['login_client']);
+    $numero_serie_ceMAC = htmlspecialchars($_POST['numeroseriecemac']);
     $email = htmlspecialchars($_POST['email']);
     $password_client = sha1($_POST['password_client']);
+
     $password_client_verification=sha1($_POST['password_client_verification']);
-    $login_client_length = strlen($login_client);
-    if($login_client_length<=200)
+    $numero_serie_ceMAC_length = strlen($numero_serie_ceMAC);
+    if($numero_serie_ceMAC_length==7)
     {
-      if($password_client == $password_client_verification)
+      $reqcemac=$bdd->prepare("SELECT * FROM ceMAC WHERE numero_serie_ceMAC = ?");
+      $reqcemac->execute(array($numero_serie_ceMAC));
+      $coumpt1=$reqcemac->rowCount();
+      $reqclientcemac=$bdd->prepare("SELECT * FROM client WHERE numero_serie_ceMAC =?");
+      $reqclientcemac->execute(array($numero_serie_ceMAC));
+      $coumpt2=$reqclientcemac->rowCount();
+      $reqclientemail=$bdd->prepare("SELECT * FROM client WHERE email=?");
+      $reqclientemail->execute(array($email));
+      $coumpt3=$reqclientemail->rowCount();
+
+
+      if($coumpt1 == 1 AND $coumpt2==0)
       {
-        $insertclient = $bdd->prepare('INSERT INTO client (nom, prenom, date_de_naissance, email, telephone_mobile, telephone_fixe, login_client, password_client) VALUES(NULL, NULL, NULL, :email, NULL, NULL, :login_client, :password_client)');
-        $insertclient->execute(array(
+        if($coumpt3 == 0)
+        {
+          if($password_client == $password_client_verification)
+          {
+              $insertclient = $bdd->prepare('INSERT INTO client (nom, prenom, date_de_naissance, email, telephone_mobile, telephone_fixe, numero_serie_ceMAC, password_client) VALUES(NULL, NULL, NULL, :email, NULL, NULL, :numero_serie_ceMAC, :password_client)');
+              $insertclient->execute(array(
           'email' => $email,
-          'login_client' => $login_client,
+          'numero_serie_ceMAC' => $numero_serie_ceMAC,
           'password_client' => $password_client
           ));
-        $erreur = 'Compte ajouté';
+              $erreur = 'Compte ajouté';
 
+
+          }
+          else
+          {
+            $erreur= "le mot de passe ne corespond pas ";
+          }
+        }
+        else
+        {
+          $erreur="Vous êtes déja inscrit";
+        }
 
       }
       else
       {
-        $erreur= "le mot de passe ne corespond pas ";
+        $erreur="numero serie incorrect ou deja utiliser";
       }
+
 
     }
     else
     {
-      $erreur= "Le login ne doit pas contenir plus de 200 caractere";
+      $erreur= "Le numero de serie est incorrect ";
     }
 
   }
