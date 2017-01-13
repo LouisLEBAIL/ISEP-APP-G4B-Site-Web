@@ -62,4 +62,6 @@
                 <?php include("vue/pied_de_page.php");?>
             </div>
         </body>
+        <script src="../formulaire_profil_d_inscription_maison.js"></script>
+
 </html>

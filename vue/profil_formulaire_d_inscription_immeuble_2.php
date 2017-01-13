@@ -50,34 +50,11 @@
                 <?php include("vue/pied_de_page.php");?>
             </div>
         </body>
+        <script src="../formulaire_profil_d_inscription2.js"></script>
+
 </html>
 
 
-css bouton on/off : 
-
-.onoff
-{
-  width:32px;
-  height:32px;
-  padding:1px 2px 3px 3px;  
-  font-size:12px;
-  background:lightgray;
-  text-align:center;    
-}
-.onoff div
-{
-  width:18px;
-  height:18px;
-  min-height:18px;  
-  background:lightgray;
-  overflow:hidden;
-  border-top:1px solid gray;
-  border-right:1px solid white;
-  border-bottom:1px solid white;
-  border-left:1px solid gray;           
-  margin:0 auto;
-  color:gray;
-}
 
 
 

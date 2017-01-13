@@ -1,7 +1,7 @@
 
     
 <div id="profil_formulaire_d_inscription">
-    <form method="post" action="#">
+    <form method="post" action="#" onsubmit="return validateprofil_formulaire_d_inscription()" >
                         <fieldset class="modifier_profil">
                             <p>
                                 <label for="Nom">Nom:</label>
@@ -82,3 +82,9 @@
                         </fieldset>
     </form>
 </div>
+
+<script src="../formulaire_profil_d_inscription.js"></script>
+ 
+
+
+
