@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 10 Janvier 2017 à 18:01
+-- Généré le :  Lun 16 Janvier 2017 à 21:20
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -71,10 +71,18 @@ CREATE TABLE `capteur` (
   `id_capteur` int(10) UNSIGNED ZEROFILL NOT NULL,
   `type` varchar(255) NOT NULL,
   `numero_serie_capteur` varchar(20) NOT NULL,
+  `numero_capteur` int(10) UNSIGNED ZEROFILL NOT NULL,
   `etat` int(10) UNSIGNED NOT NULL COMMENT 'chiffre entre 0(bon) et 3(mauvais)',
   `id_piece` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
   `id_client` int(10) UNSIGNED ZEROFILL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `capteur`
+--
+
+INSERT INTO `capteur` (`id_capteur`, `type`, `numero_serie_capteur`, `numero_capteur`, `etat`, `id_piece`, `id_client`) VALUES
+(0000000001, 'Temperature', 'T0000000001', 0000000001, 0, NULL, 0000000001);
 
 -- --------------------------------------------------------
 
@@ -181,6 +189,28 @@ INSERT INTO `maison` (`id_maison`, `code_postal`, `ville`, `adresse_1`, `adresse
 CREATE TABLE `numero_serie_capteur` (
   `numero_serie_capteur` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `numero_serie_capteur`
+--
+
+INSERT INTO `numero_serie_capteur` (`numero_serie_capteur`) VALUES
+('F0000000001'),
+('F0000000002'),
+('F0000000003'),
+('F0000000004'),
+('I0000000001'),
+('I0000000002'),
+('I0000000003'),
+('I0000000004'),
+('L0000000001'),
+('L0000000002'),
+('L0000000003'),
+('L0000000004'),
+('T0000000001'),
+('T0000000002'),
+('T0000000003'),
+('T0000000004');
 
 -- --------------------------------------------------------
 
@@ -326,7 +356,7 @@ ALTER TABLE `appartement`
 -- AUTO_INCREMENT pour la table `capteur`
 --
 ALTER TABLE `capteur`
-  MODIFY `id_capteur` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
+  MODIFY `id_capteur` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `client`
 --
