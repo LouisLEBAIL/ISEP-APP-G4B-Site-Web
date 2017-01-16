@@ -8,13 +8,23 @@
     </head>
 
   <body>
-    <?php include("vue/en_tete_client.php");?>
+    <?php include("en_tete.php");?>
       <div id="container_3">
-        <?php include("vue/navigation_client.php");?>
-        <div id="preinscription">
-          <?php piece($_SESSION['id_client']);?>
-        </div>
+        <?php include("navigation_client.php");?>
+        <form method="post" action="index.php?redirection=ajout_capteur_client">
+          <fieldset>
+            <p><label for="numeroserie">Numero Série</label></p>
+            <p><input type="text" name="numero_de_serie"></p>
+            <p><input type="submit" name="validercapteur" value="Valider"></p>
+            <p><?php 
+            if(isset($erreur))
+            {
+              echo $erreur;
+            }
+             ?></p>
+          </fieldset>
+        </form>
       </div>
-    <?php include("vue/pied_de_page.php");?>   
+    <?php include("pied_de_page.php");?>   
     </body>
 </html>
