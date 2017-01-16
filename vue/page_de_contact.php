@@ -21,7 +21,7 @@
                                 <input type="text" name="email" />
                             </p>
                             <p>
-                                <label for="produits">Produits</label><br/>
+                                <label for="produits">Tous nos produits visibles: </label><br/>
                                 <select name="produit" id="produit">
                                     <option value="luminosite">Luminosité</option>
                                     <option value="temperature">Température</option>

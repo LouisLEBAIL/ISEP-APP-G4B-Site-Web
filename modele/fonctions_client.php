@@ -28,7 +28,7 @@ function modifier_donnees(){
                 }
                 else
                 {
-                    $erreur='Mot de passes non identique';
+                    $erreur='Mots de passe non identiques';
                     
                 }
             }
