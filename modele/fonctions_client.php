@@ -67,7 +67,6 @@ function client_info(){
                             'telephone_mobile' => $user['telephone_mobile'],
                             'telephone_fixe' => $user['telephone_fixe'],
                             'email' => $user['email'],
-                            'login_client' => $user['login_client'],
                             'password_client' => $user['password_client'],
                             'date_de_naissance' => $user['date_de_naissance'],
              );

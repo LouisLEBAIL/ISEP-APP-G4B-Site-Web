@@ -10,7 +10,7 @@ if(isset($_POST['formvalider']))
 
     $password_client_verification=sha1($_POST['password_client_verification']);
     $numero_serie_ceMAC_length = strlen($numero_serie_ceMAC);
-    if($numero_serie_ceMAC_length==7)
+    if($numero_serie_ceMAC_length==6)
     {
       $reqcemac=$bdd->prepare("SELECT * FROM ceMAC WHERE numero_serie_ceMAC = ?");
       $reqcemac->execute(array($numero_serie_ceMAC));

@@ -1,10 +1,10 @@
 <header>		
     <div id="favicon">
-<<<<<<< HEAD
+
                      <link rel="icon" type="image/gif" href="picture/favicon.gif">
-=======
+
                      <link rel="icon" type="image/gif" href="image/favicon.gif">
->>>>>>> origin/master
+
 
                 <div id="DHomeLab">
                     <div id="logo">

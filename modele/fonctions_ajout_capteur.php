@@ -88,10 +88,11 @@ function insertion_capteur($choix,$idpiece,$session){// cette fonction ajouter u
 
     include 'modele/connexion_bdd.php';
     $a=0;
-    $reqcapteur=$bdd->prepare('INSERT INTO capteur(type,etat,id_piece,id_client) VALUES(:type, :etat, :id_piece, :id_client)') ;
+    $reqcapteur=$bdd->prepare('INSERT INTO capteur(type,numero_serie_capteur,etat,id_piece,id_client) VALUES(:type, :numero_serie_capteur, :etat, :id_piece, :id_client)') ;
     $reqcapteur->execute(array(
                           ':type'=>$choix,
                           ':etat'=>$a,
+                          ':numero_serie_capteur'=>$numeroseriecapteur,
                           ':id_piece'=>$idpiece,
                           ':id_client'=>$session));
       
