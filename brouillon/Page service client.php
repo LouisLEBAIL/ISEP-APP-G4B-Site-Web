@@ -7,10 +7,7 @@ Page service client
     <head>
         <meta charset="utf-8" /> <link rel="stylesheet" href="Page_service_client.css" />
 
-        <title>Page de connexion</title>
-
-        <title>Présentation de DomLab</title>
-
+        <title>Page de service client</title>
     </head>
     	<body>
     		<div id="bloc_page_3">
@@ -19,10 +16,7 @@ Page service client
                 <?php include("navigation_client.php");?>
 
                     <form method="post" action="#">
-
                 
-                    
-
                     <p>Votre adresse e-mail</p>
                       <fieldset>
                             <p>
@@ -37,8 +31,6 @@ Page service client
             <input type="submit" value="Envoyer" />
 
 
-
-            
             <p>Veuillez renseigner les champs suivants pour acceder à vos données personnelles</p>
 
                     <form action="#" method="post">
@@ -84,12 +76,12 @@ Page service client
 
 try 
 {
-  //On se connecte à MYSQL
+  
   $bdd = new PDO('mysql:host=localhost;dbname=ISEP-APP-G4B-Site-Web;charset=utf8', 'root', '');
 
 }
-// On récupère tout le contenu de la table jeux_video
-$reponse = $bdd->query('SELECT * FROM etat_des_fonctionnalités');
+
+$reponse = $bdd->query('SELECT * FROM donnee_capteur');
 
 while ($donnees = $reponse->fetch())
 {
@@ -136,12 +128,12 @@ while ($donnees = $reponse->fetch())
 
 try 
 {
-  //On se connecte à MYSQL
+  
   $bdd = new PDO('mysql:host=localhost;dbname=ISEP-APP-G4B-Site-Web;charset=utf8', 'root', '');
 
 }
-// On récupère tout le contenu de la table jeux_video
-$reponse = $bdd->query('SELECT * FROM Vue_globale_client_en_cours');
+
+$reponse = $bdd->query('SELECT * FROM client');
 
 while ($donnees = $reponse->fetch())
 {
@@ -197,6 +189,9 @@ while ($donnees = $reponse->fetch())
 <?php include("pied_de_page.php");?>
             </div>
         </body>
+
+<script src="../Page_service_client.js"></script>
+
 </html>
 
 
@@ -204,10 +199,6 @@ while ($donnees = $reponse->fetch())
 
 
         
-
-
-
-
 
 
 
