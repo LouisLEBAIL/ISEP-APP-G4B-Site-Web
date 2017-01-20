@@ -3,7 +3,7 @@
 <html>
 
     <head>
-        <meta charset="utf-8" /> <link rel="stylesheet" href="style/accueil_admin.css" />
+        <meta charset="utf-8" /> <link rel="stylesheet" href="style/ajout_capteur_client.css" />
         <title>Ajout Capteur</title>
     </head>
 
@@ -13,6 +13,8 @@
         <?php include("navigation_client.php");?>
         <form method="post" action="index.php?redirection=ajout_capteur_client">
           <fieldset>
+          <p><label for="numerocapteur">Numero du Capteur </label></p>
+            <p><input type="number" name="numero_du_capteur"></p>
             <p><label for="numeroserie">Numero Série</label></p>
             <p><input type="text" name="numero_de_serie"></p>
             <p><input type="submit" name="validercapteur" value="Valider"></p>
@@ -24,6 +26,34 @@
              ?></p>
           </fieldset>
         </form>
+        <?php
+        $reqcapteur2 = $bdd -> prepare('SELECT * FROM capteur WHERE id_client=?');
+        $reqcapteur2 -> execute(array($_SESSION['id_client']));?>
+
+<ul>
+<?php
+                        while($capteur = $reqcapteur2 -> fetch())
+                {
+                  ?>
+                  
+                  <form method="post" action="index.php?redirection=ajout_capteur_client" >
+                  <li>
+                  <?php 
+                  echo $capteur['numero_serie_capteur'].'<br/>';
+                  echo $capteur['type']; ?> 
+                  <?php $idcapteur=$capteur['id_capteur'];?>
+                  <input type="submit" name="supprimer" value="supprimer" >
+                  </input> 
+                  <input type="hidden" name="idcapteur" value="<?php echo "".$idcapteur."" ?>">
+                  </input>         
+                  </li>
+                  </form>
+                  
+                  <?php
+                }
+
+                ?>
+                <ul>
       </div>
     <?php include("pied_de_page.php");?>   
     </body>
