@@ -1,5 +1,3 @@
-Page service client 
-
 <!DOCTYPE html>
 
 <html>
