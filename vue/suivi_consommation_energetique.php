@@ -38,18 +38,18 @@ $req->closeCursor();
 ?> </p>
 
 <p>Cet onglet vous permettra de surveiller votre consommation énergétique.<br />
- Pour cela, les données concernant vos différentes pièces seront prises en compte de même que l'historique des données relatives à <br />l'utilisation de vos objets intelligents.
+ Pour cela, les données concernant vos différentes pièces seront prises en compte de même que l'historique des données relatives à  <br /> l'utilisation de vos objets intelligents.</p>
 
-Consommation par pièce
-<tr>
+
+<caption>Consommation énergétique par pièce</caption>
+	<table border=1>
 <?php 
 $req = $bdd_site->prepare('SELECT nom_piece FROM client');
 $req->execute(array('nom_piece'));
 while ($donnees = $req->fetch())
 {
 	?>
-	<caption>Consommation énergétique par pièce</caption>
-	<table border=1>
+
 	<tr>
 	<td> <?php echo $donnees['nom_piece']; 	?> </td>
 	</tr> 
@@ -58,16 +58,24 @@ while ($donnees = $req->fetch())
 $req->closeCursor();
 
 ?>
-
+</table>
+<!--
 <?php 
+/*
 {
-	$req=$bdd_site->prepare('SELECT id_piece,id_capteur, date FROM donnee_capteur');
+	$req=$bdd_site->prepare('SELECT id_piece,id_capteur,date FROM donnee_capteur');
 	$req->execute(array('id_piece','id_capteur'));
 	while ($donnees=$req->fetch())
 {
-	while ($_date('m'))
+	$jour=date('d');
+	$mois=date('m');
+	$annee=date('Y');
+	$heure=date('H');
+	$minute=date('i');
+
+	while ($mois)
 	{
-		for($_date('j')=1;$_date('j')<=31;$_date('j')++)
+		for($jour=1;$jour<=31;$jour++)
 			{
 
 				$reponse = $bdd->query('SELECT AVG(consommation) AS consommation_moyenne FROM donnee_capteur');
@@ -106,8 +114,9 @@ $donnees->closeCursor();
 }
 
  </p>
-
-
+*/
+ ?>
+-->
 
 <caption><strong>Suivi de la consommation énergétique mensuelle</strong></caption> 
 <table border="1">
@@ -146,9 +155,9 @@ $donnees->closeCursor();
 <tr>
 <td>Surface de la maison</td>
 </tr>
-<!--Pour insérer les différentes pièces du client dans le tableau-->
+</tfooter>
+</table>
 
 <?php include 'pied_de_page.php';?>
 </body>
-
 </html>
