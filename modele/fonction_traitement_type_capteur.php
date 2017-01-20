@@ -16,7 +16,7 @@ function type_capteur($numeroserie)
   }  
   elseif($type1=="L")
   {
-    $type2="Luminiosite";
+    $type2="Luminosite";
   }
   return $type2;
 }

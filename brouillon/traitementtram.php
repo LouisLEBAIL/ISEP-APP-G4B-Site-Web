@@ -20,7 +20,7 @@ $numeroseriecapteur="T0000000001";
 
     <head>
         <meta charset="utf-8" /> <link rel="stylesheet" href="#"
-        <title>Ajout tram</title>
+        <title>Ajout trame</title>
     </head>
 
   <body>

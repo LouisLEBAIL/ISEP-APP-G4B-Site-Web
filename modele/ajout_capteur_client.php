@@ -41,10 +41,11 @@ if(isset($_POST['validercapteur']) AND !empty($_POST['numero_de_serie']))
 	}
 	elseif (!empty($_POST['numero_de_serie']))
 	{
-    	$erreur="Numero de série du capteur incorect";
+    	$erreur="Numero de série du capteur incorrect";
 	}
 
 }
 
 ?>
+
 

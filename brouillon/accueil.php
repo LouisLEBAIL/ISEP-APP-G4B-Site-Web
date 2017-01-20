@@ -1,15 +1,10 @@
-accueil
-
-Vision pièces et fonctionnalites
-
-
 <!DOCTYPE html>
 
 <html>
 
     <head>
         <meta charset="utf-8" /> <link rel="stylesheet" href="style/voir_profil.css" />
-        <title>Profil</title>
+        <title>Accueil</title>
     </head>
     	<body>
     		<div id="bloc_page">
@@ -18,65 +13,73 @@ Vision pièces et fonctionnalites
                 <?php include("navigation_client.php");?>
                 <section class="zone_centre">
                     <?php 
-                    while($infouser = $reqinfouser->fetch() )
+                    include("modele/fonction_traitement_type_capteur.php");
+                    include("modele/ajout_capteur_client.php");
+                    include("modele/ajout_piece_client.php");
+
+
+                $reqpiece=$bdd->prepare('SELECT * FROM donnees_capteur WHERE id_capteur=? AND id_client=?');
+                $reqpiece->execute(array($_GET['id_donnee_capteur']));?>
+
+                    <?php
+
+                    while($piece = $reqpiece->fetch() )
                     {
-                        ?>
-                        <p class="cadre">Identité : <br/><br/>
-                        Nom: <?php echo $infouser['nom'] ?> <br/>
-                        Prénom: <?php echo $infouser['prenom'] ?><br/>
-                        Date de naissance: <?php echo $infouser['date_de_naissance'] ?><br/>
-                        Email: <?php echo $infouser['email'] ?> <br/>
-                        Télephone mobile: <?php echo $infouser['telephone_mobile'] ?><br/>
-                        Télephone fixe: <?php echo $infouser['telephone_fixe'] ?><br/><p>
+
+                    ?>
+                        <?php echo $piece['nom_piece']; ?> 
+                        <?php $idpiece=$piece['id_piece'];?>
                     
-                    
+                        <p class="cadre">Pièces : <br/><br/>
+                        Salon: <?php echo $piece['salon'] ?> <br/>
+                        Sejour: <?php echo $piece['prenom'] ?><br/>
+                        Cuisine: <?php echo $piece['cuisine'] ?><br/>
+                        Cellier: <?php echo $piece['cellier'] ?> <br/>
+                        Garage: <?php echo $piece['garage'] ?><br/>
+                        Bureau: <?php echo $piece['bureau'] ?><br/><p>
+                        Entrée: <?php echo $piece['entree'] ?><br/><p>
+                        Chambre: <?php echo $piece['chambre'] ?><br/><p>
+                        Salle de bain: <?php echo $piece['salle_de_bain'] ?><br/><p>
+                        
+
+        
                         <?php
-                        if($immeubleexist == 1 )
+                        if($pieceexist == 1 )
                         {
-                            while($infoimmeuble = $reqadresseimmeuble->fetch() AND $infoappartement =$reqadresseappartement->fetch())
+                            while($capteur = $reqcapteur->fetch() )
                             {
                                 ?>
-                                <p class="cadre">Résidence : <br/><br/>
-                                Code Postal: <?php echo $infoimmeuble['code_postal'] ?> <br/>
-                                Ville: <?php echo $infoimmeuble['ville'] ?><br/>
-                                Adresse 1: <?php echo $infoimmeuble['adresse_1'] ?><br/>
-                                Adresse 2: <?php echo $infoimmeuble['adresse_2'] ?> <br/>
-                                Etage: <?php echo $infoappartement['etage'] ?> <br/>
-                                Numero: <?php echo $infoappartement['numero'] ?><br/>
-                                Surface: <?php echo $infoappartement['surface'] ?><br/>
+                                <p class="cadre">Fonctionnalités : <br/><br/>
+                                Capteur température: <?php echo $capteur['capteur_temperature'] ?> <br/>
+                                Capteur humidité: <?php echo $capteur['capteur_humidite'] ?><br/>
+                                Capteur de mouvements: <?php echo $capteur['capteur_de_mouvements'] ?><br/>
+                                Caméra: <?php echo $capteur['camera'] ?> <br/>
+                                Capteur de luminosité: <?php echo $capteur['capteur_de_luminosite'] ?> <br/>
+                                Capteur d'intrusion: <?php echo $capteur['capteur_d_intrusion'] ?> <br/></p>
+                                Capteur de fumée: <?php echo $capteur['capteur_de_fumee'] ?> <br/></p>
+                                
                             
                                 <?php
                             }
-
-                        }
-                        elseif($maisonexist == 1)
-                        {
-                            while($infomaison = $reqadressemaison->fetch())
-                            {
-                                ?>
-                                Code Postal: <?php echo $infomaison['code_postal'] ?> <br/>
-                                Ville: <?php echo $infomaison['ville'] ?><br/>
-                                Adresse 1: <?php echo $infomaison['adresse_1'] ?><br/>
-                                Adresse 2: <?php echo $infomaison['adresse_2'] ?> <br/>
-                                Surface : <?php echo $infomaison['surface'] ?> <br/>
-                                </p>
-
-
-                                <?php
-                            }
-
                         }
                         ?>
                     <?php
                     }
                     ?>
+                    </div>
+                    <?php
+                    
+                $reqpiece->closeCursor();
+            ?>
+          </div>
+
+
                 </section>
                 </div>               
                 <?php include("pied_de_page.php");?>
             </div>
         </body>
 </html>
-
 
 
 
