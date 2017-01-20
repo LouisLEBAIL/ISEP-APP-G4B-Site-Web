@@ -6,7 +6,7 @@
 .cadre
 {
   padding:40px;
-  background: #3498db;
+  background: #34495e;
   color: #fff;
   margin: 15px;
   border-radius: 6px;
@@ -20,8 +20,8 @@
 }
 #logo img
 {
-	width:250px;
-	height:250px;
+	width:150px;
+	height:150px;
 }
 #DHomelab{
 	display:flex;
