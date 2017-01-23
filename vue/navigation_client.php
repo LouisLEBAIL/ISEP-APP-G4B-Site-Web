@@ -8,6 +8,7 @@
 					<li><a href="index.php?redirection=inscription">Modifier Profil</a></li>
 					<li><a href="index.php?redirection=ajout_piece_client">Ajouter/Supprimer une piece</a></li>
 					<li><a href="index.php?redirection=ajout_capteur_client">Ajouter/Supprimer un capteur</a></li>
+					<li><a href="index.php?redirection=ajout_capteur_piece_client">Ajouter Capteur a une piece </a></li>
 				</ul>
 			</li>
 			<li><a href="index.php?redirection=page_de_contact">Contact</a></li>

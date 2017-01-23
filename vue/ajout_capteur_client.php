@@ -14,7 +14,7 @@
         <form method="post" action="index.php?redirection=ajout_capteur_client">
           <fieldset>
           <p><label for="numerocapteur">Numero du Capteur </label></p>
-            <p><input type="number" name="numero_du_capteur"></p>
+            <p><input type="number" name="numero_du_capteur" step="1" min="1" max="98""></p>
             <p><label for="numeroserie">Numero Série</label></p>
             <p><input type="text" name="numero_de_serie"></p>
             <p><input type="submit" name="validercapteur" value="Valider"></p>
@@ -40,7 +40,8 @@
                   <li>
                   <?php 
                   echo $capteur['numero_serie_capteur'].'<br/>';
-                  echo $capteur['type']; ?> 
+                  echo $capteur['numero_capteur'].'-'. $capteur['type'].'<br/>';
+                  ?> 
                   <?php $idcapteur=$capteur['id_capteur'];?>
                   <input type="submit" name="supprimer" value="supprimer" >
                   </input> 
