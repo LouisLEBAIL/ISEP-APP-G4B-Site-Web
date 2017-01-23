@@ -63,9 +63,6 @@
           $idpiece=htmlspecialchars($_POST['piece']);
               
           $idcapteur=htmlspecialchars($_POST['capteur']);
-      
-
-
         }
               ?>
               </p>
