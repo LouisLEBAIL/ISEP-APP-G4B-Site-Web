@@ -2,14 +2,13 @@
 <html>
     <head>
         <meta charset="utf-8" /> 
-        <link rel="stylesheet" href="style/accueil.css" />
+        <link rel="stylesheet" href="style/nouvel_accueil.css" />
         <title>Page d'accueil</title>
     </head>
     <body>
-        <?php include("vue/en_tete_client.php");?>
+    <?php include("en_tete_client.php");?>
     <div id="container_2">
         <?php include("vue/navigation_client.php");?>
-    </div>
 
     <div class='tous_les_encadres'>
         <?php
@@ -17,13 +16,32 @@
         $req_piece->execute(array($_SESSION['id_client']));
         while ($toutes_les_infos_des_pieces = $req_piece -> fetch()) // boucle pour toutes les pieces
         {
-            ?><div class='nom_piece'>
+            ?><div class=un_encadre>
+            <div class='nom_piece'>
                 <?php echo $toutes_les_infos_des_pieces['nom_piece']; ?>
             </div>
+
+            <?php
+            $toutes_les_infos_des_capteurs = $bdd->prepare('SELECT * FROM capteur WHERE id_client=? AND id_piece=?');
+            $toutes_les_infos_des_capteurs->execute(array($_SESSION['id_client'],$toutes_les_infos_des_pieces['id_piece']));
+            ?>
+
             <div class='tous_les_capteurs'>
                 <?php
-                $req_id_capteurs = $bdd->prepare('SELECT id_capteur FROM capteur WHERE id_client=? AND id_piece=?');
-                $req_id_capteurs->execute(array($_SESSION['id_client'],$toutes_les_infos_des_pieces['id_piece']));
+
+                while ($types_de_capteurs = $toutes_les_infos_des_capteurs -> fetch())
+                {
+                    ?>
+                    <div class='boite_pour_un_capteur'>
+                    <?php
+                    echo $types_de_capteurs['type'];
+                    ?>
+                    </div>
+                    <?php
+                }
+
+
+                /*
 
                 while ($id_des_capteurs = $req_id_capteurs -> fetch()) // boucle pour tous les capteurs par piece
                 {
@@ -49,13 +67,15 @@
                     </div>
                     <?php                                              
                 }
+
+                */
+
+
             ?></div>
-            <div class='bouton_de_synchronisation'></div>
-            </div>
-            <?php
+            </div><?php
         }
-    ?></div>
-    <?php include("vue/pied_de_page.php");?>
+    ?></div></div>
+    <?php include("pied_de_page.php");?>   
     </body>
 </html>
 
