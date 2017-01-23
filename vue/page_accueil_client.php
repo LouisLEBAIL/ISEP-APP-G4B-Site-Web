@@ -8,70 +8,54 @@
     <body>
         <?php include("vue/en_tete_client.php");?>
     <div id="container_2">
-            <?php include("vue/navigation_client.php");?>
-        </div>
+        <?php include("vue/navigation_client.php");?>
+    </div>
 
-    <?php
-    $req_piece1 = $bdd->prepare('SELECT * FROM piece WHERE id_client=?');
-$req_piece1->execute(array($_SESSION['id_client']));
-    while ($toutes_les_pieces = $req_piece1 -> fetch())
-    {
-    ?>
-        <div class='tous_les_encadres'>
-            <div class='tous_les_types'>
-                <div class='nom_piece'>
-                    <?php echo $toutes_les_pieces['nom_piece']; ?>
-                </div>
-                <div class='tous_les_capteurs'>
-                    <?php
-                    while ($b = $req_piece1 -> fetch()) // boucle pour toutes les pieces
-                    {
-                        $req1 = $bdd->prepare('SELECT * FROM capteur WHERE id_client=? AND id_piece=?');
-                        $req1->execute(array($_SESSION['id_client'],$b['id_piece']));
-
-                        while ($c = $req1 -> fetch()) // boucle pour tous les capteurs par piece
-                        {
-                            // Requetes a la base de donnee
-                            $req2 = $bdd->prepare('SELECT * FROM capteur WHERE  id_capteur=?');
-                            $req2->execute(array($c['id_capteur']));
-
-
-                            // Remplissage des variables a afficher par pices et par capteurs
-                            while ($z = $req1 -> fetch()) // Sortie: id de la piece ou est le capteur
-                            {
-                                $id_de_la_piece = $z['id_piece']; 
-                            }
-
-                            while ($a = $req2 -> fetch()) // Sortie: variable ou est l etat du capteur & type de capteur
-                            {
-                                $type_du_capteur = $a['type'];
-                            }
-
-                            
-                                ?>
-                                <div class='capteurs'>
-                                <?php
-
-                                echo $type_du_capteur.$id_de_la_piece;
-
-                                substr($type_du_capteur.$id_de_la_piece,0)
-
-                                ?>
-                                </div>
-                                <?php
-                                                                      
-                        }
-                    }
-                    ?>
-                </div>
+    <div class='tous_les_encadres'>
+        <?php
+        $req_piece = $bdd->prepare('SELECT * FROM piece WHERE id_client=?');
+        $req_piece->execute(array($_SESSION['id_client']));
+        while ($toutes_les_infos_des_pieces = $req_piece -> fetch()) // boucle pour toutes les pieces
+        {
+            ?><div class='nom_piece'>
+                <?php echo $toutes_les_infos_des_pieces['nom_piece']; ?>
             </div>
-            <div class='bouton_de_synchronisation'></div>
-        </div>
-    <?php
-    }
-    ?>
+            <div class='tous_les_capteurs'>
+                <?php
+                $req_id_capteurs = $bdd->prepare('SELECT id_capteur FROM capteur WHERE id_client=? AND id_piece=?');
+                $req_id_capteurs->execute(array($_SESSION['id_client'],$toutes_les_infos_des_pieces['id_piece']));
 
-        <?php include("vue/pied_de_page.php");?>
+                while ($id_des_capteurs = $req_id_capteurs -> fetch()) // boucle pour tous les capteurs par piece
+                {
+                    // Requetes a la base de donnee
+                    $donnee_capteur = $bdd->prepare('SELECT * FROM donnee_capteur WHERE id_client=? AND id_capteur=?');
+                    $donnee_capteur->execute(array($_SESSION['id_client'],$id_des_capteurs['id_capteur']));
+
+                    $capteur = $bdd->prepare('SELECT * FROM capteur WHERE  id_capteur=?');
+                    $capteur->execute(array($id_des_capteurs['id_capteur']));
+
+                    // Calcul
+                    while ($valeur = $donnee_capteur -> fetch())
+                    {
+                        $afficher_valeur = $valeur['valeur'];
+                    }
+
+                    // Affichage
+                    ?>
+                    <div class='capteurs'>
+                    <?php
+                        echo $afficher_valeur;
+                    ?>
+                    </div>
+                    <?php                                              
+                }
+            ?></div>
+            <div class='bouton_de_synchronisation'></div>
+            </div>
+            <?php
+        }
+    ?></div>
+    <?php include("vue/pied_de_page.php");?>
     </body>
 </html>
 
