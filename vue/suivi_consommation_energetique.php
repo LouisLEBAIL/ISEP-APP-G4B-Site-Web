@@ -27,137 +27,139 @@ catch(Exception $e)
 
 <p>Bienvenue
  <?php  
-$req = $bdd->prepare('SELECT nom, prenom FROM client');
-$req->execute(array('prenom', 'nom'));
-while ($donnees = $req->fetch())
-{
-	echo $donnees['prenom'] .' '.$donnees['nom'];
-}
+	$req = $bdd->prepare('SELECT nom, prenom FROM client where id_client=?');
+	$req->execute(array($_SESSION['id_client']));
+	while ($donnees = $req->fetch())
+	{
+		echo $donnees['prenom'] .' '.$donnees['nom'];
+	}
 
-$req->closeCursor();
-?> </p>
+	$req->closeCursor();
+	?> </p>
 
 <p>Cet onglet vous permettra de surveiller votre consommation énergétique.<br />
  Pour cela, les données concernant vos différentes pièces seront prises en compte de même que l'historique des données relatives à  <br /> l'utilisation de vos objets intelligents.</p>
 
 
-<caption>Consommation énergétique par pièce</caption>
+<caption><strong>Consommation énergétique par pièce<strong></caption>
 	<table border=1>
-<?php 
-$req = $bdd_site->prepare('SELECT nom_piece FROM client');
-$req->execute(array('nom_piece'));
-while ($donnees = $req->fetch())
-{
-	?>
-
-	<tr>
-	<td> <?php echo $donnees['nom_piece']; 	?> </td>
-	</tr> 
-}
-<?php
-$req->closeCursor();
-
-?>
-</table>
-<!--
-<?php 
-/*
-{
-	$req=$bdd_site->prepare('SELECT id_piece,id_capteur,date FROM donnee_capteur');
-	$req->execute(array('id_piece','id_capteur'));
-	while ($donnees=$req->fetch())
-{
-	$jour=date('d');
-	$mois=date('m');
-	$annee=date('Y');
-	$heure=date('H');
-	$minute=date('i');
-
-	while ($mois)
-	{
-		for($jour=1;$jour<=31;$jour++)
+		<?php 
+			$req = $bdd->prepare('SELECT * FROM piece WHERE id_client=?');
+			$req->execute(array($_SESSION['id_client']));
+			while ($donnees = $req->fetch())
 			{
+				?>
 
-				$reponse = $bdd->query('SELECT AVG(consommation) AS consommation_moyenne FROM donnee_capteur');
+				<tr>
+					<td> <?php echo $donnees['nom_piece']; 	?> </td>
+				</tr> 
+				<?php
 
-				while ($donnees = $reponse->fetch())
+				$info_capteur = $bdd -> prepare('SELECT id_capteur,type  FROM capteur WHERE id_client=?, id_piece=? AND type=?');
+				$info_capteur->execute(array($_SESSION['id_client'],$info_capteur['id_piece'],$info_capteur['type'],$info_capteur['id_capteur=?']));
+
+
+				$info_donnee_capteur=$bdd->prepare('SELECT id_capteur, date FROM donnee_capteur WHERE id_capteur=?');
+				$info_donnee_capteur->execute(array($info_donnee_capteur['id_capteur'],$info_donnee_capteur['date']));
+
+				while ($donnees=$req->fetch())
+			{
+				$jour=date('d');
+				$mois=date('m');
+				$annee=date('Y');
+				$heure=date('H');
+				$minute=date('i');
+
+				while ($mois)
 				{
-					?>
-					<tr>
-					<td> Chauffage </td>
-					<td> <?php echo $donnees['consommation_moyenne'];?> </td>
-					</tr>
-					<tr>
-					<td> Gaz </td>
-					<td> <?php echo $donnees['consommation_moyenne'];?> </td>
-					</tr>
-					<tr>
-					<td> Lampes </td>
-					<td> <?php echo $donnees['consommation_moyenne']; ?> </td>
-					</tr>
-					<?php
-				}
-				$donnees->closeCursor();
-			}
-			$reponse->closeCursor();
-	}
-}
-$donnees->closeCursor();
-}	
+					
+					for($jour=1;$jour<=31;$jour++)
+					{
 
-?>
+						$reponse = $bdd->query('SELECT AVG(consommation) AS consommation_moyenne FROM donnee_capteur');
+
+						while ($donnees = $reponse->fetch())
+						{
+							?>
+							<tr>
+								<td> Chauffage </td>
+								<td> <?php echo $donnees['consommation_moyenne'];?> </td>
+							</tr>
+							<tr>
+								<td> Gaz </td>
+								<td> <?php echo $donnees['consommation_moyenne'];?> </td>
+							</tr>
+							<tr>
+								<td> Lampes </td>
+								<td> <?php echo $donnees['consommation_moyenne']; ?> </td>
+							</tr>
+							<?php
+
+						}
+
+			$req->closeCursor();
+
+					}
+				$donnees->closeCursor();
+				}
+				$reponse->closeCursor();
 			}
-	}
+			}
+			$donnees->closeCursor();
+
+		?>
+	
 	
 	
 	AVG consommation where id_piece= and id_capteur=
 }
 
  </p>
-*/
  ?>
--->
+
 
 <caption><strong>Suivi de la consommation énergétique mensuelle</strong></caption> 
-<table border="1">
-<thead>
-<tr>
-<th> </th>
-<th> Janvier </th>
-<th> Février </th>
-<th> Mars </th>
-<th > Avril </th>
-<th> Mai </th>
-<th> Juin </th>
-<th> Juillet </th>
-<th> Août </th>
-<th> Septembre </th>
-<th> Octobre </th>
-<th> Novembre </th>
-<th> Décembre </th>
-</tr>
-</thead>
+	<table border="1">
+		<thead>
+			<tr>
+				<th> </th>
+				<th> Janvier </th>
+				<th> Février </th>
+				<th> Mars </th>
+				<th > Avril </th>
+				<th> Mai </th>
+				<th> Juin </th>
+				<th> Juillet </th>
+				<th> Août </th>
+				<th> Septembre </th>
+				<th> Octobre </th>
+				<th> Novembre </th>
+				<th> Décembre </th>
+			</tr>
+		</thead>
 
 
-<tbody>
-<tr>
-<td>Chauffage</td>
-</tr>
-<tr>
-<td>Lampes</td>
-</tr>
-<tr>
-<td>Gaz</td>
-</tr>
-</tbody>
+		<tbody>
+			<tr>
+				<td>Chauffage</td>
+			</tr>
+			<tr>
+				<td>Lampes</td>
+			</tr>
+			<tr>
+				<td>Gaz</td>
+			</tr>
+		</tbody>
 
-<tfooter>
-<tr>
-<td>Surface de la maison</td>
-</tr>
-</tfooter>
+		<tfooter>
+			<tr>
+				<td>Surface de la maison</td>
+			</tr>
+		</tfooter>
 </table>
 
 <?php include 'pied_de_page.php';?>
+
+</div>
 </body>
 </html>

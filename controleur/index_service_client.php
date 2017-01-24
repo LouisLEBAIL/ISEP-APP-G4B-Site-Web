@@ -3,7 +3,7 @@
 <head>
 	<title>Page d'accueil Service Client</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="accueil_admin.css">
+	<link rel="stylesheet" href="accueil_service_client.css">
 </head>
 <body>
 <?php
@@ -39,7 +39,7 @@ else
 	{
 		$_SESSION = array(); /*vider la variable session*/
 		session_destroy(); /*detruit la session*/
-		header("Location: index_service_client.php"); /*redirige vers la page d'accueil*/
+		header("Location: ../vue/connexion_service_client.php"); /*redirige vers la page d'accueil*/
 	}
 }
 }

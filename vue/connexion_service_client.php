@@ -27,7 +27,7 @@
     	</p>
     	<div class="valider">
     	<p><input type="submit" name="formconnexion_service_client" value="Connexion" /></p>
-    	 <?php header("Location:../controleur/index_service_client.php?redirection=visualiser_problemes_techniques_du_client");?>
+    	<?php header("Location:..//controleur/index_service_client.php?redirection=visualiser_problemes_techniques_du_client");?>
 		</div>
 		</fieldset>
 		</form>
