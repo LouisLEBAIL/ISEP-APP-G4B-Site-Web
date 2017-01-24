@@ -22,7 +22,6 @@ $reqcapteur->execute(array($_SESSION['id_client']));
 		$capteur=$reqcapteur1->fetch();
 		if($capteur['id_piece']=="")
 		{
-
 				$insertpiececapteur=$bdd->prepare('UPDATE capteur SET id_piece=? WHERE id_client=? AND id_capteur=?');
 				$insertpiececapteur->execute(array($idpiece,$_SESSION['id_client'],$idcapteur));
 				$erreur="Ajouter";
