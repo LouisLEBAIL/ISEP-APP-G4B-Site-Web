@@ -41,4 +41,6 @@
       <?php include 'pied_de_page.php';?>
       </div>
   </body>
+<script src="../verification_de_mdp_connexion_client.js"></script>
+
 </html>

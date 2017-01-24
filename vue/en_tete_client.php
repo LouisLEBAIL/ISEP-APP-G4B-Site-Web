@@ -1,4 +1,5 @@
 <header>
+<<<<<<< HEAD
     <p>
         <a href="index.php?redirection=connecte" id="logoco">
         <img  href="index.php?redirection=connecte" src="picture/logo_transparent.png" alt="logo DomLab" width="30%" height="30%"title="DomLab" />
@@ -21,6 +22,14 @@
 		</ul>
 	</nav>
 </div>
+=======
+    <div id="favicon">
+
+                     <link rel="icon" type="image/gif" href="picture/favicon.gif">
+
+                     <link rel="icon" type="image/gif" href="image/favicon.gif">
+
+>>>>>>> origin/master
 
     <p>
         <p class="titrep" id="domisep">Un produit de DOMISEP</p>

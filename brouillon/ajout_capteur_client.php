@@ -45,4 +45,8 @@
       </div>
 	 <?php include("vue/pied_de_page.php");?>		
 	</body>
-</html>
+<script src="../actualisation_page_valeurs_capteurs.js"></script>
+<a href="javascript:window.location.reload()">Recharger la page</a>
+<input type="button" value="Click !" name="btnActualiser" onclick="document.location.reload(); return false;" />
+
+

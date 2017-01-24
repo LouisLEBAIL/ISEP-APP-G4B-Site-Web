@@ -18,7 +18,7 @@
 				    <form method="post" action="index.php?redirection=ajout_piece_client">
         			<fieldset>
           				<p>
-          					<label for="nombre de piece">Tapez le nom de la piece:</label>
+          					<label for="nombre de piece">Tapez le nom de la piece que vous souhaitez rajouter:</label>
           				</p>
                   <p>
                     <input type="text" name="pieces">

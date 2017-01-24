@@ -16,7 +16,7 @@ if(isset($_POST['formconnexionadministrateur']))
       $admininfo = $reqadmin -> fetch();
       $_SESSION['id_administrateur'] = $admininfo['id_administrateur'];
       $_SESSION['login_administrateur'] = $admininfo['login_administrateur'];
-      header("Location: index_administrateur.php?redirection=ajouter_client");
+      header("Location:index_administrateur.php?redirection=ajouter_client");
     }
     else
     {

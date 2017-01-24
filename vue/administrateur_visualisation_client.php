@@ -21,8 +21,6 @@
          			</div>
       		</div>
 	<?php include("../vue/pied_de_page.php");?>
-
-		
 			
 	</body>
 </html>

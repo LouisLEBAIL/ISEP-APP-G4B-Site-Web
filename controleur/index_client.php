@@ -61,6 +61,11 @@ else
 	{
 		require "vue/suivi_consommation_energetique.php";
 	}
+	elseif($redirection=='ajout_capteur_piece_client')
+	{
+		require"modele/ajout_capteur_piece_client.php";
+		require"vue/ajout_capteur_piece_client.php";
+	}
 	elseif ($redirection == 'deconnexion') /*Pour se deconnecter de la session*/
 	{
 		$_SESSION = array(); /*vider la variable session*/
