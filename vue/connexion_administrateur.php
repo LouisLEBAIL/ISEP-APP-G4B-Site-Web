@@ -3,6 +3,9 @@
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="../style/page_de_connexion.css" />
+        <link rel="stylesheet" href="style/style.css" />
+        <link rel="stylesheet" href="style/banniere.css" />
+
         <title>Page d'accueil administrateur</title>
     </head>
     <body>

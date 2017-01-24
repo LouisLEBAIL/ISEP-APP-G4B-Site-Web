@@ -2,12 +2,17 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <link rel="stylesheet" href="style/style-acceuil.css" />
         <link rel="stylesheet" href="style/page_de_connexion.css" />
+        <link rel="stylesheet" href="style/banniere.css" />
+       
+
         <title>Page d'accueil</title>
     </head>
     <body>
+      <?php include 'en_tete.php';?>
       <div>
-        <?php include 'en_tete.php';?>
+        
 
         <div id="container">
           <div id="login">
@@ -26,13 +31,13 @@
                 }
                 ?>
               </p>
-              <div class="valider">
-                <p><input type="submit" name="formconnexionclient" value="Connexion"/></p>
+              <div id="valider">
+                <p><input type="submit" name="formconnexionclient" value="Connexion" /></p>
               </div>
             </fieldset>
           </form>
+          </div>
         </div>
-      </div>
       <?php include 'pied_de_page.php';?>
       </div>
   </body>

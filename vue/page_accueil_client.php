@@ -3,6 +3,9 @@
     <head>
         <meta charset="utf-8" /> 
         <link rel="stylesheet" href="style/accueil.css" />
+        <link rel="stylesheet" href="style/banniere.css" />
+        <link rel="stylesheet" href="style/menu.css" />
+
         <title>Page d'accueil</title>
     </head>
     <body>
@@ -10,7 +13,6 @@
 
 
 		<div id="container_2">
-			<?php include("vue/navigation_client.php");?>
 			<div id="lien_donnees">
             	<a href="temperature">Température</a>
             	<a href="luminosite">Luminosité</a>
@@ -172,6 +174,7 @@
         	?>
         	</table>
         	</div>
+            
 		</div>
 		<?php include("vue/pied_de_page.php");?>
 	</body>

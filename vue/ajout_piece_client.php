@@ -4,13 +4,16 @@
 
     <head>
         <meta charset="utf-8" /> <link rel="stylesheet" href="style/accueil_admin.css" />
+        <link rel="stylesheet" href="style/style.css" />
+        <link rel="stylesheet" href="style/banniere.css" />
+
         <title>Ajout Pieces</title>
     </head>
 
 	<body>
 		<?php include("vue/en_tete_client.php");?>
 			<div id="container_3">
-        <?php include("vue/navigation_client.php");?>
+
           <div id="preinscription">
 				    <form method="post" action="index.php?redirection=ajout_piece_client">
         			<fieldset>

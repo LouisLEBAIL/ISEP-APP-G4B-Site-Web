@@ -4,13 +4,15 @@
 
     <head>
         <meta charset="utf-8" /> <link rel="stylesheet" href="style/client_modifier_profil.css" />
+        <link rel="stylesheet" href="style/style.css" />
+
         <title>Modification du profil</title>
     </head>
     	<body>
     		<div id="bloc_page_3">
                 <?php include("vue/en_tete_client.php");?>
                 <div id="container_3">
-                <?php include("vue/navigation_client.php");?>
+
 
                     <form method="post" action="#">
                         <fieldset>

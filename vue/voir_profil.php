@@ -3,14 +3,16 @@
 <html>
 
     <head>
-        <meta charset="utf-8" /> <link rel="stylesheet" href="style/voir_profil.css" />
+        <meta charset="utf-8" /> 
+        <link rel="stylesheet" href="style/voir_profil.css" />
+        <link rel="stylesheet" href="style/banniere.css" />
         <title>Profil</title>
     </head>
     	<body>
     		<div id="bloc_page">
                 <?php include("en_tete_client.php");?>
                 <div id="container_3">
-                <?php include("navigation_client.php");?>
+    
                 <section class="zone_centre">
                     <?php 
                     while($infouser = $reqinfouser->fetch() )

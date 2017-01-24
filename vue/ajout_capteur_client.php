@@ -4,13 +4,16 @@
 
     <head>
         <meta charset="utf-8" /> <link rel="stylesheet" href="style/accueil_admin.css" />
+        <link rel="stylesheet" href="style/style.css" />
+        <link rel="stylesheet" href="style/banniere.css" />
+
         <title>Ajout Capteur</title>
     </head>
 
   <body>
     <?php include("vue/en_tete_client.php");?>
       <div id="container_3">
-        <?php include("vue/navigation_client.php");?>
+
         <div id="preinscription">
           <?php piece($_SESSION['id_client']);?>
         </div>
