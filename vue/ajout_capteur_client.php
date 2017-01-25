@@ -3,27 +3,25 @@
 <html>
 
     <head>
-<<<<<<< HEAD
+
         <meta charset="utf-8" /> <link rel="stylesheet" href="style/accueil_admin.css" />
         <link rel="stylesheet" href="style/style.css" />
         <link rel="stylesheet" href="style/banniere.css" />
 
-=======
+
         <meta charset="utf-8" /> <link rel="stylesheet" href="style/ajout_capteur_client.css" />
->>>>>>> origin/master
+
         <title>Ajout Capteur</title>
     </head>
 
   <body>
     <?php include("en_tete.php");?>
       <div id="container_3">
-<<<<<<< HEAD
 
         <div id="preinscription">
           <?php piece($_SESSION['id_client']);?>
-        </div>
-=======
-        <?php include("navigation_client.php");?>
+        </div
+      
         <form method="post" action="index.php?redirection=ajout_capteur_client">
           <fieldset>
           <p><label for="numerocapteur">Numero du Capteur </label></p>
@@ -68,7 +66,7 @@
 
                 ?>
                 <ul>
->>>>>>> origin/master
+
       </div>
     <?php include("pied_de_page.php");?>   
     </body>
