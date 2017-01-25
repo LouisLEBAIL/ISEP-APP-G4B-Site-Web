@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Page d'accueil Service Client</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="accueil_service_client.css">
-</head>
-<body>
 <?php
 session_start();
 
@@ -42,8 +34,5 @@ else
 		header("Location: ../vue/connexion_service_client.php"); /*redirige vers la page d'accueil*/
 	}
 }
-}
 
 ?>
-</body>
-</html>

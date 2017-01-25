@@ -1,18 +1,13 @@
-
 <!DOCTYPE html>
-
-
 <html>
 
     <head>
-        <meta charset="utf-8" /> <link rel="stylesheet" href="style/ajout_capteur_client.css" />
+        <meta charset="utf-8" /> <link rel="stylesheet" href="style/banniere.css" />
         <title>Ajout Capteur</title>
     </head>
 
   <body>
-    <?php include("en_tete.php");?>
-      <div id="container_3">
-        <?php include("navigation_client.php");?>
+    <?php include("en_tete_client.php");?>
         <form method="post" action="index.php?redirection=ajout_capteur_piece_client">
           <select name="piece" id="nom">
           <?php

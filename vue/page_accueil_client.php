@@ -6,236 +6,129 @@
         <link rel="stylesheet" href="style/accueil.css" />
         <link rel="stylesheet" href="style/banniere.css" />
         <link rel="stylesheet" href="style/menu.css" />
-
-        <link rel="stylesheet" href="style/nouvel_accueil.css" />
-
         <title>Page d'accueil</title>
     </head>
     <body>
     <?php include("en_tete_client.php");?>
-    <div id="container_2">
-        <?php include("vue/navigation_client.php");?>
+    <div class='tous_les_encadres'><?php
+        $req_id_piece = $bdd->prepare('SELECT id_piece,nom_piece FROM piece WHERE id_client=?');
+        $req_id_piece->execute(array($_SESSION['id_client']));
 
+        while ($info_de_la_piece = $req_id_piece -> fetch()) // boucle pour les pieces
+        {                    
+            $req_id_capteur = $bdd->prepare('SELECT id_capteur FROM capteur WHERE id_client=? AND id_piece=?');
+            $req_id_capteur->execute(array($_SESSION['id_client'],$info_de_la_piece['id_piece']));
 
-		<div id="container_2">
-			<div id="lien_donnees">
-            	<a href="temperature">Température</a>
-            	<a href="luminosite">Luminosité</a>
-            	<a href="autres">Autres</a>
-
-    <div class='tous_les_encadres'>
-        <?php
-        $req_piece = $bdd->prepare('SELECT * FROM piece WHERE id_client=?');
-        $req_piece->execute(array($_SESSION['id_client']));
-        while ($toutes_les_infos_des_pieces = $req_piece -> fetch()) // boucle pour toutes les pieces
-        {
-            ?><div class=un_encadre>
-            <div class='nom_piece'>
-                <?php echo $toutes_les_infos_des_pieces['nom_piece']; ?>
-
+            ?><div class='nom_piece'>
+                <?php echo $info_de_la_piece['nom_piece'];?><br />
             </div>
 
-            <?php
-            $toutes_les_infos_des_capteurs = $bdd->prepare('SELECT * FROM capteur WHERE id_client=? AND id_piece=?');
-            $toutes_les_infos_des_capteurs->execute(array($_SESSION['id_client'],$toutes_les_infos_des_pieces['id_piece']));
-            ?>
+            <div class='tous_les_capteurs'><?php
 
-            <div class='tous_les_capteurs'>
-                <?php
-
-                while ($types_de_capteurs = $toutes_les_infos_des_capteurs -> fetch())
-                {
-                    ?>
-                    <div class='boite_pour_un_capteur'>
-                    <?php
-                    echo $types_de_capteurs['type'];
-                    ?>
-                    </div>
-                    <?php
-                }
-
-
-                /*
-
-                while ($id_des_capteurs = $req_id_capteurs -> fetch()) // boucle pour tous les capteurs par piece
-                {
+                while ($id_du_capteur = $req_id_capteur -> fetch()) // boucle pour les types de capteurs
+               {
                     // Requetes a la base de donnee
                     $donnee_capteur = $bdd->prepare('SELECT * FROM donnee_capteur WHERE id_client=? AND id_capteur=?');
-                    $donnee_capteur->execute(array($_SESSION['id_client'],$id_des_capteurs['id_capteur']));
+                    $donnee_capteur->execute(array($_SESSION['id_client'],$id_du_capteur['id_capteur']));
 
                     $capteur = $bdd->prepare('SELECT * FROM capteur WHERE  id_capteur=?');
-                    $capteur->execute(array($id_des_capteurs['id_capteur']));
+                    $capteur->execute(array($id_du_capteur['id_capteur']));
 
-                    // Calcul
-                    while ($valeur = $donnee_capteur -> fetch())
+                    // Calcul des donnes a afficher
+                    $id_capteur = $id_du_capteur['id_capteur'];
+                    while ($infos_de_la_table_capteur = $capteur -> fetch())  // Pour les infos de la table capteur
                     {
-                        $afficher_valeur = $valeur['valeur'];
+                        // Sortie: type de capteur
+                        $type_du_capteur = $infos_de_la_table_capteur['type'];
+
+                        // Sortie: etat du capteur
+                        $etat_du_capteur = $infos_de_la_table_capteur['etat'];
+                    }
+                    while ($infos_de_la_table_donnee_capteur = $donnee_capteur -> fetch()) // Pour les infos de la table donnee_capteur
+                    {
+                        // Sortie: valeur du capteur
+                        $valeur = $infos_de_la_table_donnee_capteur['valeur'];
                     }
 
-                    // Affichage
-                    ?>
-                    <div class='capteurs'>
-                    <?php
-                        echo $afficher_valeur;
-                    ?>
-                    </div>
-                    <?php                                              
+                    // Affichage des informations
+
+                    ?><div class=un_capteur><br />
+                        <?php echo $type_du_capteur ;?><br /><?php
+
+                        ?><div class='boite_pour_un_capteur'><?php
+                            if ($type_du_capteur == 'Temperature') // Gestion du capteur de temperature
+                            {
+                                echo $valeur.' °C' ;?><br /><?php                         
+                            }
+                            if ($type_du_capteur == 'Fumee') // Gestion du capteur de fumee
+                            {
+                                if ($valeur == 0) // Si il n y a pas de fumée
+                                {
+                                    ?><div class='pre_circle'>
+                                        <div class='circle_green'></div><br />
+                                        </div><?php
+                                }
+                                if ($valeur == 1) // Si il y a de la fumee
+                                {
+                                    ?><div class='pre_circle'>
+                                        <div class='circle_red'></div><br />
+                                    </div><?php
+                                }
+                            }
+                            if ($type_du_capteur == 'Intrusion') // Gestion du capteur de presence
+                            {
+                                if ($valeur == 0) // Si il n y personne
+                                {
+                                    ?><div class='pre_circle'>
+                                        <div class='circle_green'></div><br />
+                                    </div><?php
+                                }
+                                if ($valeur == 1) // Si il y a un intru
+                                {
+                                    ?><div class='pre_circle'>
+                                        <div class='circle_red'></div><br />
+                                    </div><?php
+                                }                            
+                            }
+                            if ($type_du_capteur == 'Luminosite') // Gestion du capteur de luminosite
+                            {
+                                echo 'Pas encore pris en charge.';?><br /><br /><?php
+                            }
+
+                            // Gestion de l etat du capteur
+                            echo 'Etat du capteur : ';
+                            if ($etat_du_capteur == 0)
+                            {
+                                ?><div class='pre_circle'>
+                                    <div class='circle_green'></div><br />
+                                </div><?php
+                            }
+                            if ($etat_du_capteur == 1)
+                            {
+                                ?><div class='pre_circle'>
+                                    <div class='circle_orange'></div><br />
+                                </div><?php
+                            }
+                            if ($etat_du_capteur == 2)
+                            {
+                                ?><div class='pre_circle'>
+                                    <div class='circle_red'></div><br />
+                                </div><?php
+                            }
+                            if ($etat_du_capteur == 3)
+                            {
+                                ?><div class='pre_circle'>
+                                <div class='circle_black'></div><br />
+                                </div><?php
+                                echo 'Capteur Hors Service';?><br /><?php
+                                echo 'Veuillez remplacer la batterie';
+                            }
+                    ?></div>
+                    </div><?php                 
                 }
-
-                */
-
-
-            ?></div>
-            </div><?php
+            ?></div><?php
         }
-    ?></div></div>
+    ?></div>
     <?php include("pied_de_page.php");?>   
     </body>
 </html>
-
-<?php
-/*
-                        echo'<div class="onoffswitch">';
-                        echo'<input type="checkbox" name="onoffswitch[]" class="onoffswitch-checkbox" id="myonoffswitch'.$i.'" value="valeur">';
-                        echo'<label class="onoffswitch-label" for="myonoffswitch'.$i.'">';
-                        echo'<span class="onoffswitch-inner">';
-                        echo'</span>';
-                        echo'<span class="onoffswitch-switch">';
-                        echo'</span>';
-                        echo'</label>';
-                        echo '</div>';
-<<<<<<< HEAD
-                        ?>
-                    </td>            
-                    <td>
-                        <?php
-                        $j = rand (0,1) ;
-                        if ($j == 0)
-                        {
-                            echo 'Ouvert';
-                        }
-                        else
-                        {
-                            echo 'Fermé';
-                        }
-                        ?>
-                    </td>
-                    <td class=pre_circle>
-                        <?php
-                        $j = rand (0,9) ;
-                        if ($j == 0)
-                        {
-                            ?>
-                            <div class=circle_red></div>
-                            <?php
-                        }
-                        elseif ($j == 1 or $j==2)
-                        {
-                            ?>
-                            <div class=circle_orange></div>
-                            <?php
-                        }
-                        else
-                        {
-                            ?>
-                            <div class=circle_green></div>
-                            <?php
-                        }
-                        ?>
-                    </td>
-                    <td class=pre_circle>
-                        <?php
-                        if ($etat_capteur['etat'] == 3)
-                        {
-                            ?>
-                            <div class=circle_red></div>
-                            <?php                            
-                        }
-                        elseif ($etat_capteur['etat'] == 2)
-                        {
-                            ?>
-                            <div class=circle_orange></div>
-                            <?php
-                        }
-                        else
-                        {
-                            ?>
-                            <div class=circle_green></div>
-                            <?php
-                        }
-                        ?>
-                    </td>
-                </tr>
-            <?php
-            }
-            ?>
-        	
-        	</table>
-        	</div>
-
-        	<div id='table2'>
-        	<caption>Sécurité</caption>
-        	<table border="1">
-            <tr>
-                <th>Pièce</th>
-                <th>Niveau</br>d'alerte</th>
-                <th>Normal ?</th>
-            </tr>
-
-        	<?php
-        	while ($pieces = $reponse2->fetch())
-        	{
-        		?>
-        		<tr>
-        			<th><?php echo $pieces['nom_piece'] ;?></th>
-        			<td>
-        				<?php
-        				$j = rand (0,4) ;
-        				if ($j == 0)
-        				{
-        					echo 'Alerte sécurité';
-        				}
-        				else
-        				{
-        					echo 'Aucun problème de sécurité';
-        				}
-        				?>
-        			</td>
-                    <td class=pre_circle>
-                        <?php
-                        $j = rand (0,9) ;
-                        if ($j == 0)
-                        {
-                            ?>
-                            <div class=circle_red></div>
-                            <?php
-                        }
-                        elseif ($j == 1 or $j==2)
-                        {
-                            ?>
-                            <div class=circle_orange></div>
-                            <?php
-                        }
-                        else
-                        {
-                            ?>
-                            <div class=circle_green></div>
-                            <?php
-                        }
-                        ?>
-                    </td>
-        		</tr>
-        		<?php
-        	}
-        	?>
-        	</table>
-        	</div>
-            
-		</div>
-		<?php include("vue/pied_de_page.php");?>
-	</body>
-</html>
-                                                       
-=======
-*/
-?>

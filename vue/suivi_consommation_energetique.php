@@ -6,10 +6,11 @@
 	<title>Suivi de la consommation énergétique</title>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="style/suivi_de_consommation_energetique.css">
+	<link rel="stylesheet" href="style/banniere.css" />
 </head>
 <body>
 <div>
-<?php include 'en_tete.php';?>
+    <?php include("vue/en_tete_client.php");?>
 
 <?php
 /*
@@ -158,7 +159,7 @@ catch(Exception $e)
 		</tfooter>
 </table>
 
-<?php include 'pied_de_page.php';?>
+<?php include 'vue/pied_de_page.php';?>
 
 </div>
 </body>

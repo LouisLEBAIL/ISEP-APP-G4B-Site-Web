@@ -1,0 +1,78 @@
+.tous_les_encadres
+{
+	display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+	padding: 1%;
+}
+.tous_les_capteurs
+{
+	border: solid;
+	width: 15%;
+	padding: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.un_capteur
+{
+  display: flex;
+  justify-content: space-between;
+}
+.boite_pour_un_capteur
+{
+	border: solid;
+  margin: 0.5%;
+  padding: auto;
+}
+.nom_piece
+{
+  font-size: 20px;
+}
+
+
+
+/* Points de couleurs */
+
+.pre_circle
+{
+  padding: auto;
+}
+.circle_black
+{
+  width: 20px;
+  height: 20px;
+  background: black;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.circle_red
+{
+  width: 20px;
+  height: 20px;
+  background: red;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+.circle_orange
+{
+  width: 20px;
+  height: 20px;
+  background: orange;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+.circle_green
+{
+  width: 20px;
+  height: 20px;
+  background: green;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+

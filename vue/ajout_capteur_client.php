@@ -7,15 +7,13 @@
         <meta charset="utf-8" /> <link rel="stylesheet" href="style/accueil_admin.css" />
         <link rel="stylesheet" href="style/style.css" />
         <link rel="stylesheet" href="style/banniere.css" />
-
-
         <meta charset="utf-8" /> <link rel="stylesheet" href="style/ajout_capteur_client.css" />
 
         <title>Ajout Capteur</title>
     </head>
 
   <body>
-    <?php include("en_tete.php");?>
+    <?php include("en_tete_client.php");?>
       <div id="container_3">
 
         <div id="preinscription">
