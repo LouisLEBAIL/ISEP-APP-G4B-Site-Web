@@ -2,14 +2,13 @@
 <html>
     <head>
         <meta charset="utf-8" /> 
-<<<<<<< HEAD
+
         <link rel="stylesheet" href="style/accueil.css" />
         <link rel="stylesheet" href="style/banniere.css" />
         <link rel="stylesheet" href="style/menu.css" />
 
-=======
         <link rel="stylesheet" href="style/nouvel_accueil.css" />
->>>>>>> origin/master
+
         <title>Page d'accueil</title>
     </head>
     <body>
@@ -17,14 +16,13 @@
     <div id="container_2">
         <?php include("vue/navigation_client.php");?>
 
-<<<<<<< HEAD
 
 		<div id="container_2">
 			<div id="lien_donnees">
             	<a href="temperature">Température</a>
             	<a href="luminosite">Luminosité</a>
             	<a href="autres">Autres</a>
-=======
+
     <div class='tous_les_encadres'>
         <?php
         $req_piece = $bdd->prepare('SELECT * FROM piece WHERE id_client=?');
@@ -34,7 +32,7 @@
             ?><div class=un_encadre>
             <div class='nom_piece'>
                 <?php echo $toutes_les_infos_des_pieces['nom_piece']; ?>
->>>>>>> origin/master
+
             </div>
 
             <?php
@@ -241,4 +239,3 @@
 =======
 */
 ?>
->>>>>>> origin/master

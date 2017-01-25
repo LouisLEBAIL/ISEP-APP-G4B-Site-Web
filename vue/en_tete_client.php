@@ -1,10 +1,9 @@
 <header>
-<<<<<<< HEAD
-    <p>
-        <a href="index.php?redirection=connecte" id="logoco">
-        <img  href="index.php?redirection=connecte" src="picture/logo_transparent.png" alt="logo DomLab" width="30%" height="30%"title="DomLab" />
+
+        <a href="index.php?redirection=connecte" id="logoco"  >
+        <img  href="index.php?redirection=connecte" src="picture/logo_transparent.png" alt="logo DomLab" title="DomLab" id="logo"  />
         </a>
-    </p>
+
     <div id="navigation">
 	<nav>
 		<ul id="menu_navigation_verticale">
@@ -15,26 +14,21 @@
 					<li><a href="index.php?redirection=inscription">Modifier Profil</a></li>
 					<li><a href="index.php?redirection=ajout_piece_client">Ajouter/Supprimer une piece</a></li>
 					<li><a href="index.php?redirection=ajout_capteur_client">Ajouter/Supprimer un capteur</a></li>
+					<li><a href="index.php?redirection=ajout_capteur_piece_client">Ajouter Capteur a une piece </a></li>
 				</ul>
 			</li>
 			<li class="hid"><a href="index.php?redirection=page_de_contact">Contact</a></li>
 			<li class="hid"><a href="index.php?redirection=suivi_consommation_energetique">Consommation énergétique</a></li>
 		</ul>
 	</nav>
-</div>
-=======
-    <div id="favicon">
+   </div>
 
-                     <link rel="icon" type="image/gif" href="picture/favicon.gif">
 
-                     <link rel="icon" type="image/gif" href="image/favicon.gif">
+        <p class="titrep" id="domisep"> Un produit de DOMISEP</p>
+        <a href="index.php?redirection=deconnexion" id="logout"> 
+        <img  href="index.php?redirection=deconnexion" src="picture/logout.png" alt="logout" title="logout" />
+        </a>
 
->>>>>>> origin/master
 
-    <p>
-        <p class="titrep" id="domisep">Un produit de DOMISEP</p>
-        <a href="index.php?redirection=deconnexion" id="logout"> Déconnexion </a>
-    </p>
-    
                 
 </header>

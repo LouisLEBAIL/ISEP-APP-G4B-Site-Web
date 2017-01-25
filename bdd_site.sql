@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 10 Janvier 2017 à 18:01
+-- Généré le :  Lun 23 Janvier 2017 à 19:21
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -54,13 +54,6 @@ CREATE TABLE `appartement` (
   `numero` int(10) UNSIGNED NOT NULL COMMENT 'Numero de l''apartement'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Contenu de la table `appartement`
---
-
-INSERT INTO `appartement` (`id_appartement`, `id_client`, `id_immeuble`, `surface`, `etage`, `numero`) VALUES
-(0000000001, 0000000001, 0000000001, 30, 2, 24);
-
 -- --------------------------------------------------------
 
 --
@@ -71,10 +64,33 @@ CREATE TABLE `capteur` (
   `id_capteur` int(10) UNSIGNED ZEROFILL NOT NULL,
   `type` varchar(255) NOT NULL,
   `numero_serie_capteur` varchar(20) NOT NULL,
+  `numero_capteur` int(10) UNSIGNED ZEROFILL NOT NULL,
   `etat` int(10) UNSIGNED NOT NULL COMMENT 'chiffre entre 0(bon) et 3(mauvais)',
   `id_piece` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
   `id_client` int(10) UNSIGNED ZEROFILL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `capteur`
+--
+
+INSERT INTO `capteur` (`id_capteur`, `type`, `numero_serie_capteur`, `numero_capteur`, `etat`, `id_piece`, `id_client`) VALUES
+(0000000001, 'Temperature', 'T0000000002', 0000000001, 0, 0000000003, 0000000003),
+(0000000002, 'Temperature', 'T0000000003', 0000000002, 3, 0000000003, 0000000003),
+(0000000003, 'Luminosite', 'L0000000001', 0000000003, 1, 0000000003, 0000000003),
+(0000000004, 'Fumee', 'F0000000001', 0000000004, 0, 0000000003, 0000000003),
+(0000000005, 'Intrusion', 'I0000000002', 0000000005, 0, 0000000003, 0000000003),
+(0000000006, 'Temperature', 'T0000000005', 0000000006, 0, 0000000004, 0000000003),
+(0000000007, 'Luminosite', 'L0000000003', 0000000007, 1, 0000000004, 0000000003),
+(0000000008, 'Fumee', 'F0000000003', 0000000008, 2, 0000000004, 0000000003),
+(0000000009, 'Temperature', 'T0000000004', 0000000004, 0, 0000000005, 0000000003),
+(0000000010, 'Luminosite', 'L0000000002', 0000000010, 0, 0000000005, 0000000003),
+(0000000011, 'Fumee', 'F0000000002', 0000000011, 2, 0000000005, 0000000003),
+(0000000012, 'Intrusion', 'I0000000001', 0000000012, 0, 0000000005, 0000000003),
+(0000000013, 'Temperature', 'T0000000006', 0000000013, 0, 0000000006, 0000000003),
+(0000000014, 'Luminosite', 'L0000000004', 0000000014, 0, 0000000006, 0000000003),
+(0000000015, 'Fumee', 'F0000000004', 0000000015, 0, 0000000006, 0000000003),
+(0000000016, 'Intrusion', 'I0000000003', 0000000016, 0, 0000000006, 0000000003);
 
 -- --------------------------------------------------------
 
@@ -85,6 +101,22 @@ CREATE TABLE `capteur` (
 CREATE TABLE `cemac` (
   `numero_serie_ceMAC` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `cemac`
+--
+
+INSERT INTO `cemac` (`numero_serie_ceMAC`) VALUES
+('CM0001'),
+('CM0002'),
+('CM0003'),
+('CM0004'),
+('CM0005'),
+('CM0006'),
+('CM0007'),
+('CM0008'),
+('CM0009'),
+('CM0010');
 
 -- --------------------------------------------------------
 
@@ -109,8 +141,7 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`id_client`, `nom`, `prenom`, `date_de_naissance`, `email`, `telephone_mobile`, `telephone_fixe`, `numero_serie_ceMAC`, `password_client`) VALUES
-(0000000001, 'LE BAIL', 'louis', '1996-10-31', 'louis@gmail.com', 629440180, 629440180, '', 'd82ece8d514aca7e24d3fc11fbb8dada57f2966c'),
-(0000000002, NULL, NULL, NULL, 'jean@gmail.com', NULL, NULL, '', '51f8b1fa9b424745378826727452997ee2a7c3d7');
+(0000000003, 'Client', 'Client', '2017-01-23', 'client@gmail.com', 606060606, 303030303, 'CM0001', 'd2a04d71301a8915217dd5faf81d12cffd6cd958');
 
 -- --------------------------------------------------------
 
@@ -121,10 +152,32 @@ INSERT INTO `client` (`id_client`, `nom`, `prenom`, `date_de_naissance`, `email`
 CREATE TABLE `donnee_capteur` (
   `id_donnee_capteur` int(10) UNSIGNED ZEROFILL NOT NULL,
   `date` datetime NOT NULL,
-  `trame` text NOT NULL,
+  `valeur` text NOT NULL,
   `id_capteur` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
   `id_client` int(10) UNSIGNED ZEROFILL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `donnee_capteur`
+--
+
+INSERT INTO `donnee_capteur` (`id_donnee_capteur`, `date`, `valeur`, `id_capteur`, `id_client`) VALUES
+(0000000001, '2017-01-23 05:18:14', '24', 0000000001, 0000000003),
+(0000000002, '2017-01-23 15:18:37', '23', 0000000002, 0000000003),
+(0000000003, '2017-01-23 10:20:45', '10', 0000000003, 0000000003),
+(0000000004, '2017-01-23 00:14:26', '0', 0000000004, 0000000003),
+(0000000005, '2017-01-23 13:27:28', '0', 0000000005, 0000000003),
+(0000000006, '2017-01-23 17:31:00', '25', 0000000006, 0000000003),
+(0000000007, '2017-01-23 17:51:08', '11', 0000000007, 0000000003),
+(0000000008, '2017-01-23 06:28:27', '1', 0000000008, 0000000003),
+(0000000009, '2017-01-23 07:00:32', '22', 0000000009, 0000000003),
+(0000000010, '2017-01-23 11:29:44', '9', 0000000010, 0000000003),
+(0000000011, '2017-01-23 00:25:27', '1', 0000000011, 0000000003),
+(0000000012, '2017-01-23 00:21:00', '0', 0000000012, 0000000003),
+(0000000013, '2017-01-23 23:25:43', '24', 0000000013, 0000000003),
+(0000000014, '2017-01-23 18:19:59', '10', 0000000014, 0000000003),
+(0000000015, '2017-01-23 23:59:59', '0', 0000000015, 0000000003),
+(0000000016, '2017-01-23 10:18:49', '0', 0000000016, 0000000003);
 
 -- --------------------------------------------------------
 
@@ -140,13 +193,6 @@ CREATE TABLE `immeuble` (
   `adresse_2` varchar(255) NOT NULL,
   `id_client` int(10) UNSIGNED ZEROFILL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `immeuble`
---
-
-INSERT INTO `immeuble` (`id_immeuble`, `code_postal`, `ville`, `adresse_1`, `adresse_2`, `id_client`) VALUES
-(0000000001, 94100, 'St Maur', '18 bis av rene david', '', 0000000001);
 
 -- --------------------------------------------------------
 
@@ -169,8 +215,19 @@ CREATE TABLE `maison` (
 --
 
 INSERT INTO `maison` (`id_maison`, `code_postal`, `ville`, `adresse_1`, `adresse_2`, `id_client`, `surface`) VALUES
-(0000000001, 94100, 'St Maur', '18bis av rene david', '', 0000000001, 150),
-(0000000002, 94100, 'St maur', '18bis av rene david', '', 0000000001, 150);
+(0000000003, 75000, 'Paris', 'av des Champs Elysees', '', 0000000003, 10000);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `messagerie`
+--
+
+CREATE TABLE `messagerie` (
+  `id_messagerie` int(10) UNSIGNED ZEROFILL NOT NULL,
+  `message` text NOT NULL,
+  `id_client` int(10) UNSIGNED ZEROFILL NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -181,6 +238,52 @@ INSERT INTO `maison` (`id_maison`, `code_postal`, `ville`, `adresse_1`, `adresse
 CREATE TABLE `numero_serie_capteur` (
   `numero_serie_capteur` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `numero_serie_capteur`
+--
+
+INSERT INTO `numero_serie_capteur` (`numero_serie_capteur`) VALUES
+('F0000000001'),
+('F0000000002'),
+('F0000000003'),
+('F0000000004'),
+('F0000000005'),
+('F0000000006'),
+('F0000000007'),
+('F0000000008'),
+('F0000000009'),
+('F0000000010'),
+('I0000000001'),
+('I0000000002'),
+('I0000000003'),
+('I0000000004'),
+('I0000000005'),
+('I0000000006'),
+('I0000000007'),
+('I0000000008'),
+('I0000000009'),
+('I0000000010'),
+('L0000000001'),
+('L0000000002'),
+('L0000000003'),
+('L0000000004'),
+('L0000000005'),
+('L0000000006'),
+('L0000000007'),
+('L0000000008'),
+('L0000000009'),
+('L0000000010'),
+('T0000000001'),
+('T0000000002'),
+('T0000000003'),
+('T0000000004'),
+('T0000000005'),
+('T0000000006'),
+('T0000000007'),
+('T0000000008'),
+('T0000000009'),
+('T0000000010');
 
 -- --------------------------------------------------------
 
@@ -201,8 +304,10 @@ CREATE TABLE `piece` (
 --
 
 INSERT INTO `piece` (`id_piece`, `nom_piece`, `id_appartement`, `id_maison`, `id_client`) VALUES
-(0000000001, 'Cuisine', 0000000001, 0000000001, 0000000001),
-(0000000002, 'Salon', 0000000001, 0000000001, 0000000001);
+(0000000003, 'Salon', NULL, 0000000003, 0000000003),
+(0000000004, 'Chambre', NULL, 0000000003, 0000000003),
+(0000000005, 'Cuisine', NULL, 0000000003, 0000000003),
+(0000000006, 'Bureau', NULL, 0000000003, 0000000003);
 
 -- --------------------------------------------------------
 
@@ -285,6 +390,13 @@ ALTER TABLE `maison`
   ADD KEY `id_client_2` (`id_client`);
 
 --
+-- Index pour la table `messagerie`
+--
+ALTER TABLE `messagerie`
+  ADD PRIMARY KEY (`id_messagerie`),
+  ADD KEY `id_client` (`id_client`);
+
+--
 -- Index pour la table `numero_serie_capteur`
 --
 ALTER TABLE `numero_serie_capteur`
@@ -326,17 +438,17 @@ ALTER TABLE `appartement`
 -- AUTO_INCREMENT pour la table `capteur`
 --
 ALTER TABLE `capteur`
-  MODIFY `id_capteur` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
+  MODIFY `id_capteur` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id_client` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_client` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `donnee_capteur`
 --
 ALTER TABLE `donnee_capteur`
-  MODIFY `id_donnee_capteur` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
+  MODIFY `id_donnee_capteur` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT pour la table `immeuble`
 --
@@ -346,12 +458,17 @@ ALTER TABLE `immeuble`
 -- AUTO_INCREMENT pour la table `maison`
 --
 ALTER TABLE `maison`
-  MODIFY `id_maison` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_maison` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `messagerie`
+--
+ALTER TABLE `messagerie`
+  MODIFY `id_messagerie` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `piece`
 --
 ALTER TABLE `piece`
-  MODIFY `id_piece` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_piece` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `service_client`
 --
@@ -394,6 +511,12 @@ ALTER TABLE `immeuble`
 --
 ALTER TABLE `maison`
   ADD CONSTRAINT `maison_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`);
+
+--
+-- Contraintes pour la table `messagerie`
+--
+ALTER TABLE `messagerie`
+  ADD CONSTRAINT `messagerie_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`);
 
 --
 -- Contraintes pour la table `piece`
