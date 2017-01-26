@@ -30,9 +30,9 @@ catch(Exception $e)
  <?php  
 	$req = $bdd->prepare('SELECT nom, prenom FROM client where id_client=?');
 	$req->execute(array($_SESSION['id_client']));
-	while ($donnees = $req->fetch())
+	while ($_SESSION = $req->fetch())
 	{
-		echo $donnees['prenom'] .' '.$donnees['nom'];
+		echo $_SESSION['prenom'] .' '.$_SESSION['nom'];
 	}
 
 	$req->closeCursor();
@@ -45,78 +45,76 @@ catch(Exception $e)
 <caption><strong>Consommation énergétique par pièce<strong></caption>
 	<table border=1>
 		<?php 
-			$req = $bdd->prepare('SELECT * FROM piece WHERE id_client=?');
-			$req->execute(array($_SESSION['id_client']));
-			while ($donnees = $req->fetch())
-			{
-				?>
 
+			$req_id_piece = $bdd->prepare('SELECT id_piece,nom_piece FROM piece WHERE id_client=?');
+			$req_id_piece->execute(array($_SESSION['id_client']));
+
+			while ($nom_des_pieces = $req_id_piece->fetch()) // Boucle par piece
+			{
+
+				?>
 				<tr>
-					<td> <?php echo $donnees['nom_piece']; 	?> </td>
+					<td> <?php echo $nom_des_pieces['nom_piece']; 	?> </td>
 				</tr> 
 				<?php
 
-				$info_capteur = $bdd -> prepare('SELECT id_capteur,type  FROM capteur WHERE id_client=?, id_piece=? AND type=?');
-				$info_capteur->execute(array($_SESSION['id_client'],$info_capteur['id_piece'],$info_capteur['type'],$info_capteur['id_capteur=?']));
+				$req_capteur = $bdd -> prepare('SELECT id_capteur,type FROM capteur WHERE  id_piece=? ');
+				$req_capteur->execute(array($nom_des_pieces['id_piece']));
 
-
-				$info_donnee_capteur=$bdd->prepare('SELECT id_capteur, date FROM donnee_capteur WHERE id_capteur=?');
-				$info_donnee_capteur->execute(array($info_donnee_capteur['id_capteur'],$info_donnee_capteur['date']));
-
-				while ($donnees=$req->fetch())
-			{
-				$jour=date('d');
-				$mois=date('m');
-				$annee=date('Y');
-				$heure=date('H');
-				$minute=date('i');
-
-				while ($mois)
+				while ($donnees_capteurs=$req_capteur->fetch()) // Boucle par capteur
 				{
-					
-					for($jour=1;$jour<=31;$jour++)
+
+					$date = $bdd -> prepare('SELECT dates FROM donnee_capteur WHERE id_capteur=?');
+					$date -> execute(array($donnees_capteurs['id_capteur']));
+
+					$jour=date('d');
+					$mois=date('m');
+					$annee=date('Y');
+					$heure=date('H');
+					$minute=date('i');
+
+					while ($mois)
 					{
-
-						$reponse = $bdd->query('SELECT AVG(consommation) AS consommation_moyenne FROM donnee_capteur');
-
-						while ($donnees = $reponse->fetch())
+					
+						for($jour=1;$jour<=31;$jour++)
 						{
-							?>
-							<tr>
-								<td> Chauffage </td>
-								<td> <?php echo $donnees['consommation_moyenne'];?> </td>
-							</tr>
-							<tr>
-								<td> Gaz </td>
-								<td> <?php echo $donnees['consommation_moyenne'];?> </td>
-							</tr>
-							<tr>
-								<td> Lampes </td>
-								<td> <?php echo $donnees['consommation_moyenne']; ?> </td>
-							</tr>
-							<?php
+
+							$tableau_consommation = $bdd->query('SELECT AVG(valeur) AS valeur_moyenne FROM donnee_capteur');
+
+							while ($consommation = $tableau_consommation->fetch())
+							{
+								?>
+								<thead>
+									<tr>
+										<th> Chauffage </th>
+										<td> <?php echo $consommation['valeur_moyenne'];?> </td>
+									</tr>
+									<tr>
+										<th> Gaz </th>
+										<td> <?php echo $consommation['valeur_moyenne'];?> </td>
+									</tr>
+									<tr>
+										<th> Lampes </th>
+										<td> <?php echo $consommation['valeur_moyenne']; ?> </td>
+									</tr>
+								</thead>
+								<?php
+
+							}
+
+							$tableau_consommation->closeCursor();
 
 						}
-
-			$req->closeCursor();
-
+						$date->closeCursor();
 					}
-				$donnees->closeCursor();
 				}
-				$reponse->closeCursor();
+			$req_capteur->closeCursor();
 			}
-			}
-			$donnees->closeCursor();
+			$req_id_piece->closeCursor();
+
 
 		?>
-	
-	
-	
-	AVG consommation where id_piece= and id_capteur=
-}
-
- </p>
- ?>
+	</table>
 
 
 <caption><strong>Suivi de la consommation énergétique mensuelle</strong></caption> 
@@ -158,7 +156,6 @@ catch(Exception $e)
 			</tr>
 		</tfooter>
 </table>
-
 <?php include 'vue/pied_de_page.php';?>
 
 </div>
