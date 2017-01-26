@@ -8,11 +8,17 @@
 .tous_les_capteurs
 {
 	border: solid;
-	width: 15%;
+	width: 100%;
 	padding: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  padding: 0.5%;
+}
+.une_piece
+{
+  display: flex;
+  margin-bottom: 5%;
 }
 .un_capteur
 {
@@ -28,6 +34,12 @@
 .nom_piece
 {
   font-size: 20px;
+  margin-right: 2%;
+}
+.pas_de_capteur
+{
+    border: solid;
+    padding: 1.5%;
 }
 
 

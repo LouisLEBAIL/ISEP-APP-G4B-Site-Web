@@ -19,11 +19,25 @@
             $req_id_capteur = $bdd->prepare('SELECT id_capteur FROM capteur WHERE id_client=? AND id_piece=?');
             $req_id_capteur->execute(array($_SESSION['id_client'],$info_de_la_piece['id_piece']));
 
-            ?><div class='nom_piece'>
+            ?><div class='une_piece'><div class='nom_piece'>
                 <?php echo $info_de_la_piece['nom_piece'];?><br />
-            </div>
+            </div><?php
 
-            <div class='tous_les_capteurs'><?php
+            if (empty($req_id_capteur -> fetch())) // Test pour savoir si il y a un capteur dans la salle
+            {
+                ?><div class='pas_de_capteur'><br />
+                Cette pièce ne comporte pas de capteur.
+                <br /><br />
+                Vous pouvez ajouter un capteur 
+                <a href='index.php?redirection=ajout_capteur_client'> ici </a>.
+                <br /><br />
+                Vous pouvez lier un capteur à votre pièce 
+                <a href='index.php?redirection=ajout_capteur_piece_client'> ici </a>.
+                </div><?php
+            }
+            else
+            {                       
+                ?><div class='tous_les_capteurs'><?php
 
                 while ($id_du_capteur = $req_id_capteur -> fetch()) // boucle pour les types de capteurs
                {
@@ -52,8 +66,9 @@
 
                     // Affichage des informations
 
-                    ?><div class=un_capteur><br />
-                        <?php echo $type_du_capteur ;?><br /><?php
+                    ?><div class='un_capteur'><br /><?php
+
+                        echo $type_du_capteur ;?><br /><?php
 
                         ?><div class='boite_pour_un_capteur'><?php
                             if ($type_du_capteur == 'Temperature') // Gestion du capteur de temperature
@@ -126,6 +141,8 @@
                     ?></div>
                     </div><?php                 
                 }
+                ?></div><?php
+            }         
             ?></div><?php
         }
     ?></div>
