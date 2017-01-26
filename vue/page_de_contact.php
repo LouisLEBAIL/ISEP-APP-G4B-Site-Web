@@ -14,7 +14,7 @@
                 <div id="container_3">
         <?php include '../modele/page_de_contact.php';?>
         <?php include '../modele/Page_service_client.php';?>
-        <?php include '../vue/suivi_consommation_energetique.php';?>
+
 
 
              <form method="post" action="">
@@ -168,7 +168,6 @@ while ($donnees = $reponse->fetch())
         <?php include("vue/pied_de_page.php");?>
         </body>
 
-        <script src="../Page_service_client.js"></script>
 </html>
 
 
