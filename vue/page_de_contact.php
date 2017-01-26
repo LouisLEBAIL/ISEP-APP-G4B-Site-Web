@@ -67,66 +67,6 @@
                             </p>
                       </fieldset>
 
-<?php 
-
-try 
-{
-  
-  $bdd = new PDO('mysql:host=localhost;dbname=ISEP-APP-G4B-Site-Web;charset=utf8', 'root', '');
-
-}
-
-$reponse = $bdd->query('SELECT * FROM client');
-
-while ($donnees = $reponse->fetch())
-{
-  ?>
-
-            <table id="tableau" border="1">
-            <caption><strong>Vue globale client en cours<strong></caption><?php echo $données['Numero_de_pieces']; ?><br/>
-            Vous avez <?php echo $donnees['Numero_de_pieces']; ?> pièces qui sont : <?php echo $donnees['Pieces']; ?>
-            <tr>
-              <thead><td>Numéro de pièces</td>
-              <td>Pièces</td></thead>
-            </tr>
-            <tr>
-              <tbody><td>1</td>
-              <td>Salon</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Séjour</td>
-            </tr>
-              <td>3</td>
-              <td>Cuisine</td>
-            </tr>
-              <td>4</td>
-              <td>Cellier</td>
-            </tr>
-              <td>5</td>
-              <td>Garage</td>
-            </tr>
-              <td>6</td>
-              <td>Bureau</td>
-            </tr>
-            <td>7</td>
-              <td>Entrée</td>
-            </tr>
-              <td>8</td>
-              <td colspan="3">Chambre 1/Chambre 2/Chambre 3</td>
-            </tr>
-              <td>9</td>
-              <td colspan="2">Salles de bain RDC/Salle de bain étage)</td>
-            </tr>
-            </tbody>
-            </table>
-
-<?php 
-{
-  $reponse->closeCursor(); // Termine le traitement de la requête
-
-?>
-
 
 
 
