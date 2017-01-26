@@ -39,7 +39,5 @@ if(isset($_POST['formvalider']))
 
 
 
-insert into 
-
 
 
