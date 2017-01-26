@@ -39,6 +39,8 @@ else
 	}
 	elseif ($redirection == 'page_de_contact') /*Pour aller vers la page de contact*/
 	{
+		require 'modele/Page_de_contacts.php';
+		require 'modele/page_service_client.php';
 		require "vue/page_de_contact.php";
 	}
 	elseif ($redirection == 'ajout_piece_client')

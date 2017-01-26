@@ -1,8 +1,5 @@
 <?php
 
-include ('vue/page_de_contact')
-
-
 if(isset($_SESSION['id_client']))
 {
 
@@ -19,7 +16,7 @@ if(isset($_SESSION['id_client']))
     $prenom = htmlspecialchars($_POST['prenom']);
     $nombre_de_capteurs = htmlspecialchars($_POST['nombre_de_capteurs']);
     $ID_client = htmlspecialchars($_POST['ID_client']);
-    $Date_inscription_client = htmlspecialchars($_POST['Date_inscription_client'])
+    $Date_inscription_client = htmlspecialchars($_POST['Date_inscription_client']);
    
     
         $insertserviceclient = $bdd->prepare('INSERT INTO client (email, nom, prenom, nombre_de_capteurs, ID_client, Date_inscription_client) VALUES( :email, NULL, NULL, :nombre_de_capteurs, :ID_client , :Date_inscription_client ');
@@ -38,10 +35,9 @@ if(isset($_SESSION['id_client']))
     $erreur= "Veuillez compléter tous les champs";
   }
 } 
-}
+
 ?>
 
-<?php require '../vue/page_service_client.php'?>
 
 
 

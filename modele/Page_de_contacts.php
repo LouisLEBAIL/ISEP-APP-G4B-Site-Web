@@ -1,6 +1,5 @@
 <?php
 
-include ('vue/page_de_contact')
 if(isset($_POST['formvalider']))
 {
   if(!empty($_POST['email']) AND !empty($_POST['produit']) AND !empty($_POST['question']))
@@ -8,16 +7,12 @@ if(isset($_POST['formvalider']))
     $email = htmlspecialchars($_POST['email']);
     $produit = htmlspecialchars($_POST['produit']);
     $question = htmlspecialchars($_POST['question']);
-    {
-      {
     $contact = $bdd->prepare('INSERT INTO messagerie (id_messagerie, message, id_client) VALUES(,NULL, :message, NULL');
         $contact->execute(array(
-          'id_messagerie' => $user['id_messagerie']));
+          'id_messagerie' => $user['id_messagerie'],
           'message' => $message,
           'id_client' => $user['id_client']));
 
-
-      {
         $contact = $bdd->prepare('INSERT INTO client (email, produit, question) VALUES(:email,NULL, NULL');
         $contact->execute(array(
           'email' => $email,
@@ -34,7 +29,6 @@ if(isset($_POST['formvalider']))
 } 
 ?>
 
-<?php require '../vue/page_de_contacts.php'?>
 
 
 

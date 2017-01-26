@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8" /> 
-        <link rel="stylesheet" href="style/style.css" />
+        <link rel="stylesheet" href="style/page_contact.css" />
         <link rel="stylesheet" href="style/banniere.css" />
 
         <title>Contact</title>
