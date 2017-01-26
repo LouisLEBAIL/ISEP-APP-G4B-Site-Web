@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 23 Janvier 2017 à 19:21
+-- Généré le :  Jeu 26 Janvier 2017 à 19:43
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -151,7 +151,7 @@ INSERT INTO `client` (`id_client`, `nom`, `prenom`, `date_de_naissance`, `email`
 
 CREATE TABLE `donnee_capteur` (
   `id_donnee_capteur` int(10) UNSIGNED ZEROFILL NOT NULL,
-  `date` datetime NOT NULL,
+  `dates` datetime NOT NULL,
   `valeur` text NOT NULL,
   `id_capteur` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
   `id_client` int(10) UNSIGNED ZEROFILL DEFAULT NULL
@@ -161,7 +161,7 @@ CREATE TABLE `donnee_capteur` (
 -- Contenu de la table `donnee_capteur`
 --
 
-INSERT INTO `donnee_capteur` (`id_donnee_capteur`, `date`, `valeur`, `id_capteur`, `id_client`) VALUES
+INSERT INTO `donnee_capteur` (`id_donnee_capteur`, `dates`, `valeur`, `id_capteur`, `id_client`) VALUES
 (0000000001, '2017-01-23 05:18:14', '24', 0000000001, 0000000003),
 (0000000002, '2017-01-23 15:18:37', '23', 0000000002, 0000000003),
 (0000000003, '2017-01-23 10:20:45', '10', 0000000003, 0000000003),
@@ -226,7 +226,8 @@ INSERT INTO `maison` (`id_maison`, `code_postal`, `ville`, `adresse_1`, `adresse
 CREATE TABLE `messagerie` (
   `id_messagerie` int(10) UNSIGNED ZEROFILL NOT NULL,
   `message` text NOT NULL,
-  `id_client` int(10) UNSIGNED ZEROFILL NOT NULL
+  `id_client` int(10) UNSIGNED ZEROFILL NOT NULL,
+  `date_message` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -307,7 +308,8 @@ INSERT INTO `piece` (`id_piece`, `nom_piece`, `id_appartement`, `id_maison`, `id
 (0000000003, 'Salon', NULL, 0000000003, 0000000003),
 (0000000004, 'Chambre', NULL, 0000000003, 0000000003),
 (0000000005, 'Cuisine', NULL, 0000000003, 0000000003),
-(0000000006, 'Bureau', NULL, 0000000003, 0000000003);
+(0000000006, 'Bureau', NULL, 0000000003, 0000000003),
+(0000000007, 'Garage', NULL, 0000000003, 0000000003);
 
 -- --------------------------------------------------------
 
@@ -317,7 +319,7 @@ INSERT INTO `piece` (`id_piece`, `nom_piece`, `id_appartement`, `id_maison`, `id
 
 CREATE TABLE `service_client` (
   `id_service_client` int(10) UNSIGNED ZEROFILL NOT NULL,
-  `login_service_client` varchar(255) NOT NULL,
+  `email_service_client` varchar(255) NOT NULL,
   `password_service_client` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -418,7 +420,7 @@ ALTER TABLE `piece`
 --
 ALTER TABLE `service_client`
   ADD PRIMARY KEY (`id_service_client`),
-  ADD UNIQUE KEY `login` (`login_service_client`);
+  ADD UNIQUE KEY `login` (`email_service_client`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
@@ -433,7 +435,7 @@ ALTER TABLE `administrateur`
 -- AUTO_INCREMENT pour la table `appartement`
 --
 ALTER TABLE `appartement`
-  MODIFY `id_appartement` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_appartement` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `capteur`
 --
@@ -453,7 +455,7 @@ ALTER TABLE `donnee_capteur`
 -- AUTO_INCREMENT pour la table `immeuble`
 --
 ALTER TABLE `immeuble`
-  MODIFY `id_immeuble` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_immeuble` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `maison`
 --
@@ -468,7 +470,7 @@ ALTER TABLE `messagerie`
 -- AUTO_INCREMENT pour la table `piece`
 --
 ALTER TABLE `piece`
-  MODIFY `id_piece` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_piece` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT pour la table `service_client`
 --
