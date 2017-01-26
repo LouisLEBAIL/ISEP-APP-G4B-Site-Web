@@ -38,13 +38,13 @@
                                 <input type="text" name="Nom" required="">
                             </p>
                             <p>
-                                <label for="Prenom">Prenom:</label>
+                                <label for="Prenom">Prénom:</label>
                             </p>
                             <p>
                                 <input type="text" name="Prenom" required="">
                             </p>
                             <p>
-                                <label for="Nombre_de_capteurs">Nombre de capteurs:</label>
+                                <label for="Nombre_de_capteurs">Nombre de fonctionnalités dans le logement:</label>
                             </p>
                             <p>
                                 <input type="number" name="Nombre_de_capteurs" required="">
@@ -90,7 +90,7 @@
                             </p>
 
 
- <input type="submit" name="soumettre la requete" value="soumettre_la_requete"/>  
+ <input type="submit" name="soumettre_la_requete" value="soumettre la requete"/>  
                     
                       </fieldset>
                 </form>

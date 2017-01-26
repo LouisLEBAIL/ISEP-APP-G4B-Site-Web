@@ -9,6 +9,13 @@ if(isset($_POST['formvalider']))
     $produit = htmlspecialchars($_POST['produit']);
     $question = htmlspecialchars($_POST['question']);
     {
+      {
+    $contact = $bdd->prepare('INSERT INTO messagerie (id_messagerie, message, id_client) VALUES(,NULL, :message, NULL');
+        $contact->execute(array(
+          'id_messagerie' => $user['id_messagerie']));
+          'message' => $message,
+          'id_client' => $user['id_client']));
+
 
       {
         $contact = $bdd->prepare('INSERT INTO client (email, produit, question) VALUES(:email,NULL, NULL');
@@ -32,7 +39,7 @@ if(isset($_POST['formvalider']))
 
 
 
-
+insert into 
 
 
 
