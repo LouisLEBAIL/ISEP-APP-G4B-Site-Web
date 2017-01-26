@@ -12,8 +12,7 @@
         <?php include 'vue/en_tete_client.php';?>
             <div id="bloc_page_3"> 
                 <div id="container_3">
-        <?php include '../modele/page_de_contact.php';?>
-        <?php include '../modele/Page_service_client.php';?>
+       
 
 
 
