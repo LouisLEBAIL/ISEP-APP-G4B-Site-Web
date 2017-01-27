@@ -1,1 +1,71 @@
-/* css pagede contact */
+/* css page de contact */
+
+h1
+{
+  color: #760001;
+}
+
+body 
+{
+
+background-image: url("picture/domotique2.jpg");
+opacity: 0.2;
+background-position: 30px 50px;
+background-attachment: fixed; /* Le fond restera fixe */
+color: #000000;
+}
+
+.bouton_rouge
+
+{
+
+    height: 25px;
+    position: absolute;
+    left: 5px;
+    background: url('picture/domotique2.jpg') repeat-x;
+    border: 1px solid #760001;
+    border-radius: 5px;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 3px 8px 0px 8px;
+    color: white;
+    text-decoration: none;
+}
+
+
+#domotique1 img
+{
+min-height: 2000px;
+max-height: 15vh;
+border: 1px solid #14b0bf;
+}
+
+aside img
+{
+    margin-right: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

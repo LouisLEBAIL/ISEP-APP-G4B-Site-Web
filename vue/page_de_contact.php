@@ -11,14 +11,14 @@
         <body>
         <?php include 'vue/en_tete_client.php';?>
             <div id="bloc_page_3"> 
-                <div id="container_3">
-       
+                <div id="container_3">               
+                  <img src="picture/domotique1.png" alt="" />
 
 
 
              <form method="post" action="">
                       <fieldset>
-                            <p><strong>Contactez nous</strong></p>
+                            <h1><p><strong>Contactez nous</strong></p></h1>
                             <p>
                                 <label for="email">Votre E-mail: </label>
                             </p>
@@ -62,7 +62,7 @@
                                 <input type="date" name="date" required="">
                             <p>
                                 <input type="submit" value="Envoyer" />
-                            
+                                <a href="#" class="bouton_rouge">Envoyer</a>
                             </p>
                       </fieldset>
 
@@ -91,7 +91,7 @@
 
 
  <input type="submit" name="soumettre_la_requete" value="soumettre la requete"/>  
-                    
+ <a href="#" class="bouton_rouge">Soumettre la requête</a>                  
                       </fieldset>
                 </form>
                 <?php 
