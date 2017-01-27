@@ -61,8 +61,7 @@
                             <p> 
                                 <input type="date" name="date" required="">
                             <p>
-                                <input type="submit" value="Envoyer" />
-                                <a href="#" class="bouton_rouge">Envoyer</a>
+                                <input type="submit" value="Envoyer" a href="#" class="bouton_rouge"></a>           
                             </p>
                       </fieldset>
 
@@ -90,8 +89,7 @@
                             </p>
 
 
- <input type="submit" name="soumettre_la_requete" value="soumettre la requete"/>  
- <a href="#" class="bouton_rouge">Soumettre la requête</a>                  
+ <input type="submit" name="soumettre_la_requete" value="soumettre la requete" a href="#" class="bouton_rouge"></a>                  
                       </fieldset>
                 </form>
                 <?php 

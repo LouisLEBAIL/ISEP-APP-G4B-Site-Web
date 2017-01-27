@@ -8,8 +8,8 @@ h1
 body 
 {
 
-background-image: url("picture/domotique2.jpg");
-opacity: 0.2;
+background-image: url('picture/domotique2.jpg');
+opacity: 0.8;
 background-position: 30px 50px;
 background-attachment: fixed; /* Le fond restera fixe */
 color: #000000;
