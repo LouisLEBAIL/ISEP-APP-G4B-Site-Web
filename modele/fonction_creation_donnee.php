@@ -6,7 +6,7 @@
 // CE PROGRAMME MARCHE POUR LES CAPTEUR TEMPERATURE, LUMINOSITE, FUMEE ET INTRUSION
 // DONNEES A RENTRER (DANS L'ORDRE) : id du capteur concerné, nombre de ligne de valeur que vous voulez générer
 
-function creation_donnees($id_du_capteur,$nombre_de_lignes,$id_du_client)
+function creation_donnees($id_du_capteur,$nombre_de_lignes,$intervalle_mesure,$id_du_client)
 {
 
 	require 'modele/connexion_bdd.php';
@@ -31,7 +31,10 @@ function creation_donnees($id_du_capteur,$nombre_de_lignes,$id_du_client)
 // GENERATEUR DE DATE
 
 		setlocale (LC_TIME, 'fr_FR.utf8','fra');
-		$date_donnee = strftime("%Y-%m-%d %H:%M:%S");
+		$date_donnee = time();
+		$date_donnee += $intervalle_mesure*$lignes ;
+		$date_donnee = date("Y-m-d H:i:s", $date_donnee);
+		echo $date_donnee;?><br /><?php
 
 
 

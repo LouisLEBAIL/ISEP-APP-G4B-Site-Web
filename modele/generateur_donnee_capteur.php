@@ -9,8 +9,9 @@ if(isset($_POST['valider']))
 {
 	$nom_capteur=htmlspecialchars($_POST['id_du_capteur']);
 	$nb_lignes=htmlspecialchars($_POST['nombre']);
+	$intervalle_mesure=htmlspecialchars($_POST['intervalle']);
 
-	creation_donnees($nom_capteur,$nb_lignes,$_SESSION['id_client']);
+	creation_donnees($nom_capteur,$nb_lignes,$intervalle_mesure,$_SESSION['id_client']);
 	
 	$erreur="Fait !";
 }
