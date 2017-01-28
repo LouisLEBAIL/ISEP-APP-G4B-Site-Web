@@ -9,21 +9,33 @@
         <title>Page d'accueil</title>
     </head>
     <body>
-    <?php include("en_tete_client.php");?>
-    <div class='tous_les_encadres'><?php
+    <?php include("en_tete_client.php");
+    
+
+
+// BOUCLE POUR UNE PIECE
+
+    ?><div class='tous_les_encadres'><?php
         $req_id_piece = $bdd->prepare('SELECT id_piece,nom_piece FROM piece WHERE id_client=?');
         $req_id_piece->execute(array($_SESSION['id_client']));
 
-        while ($info_de_la_piece = $req_id_piece -> fetch()) // boucle pour les pieces
-        {                    
+        while ($info_de_la_piece = $req_id_piece -> fetch())
+        {   
+    // Requetes a la base de donnee pour connaitre les capteurs d une piece ( deux requetes identiques car besoin de deux boucles sur id_capteur par la suite)
+            $req_id_capteur_test = $bdd->prepare('SELECT id_capteur FROM capteur WHERE id_client=? AND id_piece=?');
+            $req_id_capteur_test->execute(array($_SESSION['id_client'],$info_de_la_piece['id_piece']));
+
             $req_id_capteur = $bdd->prepare('SELECT id_capteur FROM capteur WHERE id_client=? AND id_piece=?');
             $req_id_capteur->execute(array($_SESSION['id_client'],$info_de_la_piece['id_piece']));
 
             ?><div class='une_piece'><div class='nom_piece'>
                 <?php echo $info_de_la_piece['nom_piece'];?><br />
             </div><?php
+ 
 
-            if (empty($req_id_capteur -> fetch())) // Test pour savoir si il y a un capteur dans la salle
+
+    // Test pour savoir si il y a un capteur dans la salle
+            if (empty($req_id_capteur_test -> fetch()))
             {
                 ?><div class='pas_de_capteur'><br />
                 Cette pièce ne comporte pas de capteur.
@@ -35,47 +47,64 @@
                 <a href='index.php?redirection=ajout_capteur_piece_client'> ici </a>.
                 </div><?php
             }
+  
+
+
+// BOUCLE POUR UN CAPTEUR
+
             else
             {                       
                 ?><div class='tous_les_capteurs'><?php
 
-                while ($id_du_capteur = $req_id_capteur -> fetch()) // boucle pour les types de capteurs
+                while ($id_du_capteur = $req_id_capteur -> fetch())
                {
-                    // Requetes a la base de donnee
+
+
+
+    // Requetes a la base de donnee
                     $donnee_capteur = $bdd->prepare('SELECT * FROM donnee_capteur WHERE id_client=? AND id_capteur=?');
                     $donnee_capteur->execute(array($_SESSION['id_client'],$id_du_capteur['id_capteur']));
 
                     $capteur = $bdd->prepare('SELECT * FROM capteur WHERE  id_capteur=?');
                     $capteur->execute(array($id_du_capteur['id_capteur']));
 
-                    // Calcul des donnes a afficher
+
+
+    // Calcul des donnes a afficher
                     $id_capteur = $id_du_capteur['id_capteur'];
                     while ($infos_de_la_table_capteur = $capteur -> fetch())  // Pour les infos de la table capteur
                     {
-                        // Sortie: type de capteur
+                    // Sortie: type de capteur
                         $type_du_capteur = $infos_de_la_table_capteur['type'];
 
-                        // Sortie: etat du capteur
+                    // Sortie: etat du capteur
                         $etat_du_capteur = $infos_de_la_table_capteur['etat'];
                     }
                     while ($infos_de_la_table_donnee_capteur = $donnee_capteur -> fetch()) // Pour les infos de la table donnee_capteur
                     {
-                        // Sortie: valeur du capteur
+                    // Sortie: valeur du capteur
                         $valeur = $infos_de_la_table_donnee_capteur['valeur'];
                     }
 
-                    // Affichage des informations
 
+
+    // Affichage des informations
                     ?><div class='un_capteur'><br /><?php
 
                         echo $type_du_capteur ;?><br /><?php
 
                         ?><div class='boite_pour_un_capteur'><?php
-                            if ($type_du_capteur == 'Temperature') // Gestion du capteur de temperature
+
+
+                // Gestion du capteur de temperature
+                            if ($type_du_capteur == 'Temperature') 
                             {
                                 echo $valeur.' °C' ;?><br /><?php                         
                             }
-                            if ($type_du_capteur == 'Fumee') // Gestion du capteur de fumee
+
+
+                // Gestion du capteur de fumee
+                            if ($type_du_capteur == 'Fumee') 
                             {
                                 if ($valeur == 0) // Si il n y a pas de fumée
                                 {
@@ -90,7 +119,10 @@
                                     </div><?php
                                 }
                             }
-                            if ($type_du_capteur == 'Intrusion') // Gestion du capteur de presence
+
+
+                // Gestion du capteur de presence
+                            if ($type_du_capteur == 'Intrusion')
                             {
                                 if ($valeur == 0) // Si il n y personne
                                 {
@@ -105,12 +137,16 @@
                                     </div><?php
                                 }                            
                             }
-                            if ($type_du_capteur == 'Luminosite') // Gestion du capteur de luminosite
+
+
+                // Gestion du capteur de luminosite
+                            if ($type_du_capteur == 'Luminosite') 
                             {
                                 echo 'Pas encore pris en charge.';?><br /><br /><?php
                             }
 
-                            // Gestion de l etat du capteur
+
+                // Gestion de l etat du capteur
                             echo 'Etat du capteur : ';
                             if ($etat_du_capteur == 0)
                             {
@@ -138,6 +174,10 @@
                                 echo 'Capteur Hors Service';?><br /><?php
                                 echo 'Veuillez remplacer la batterie';
                             }
+
+
+
+
                     ?></div>
                     </div><?php                 
                 }
