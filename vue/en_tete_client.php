@@ -15,6 +15,8 @@
 					<li><a href="index.php?redirection=ajout_piece_client">Ajouter/Supprimer une piece</a></li>
 					<li><a href="index.php?redirection=ajout_capteur_client">Ajouter/Supprimer un capteur</a></li>
 					<li><a href="index.php?redirection=ajout_capteur_piece_client">Ajouter Capteur a une piece </a></li>
+<!--	LIGNE A CACHER PAR LA SUITE		-->		
+					<li><a href="index.php?redirection=generateur">GENERATEUR</a></li>
 				</ul>
 			</li>
 			<li class="hid"><a href="index.php?redirection=page_de_contact">Contact</a></li>

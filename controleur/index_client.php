@@ -68,6 +68,12 @@ else
 		require"modele/ajout_capteur_piece_client.php";
 		require"vue/ajout_capteur_piece_client.php";
 	}
+	elseif($redirection=='generateur') /*Pour aller vers la de generatiopn de donnees de capteurs*/
+	{
+		require"modele/fonction_creation_donnee.php";
+		require"modele/generateur_donnee_capteur.php";
+		require"vue/generateur_donnee_capteur.php";
+	}
 	elseif ($redirection == 'deconnexion') /*Pour se deconnecter de la session*/
 	{
 		$_SESSION = array(); /*vider la variable session*/

@@ -74,15 +74,15 @@
                     $id_capteur = $id_du_capteur['id_capteur'];
                     while ($infos_de_la_table_capteur = $capteur -> fetch())  // Pour les infos de la table capteur
                     {
-                    // Sortie: type de capteur
+                // Sortie: type de capteur
                         $type_du_capteur = $infos_de_la_table_capteur['type'];
 
-                    // Sortie: etat du capteur
+                // Sortie: etat du capteur
                         $etat_du_capteur = $infos_de_la_table_capteur['etat'];
                     }
                     while ($infos_de_la_table_donnee_capteur = $donnee_capteur -> fetch()) // Pour les infos de la table donnee_capteur
                     {
-                    // Sortie: valeur du capteur
+                // Sortie: valeur du capteur
                         $valeur = $infos_de_la_table_donnee_capteur['valeur'];
                     }
 

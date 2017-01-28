@@ -1,0 +1,11 @@
+.questionnaire
+{
+	margin-left: 20%;
+	border: solid;
+	padding: 2%;
+}
+.warning
+{
+	font-size: 20px;
+	color: red;
+}
