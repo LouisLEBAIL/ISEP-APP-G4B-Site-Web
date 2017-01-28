@@ -34,7 +34,6 @@ function creation_donnees($id_du_capteur,$nombre_de_lignes,$intervalle_mesure,$i
 		$date_donnee = time();
 		$date_donnee += $intervalle_mesure*$lignes ;
 		$date_donnee = date("Y-m-d H:i:s", $date_donnee);
-		echo $date_donnee;?><br /><?php
 
 
 
