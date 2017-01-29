@@ -20,7 +20,10 @@
         $req_id_piece->execute(array($_SESSION['id_client']));
 
         while ($info_de_la_piece = $req_id_piece -> fetch())
-        {   
+        {  
+
+
+
     // Requetes a la base de donnee pour connaitre les capteurs d une piece ( deux requetes identiques car besoin de deux boucles sur id_capteur par la suite)
             $req_id_capteur_test = $bdd->prepare('SELECT id_capteur FROM capteur WHERE id_client=? AND id_piece=?');
             $req_id_capteur_test->execute(array($_SESSION['id_client'],$info_de_la_piece['id_piece']));
@@ -28,10 +31,42 @@
             $req_id_capteur = $bdd->prepare('SELECT id_capteur FROM capteur WHERE id_client=? AND id_piece=?');
             $req_id_capteur->execute(array($_SESSION['id_client'],$info_de_la_piece['id_piece']));
 
+            $req_doublon = $bdd->prepare('SELECT type FROM capteur WHERE id_client=? AND id_piece=?');
+            $req_doublon->execute(array($_SESSION['id_client'],$info_de_la_piece['id_piece']));
+
             ?><div class='une_piece'><div class='nom_piece'>
                 <?php echo $info_de_la_piece['nom_piece'];?><br />
             </div><?php
  
+
+
+    // Test pour detecter si il y a plusieur capteurs du meme type dans la piece
+
+            // Innitialisation des variables qui contiennent le nombre de capteurs de la piece par type
+            $temperature = 0;
+            $luminosite = 0;
+            $fumee = 0;
+            $intrusion = 0;
+            while ($doublon_type = $req_doublon -> fetch())
+            {
+                if ($doublon_type == 'Temperature')
+                {
+                    $temperature++;
+                }
+                if ($doublon_type == 'Luminosite')
+                {
+                    $luminosite++;
+                }
+                if ($doublon_type == 'Fumee')
+                {
+                    $fumee++;
+                }
+                if ($doublon_type == 'Intrusion')
+                {
+                    $intrusion++;
+                }
+            }
+
 
 
     // Test pour savoir si il y a un capteur dans la salle
@@ -47,7 +82,7 @@
                 <a href='index.php?redirection=ajout_capteur_piece_client'> ici </a>.
                 </div><?php
             }
-  
+
 
 
 // BOUCLE POUR UN CAPTEUR
