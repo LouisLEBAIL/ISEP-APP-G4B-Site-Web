@@ -12,13 +12,12 @@
         <?php include 'vue/en_tete_client.php';?>
             <div id="bloc_page_3"> 
                 <div id="container_3">               
-                  <img src="picture/domotique1.png" alt="" />
-                  <img src="picture/domotique2.jpg" alt="" />
 
 
              <form method="post" action="">
                       <fieldset>
                             <h1><p><strong>Contactez nous</strong></p></h1>
+                  <img src="picture/domotique1.png" alt="" />
                             <p>
                                 <label for="email">Votre E-mail: </label>
                             </p>
