@@ -17,7 +17,6 @@
              <form method="post" action="">
                       <fieldset>
                             <h1><p><strong>Contactez nous</strong></p></h1>
-                  <img src="picture/domotique1.png" alt="" />
                             <p>
                                 <label for="email">Votre E-mail: </label>
                             </p>

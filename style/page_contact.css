@@ -2,11 +2,9 @@
 
 body
 {
-	background-image: url('../picture/domotique3.jpg');
+	background-image: url('../picture/domotique1.png');
     background-attachment: scroll; /* Le fond restera fixe */
     background-repeat: no-repeat;
-    background-position: right;
-    opacity: 0.9;
     color: #000000;
 }
 
@@ -32,15 +30,6 @@ body h1
     color: white;
     text-decoration: none;
 }
-
-
-#domotique1 img
-{
-	min-height: 2000px;
-    max-height: 15vh;
-    margin: top-right;
-}
-
 
 
 
