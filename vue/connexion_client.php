@@ -23,7 +23,7 @@
               <p><input type="text" name="login_client_connect"></p>
               <p><label for="mot de passe">Mot de passe:</label></p>
               <p><input type="password" name="mdpconnect"></p>
-              <p><a href="#">Mot de passe oublié</a></p>
+              <p><a href="index.php?redirection=mot_de_passe_oublie_1">Mot de passe oublié</a></p>
               <p><?php 
                 if(isset($erreur))
                 {

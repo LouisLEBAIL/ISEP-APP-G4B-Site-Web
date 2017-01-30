@@ -68,11 +68,21 @@ else
 		require"modele/ajout_capteur_piece_client.php";
 		require"vue/ajout_capteur_piece_client.php";
 	}
-	elseif($redirection=='generateur') /*Pour aller vers la de generatiopn de donnees de capteurs*/
+	elseif($redirection=='generateur') /*Pour aller vers la page de generatiopn de donnees de capteurs*/
 	{
 		require"modele/fonction_creation_donnee.php";
 		require"modele/generateur_donnee_capteur.php";
 		require"vue/generateur_donnee_capteur.php";
+	}
+	elseif($redirection=='mot_de_passe_oublie_1') /*Pour aller vers la page de mot de passe oublié*/
+	{
+		require"modele/mot_de_passe_oublie_1.php";
+		require"vue/mot_de_passe_oublie_1.php";
+	}
+	elseif($redirection=='mot_de_passe_oublie_2') /*Pour aller vers la page de mot de passe oublié*/
+	{
+		require"modele/mot_de_passe_oublie_2.php";
+		require"vue/mot_de_passe_oublie_2.php";
 	}
 	elseif ($redirection == 'deconnexion') /*Pour se deconnecter de la session*/
 	{
@@ -80,7 +90,6 @@ else
 		session_destroy(); /*detruit la session*/
 		header("Location: index.php"); /*redirige vers la page d'accueil*/
 	}
-
 }
 
 ?>
