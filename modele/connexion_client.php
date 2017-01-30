@@ -19,12 +19,12 @@ if(isset($_POST['formconnexionclient']))
     }
     else
     {
-      $erreur = "Login ou mot de passe érroné";
+      $erreur = "Login ou mot de passe erroné";
     }
   }
   else
   {
-    $erreur='Tous les champs doivent être remplies';
+    $erreur='Tous les champs doivent être remplis';
 
   }
 }
