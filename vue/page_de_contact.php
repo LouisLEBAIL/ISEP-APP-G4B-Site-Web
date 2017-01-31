@@ -8,12 +8,12 @@
 
         <title>Contact</title>
     </head>
-
+        <body>
             <?php include 'vue/en_tete_client.php';?>
             <div id="bloc_page_3"> 
                 <div id="container_3">               
 
-        <body>
+        <section>
              <form method="post" action="">
                       <fieldset>
                             <h1><p><strong>Contactez nous</strong></p></h1>
@@ -98,11 +98,11 @@
           ?>
           </div>
         </div>
-        </body>
+        </section>
 
     <?php include("vue/pied_de_page.php");?>
 
-
+    </body>
 </html>
 
 
