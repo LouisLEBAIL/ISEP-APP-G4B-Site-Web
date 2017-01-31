@@ -4,9 +4,12 @@ body
 {
 	background-image: url('../picture/domotique1.png');
     background-attachment: scroll; /* Le fond restera fixe */
-    background-repeat: no-repeat;
-    background-position: right;
+    background-repeat: repeat;
+    background-position: top-right;
     color: #000000;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 1.3em;
 }
 
 body h1
@@ -24,8 +27,8 @@ body h1
     left: 5px;
     background-color: #760001;
     border: 1px solid #330000;
-    border-radius: 5px;
-    font-size: 1.2em;
+    border-radius: 8px;
+    font-size: 1em;
     text-align: center;
     padding: 3px 8px 0px 8px;
     color: white;
