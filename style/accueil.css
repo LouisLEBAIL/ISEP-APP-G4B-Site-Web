@@ -4,6 +4,16 @@ body
 }
 
 /* BOUTON REFRESH */
+.ensemble_refresh
+{
+  display: flex;
+  margin-left: 60%;
+}
+
+.date
+{
+  margin-right: 10px;
+}
 
 .refresh a
 {
@@ -13,10 +23,8 @@ body
   color: #91d3d9;
   background-color: black;
   border: solid 2px black;
-  margin-left: 80%;
   text-decoration: none;
 }
-
 .refresh a:hover
 {
   justify-content: center;
@@ -25,7 +33,6 @@ body
   color: black;
   background-color: #91d3d9;
   border: solid 2px black;
-  margin-left: 80%;
   text-decoration: none;
 }
 

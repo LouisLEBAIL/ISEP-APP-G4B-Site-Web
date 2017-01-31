@@ -10,13 +10,28 @@
     <body>
     <?php include("en_tete_client.php");
  
- // BOUTON POUR RAFRAICHIR LA PAGE
 
-    ?><div class="refresh">
-        <p>
+
+// BOUTON POUR RAFRAICHIR LA PAGE
+
+    ?><div class="ensemble_refresh">
+        <p class="date"><?php
+
+    // Affichage de la date exacte actuelle
+            echo 'Dernière mise à jour : '; 
+            setlocale (LC_TIME, 'fr_FR.utf8','fra');
+            $date_donnee = time();
+            $date_donnee = date("Y-m-d H:i:s", $date_donnee);
+            echo $date_donnee; 
+
+    // Rafraichissemment de la page
+            ?>
+        </p>
+        <p class="refresh">
             <a href="javascript:window.location.reload()">Rafraichir la page</a>
         </p>
     </div><?php
+
 
 
 // BOUCLE POUR UNE PIECE
@@ -53,6 +68,8 @@
             $luminosite = 0;
             $fumee = 0;
             $intrusion = 0;
+            
+            // Decompte des capteurs par type de la piece
             while ($doublon_type = $req_doublon -> fetch())
             {
                 if ($doublon_type == 'Temperature')
