@@ -15,10 +15,7 @@
   <body>
     <?php include("en_tete_client.php");?>
       <div id="container_3">
-
-        <div id="preinscription">
-          <?php piece($_SESSION['id_client']);?>
-        </div
+      
       
         <form method="post" action="index.php?redirection=ajout_capteur_client">
           <fieldset>
