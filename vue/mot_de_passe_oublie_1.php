@@ -7,12 +7,13 @@
     </head>
     <body>
         <?php include 'en_tete.php';?>
-        <p>Veuillez entrer votre adresse E-mail, votre numéro de ce MAC afin de réinitialiser votre mot de passe.
+        <p>Veuillez entrer votre adresse E-mail, votre numéro de ce MAC afin de réinitialiser votre mot de passe.</p>
         <form action="" method="post">
-            <label><br /><br />E-mail :</label>
-            <input type="text" name="email"><br /><br /><br />
-            <label>Numéro de ceMAC :</label>
-            <input type="text" name="numero_serie_ceMAC"><br /><br /><br />
+            <br /><br />
+            <label>E-mail :</label><br />
+            <input type="text" name="email"><br /><br />
+            <label>Numéro de ceMAC :</label><br />
+            <input type="text" name="numero_serie_ceMAC"><br /><br />
             <?php
             if(isset($erreur))
                 {
@@ -20,7 +21,6 @@
                 }
             ?>
             <input type="submit" name="valider" value="valider">
-            </p>
         </form>
         <?php include 'pied_de_page.php';?>
     </body>

@@ -8,10 +8,10 @@
     <body>
         <?php include 'en_tete.php';?>
         <form action="" method="post">
-        <label>Nouveau mot de passe :</label>
-        <input type="" name="nouveau_mot_de_passe">
-        <label>Confirmation du nouveau mot de passe :</label>
-        <input type="" name="nouveau_mot_de_passe_validation">
+        <label>Nouveau mot de passe :</label><br />
+        <input type="" name="nouveau_mot_de_passe"><br /><br />
+        <label>Confirmation du nouveau mot de passe :</label><br />
+        <input type="" name="nouveau_mot_de_passe_validation"><br /><br />
         <input type="submit" name="valider" value="valider">
         </form>
         <?php
