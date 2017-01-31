@@ -1,11 +1,32 @@
+body
+{
+  flex-direction: column;
+}
+
 /* BOUTON REFRESH */
 
-.refresh
+.refresh a
 {
-  background-color: black;
-  color: white;
-  border: solid;
+  justify-content: center;
+  padding: 10px;
   border-radius: 10px;
+  color: #91d3d9;
+  background-color: black;
+  border: solid 2px black;
+  margin-left: 80%;
+  text-decoration: none;
+}
+
+.refresh a:hover
+{
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px; 
+  color: black;
+  background-color: #91d3d9;
+  border: solid 2px black;
+  margin-left: 80%;
+  text-decoration: none;
 }
 
 

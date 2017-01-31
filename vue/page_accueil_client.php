@@ -13,7 +13,9 @@
  // BOUTON POUR RAFRAICHIR LA PAGE
 
     ?><div class="refresh">
-        <a href="index.php?redirection=connecte">Rafraichir<br />la page</a>
+        <p>
+            <a href="javascript:window.location.reload()">Rafraichir la page</a>
+        </p>
     </div><?php
 
 
