@@ -5,6 +5,7 @@ body
 	background-image: url('../picture/domotique1.png');
     background-attachment: scroll; /* Le fond restera fixe */
     background-repeat: no-repeat;
+    background-position: right;
     color: #000000;
 }
 
