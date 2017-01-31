@@ -1,3 +1,18 @@
+/* BOUTON REFRESH */
+
+.refresh
+{
+  background-color: black;
+  color: white;
+  border: solid;
+  border-radius: 10px;
+}
+
+
+
+
+/* TABLEAU */
+
 .tous_les_encadres
 {
 	display: flex;

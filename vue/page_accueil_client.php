@@ -5,12 +5,16 @@
 
         <link rel="stylesheet" href="style/accueil.css" />
         <link rel="stylesheet" href="style/banniere.css" />
-        <link rel="stylesheet" href="style/menu.css" />
         <title>Page d'accueil</title>
     </head>
     <body>
     <?php include("en_tete_client.php");
-    
+ 
+ // BOUTON POUR RAFRAICHIR LA PAGE
+
+    ?><div class="refresh">
+        <a href="index.php?redirection=connecte">Rafraichir<br />la page</a>
+    </div><?php
 
 
 // BOUCLE POUR UNE PIECE
