@@ -36,6 +36,52 @@
               </div>
             </fieldset>
           </form>
+          <div id="preinscription">
+        <form method="post" action="">
+              <fieldset>
+                  <p>
+                    <label for="Identifiant">Numero Série ceMAC:</label>
+                  </p>
+                          <p>
+                            <input type="text" name="numeroseriecemac">
+                          </p>
+                          <p>
+                            <label for="Email">Email:</label>
+                          </p>
+                          <p>
+                            <input type="email" name="email">
+                          </p>
+        
+         
+                            <P>
+                              <label for="mot de passe">Mot de passe:</label>
+                            </P>
+                            <P>
+                              <input type="password" name="password_client">
+                            </p>
+                            <p>
+                              <label for="verification mot de passe ">Verification mot de passe: </label>
+                            </p>
+                            <p>
+                              <input type="password" name="password_client_verification">
+                            </p>
+         
+                            
+                            <div class="valider">
+                             <p>
+
+                                <input type="submit" name="formvalider" value="Ajouter"/>  
+                             </p>
+                </div>
+            </fieldset>
+            </form>
+                <?php 
+                  if(isset($erreur1))
+                {
+                  echo $erreur1;
+                }
+          ?>
+          </div>
           </div>
         </div>
       <?php include 'pied_de_page.php';?>
