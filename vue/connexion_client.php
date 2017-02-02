@@ -11,7 +11,7 @@
     </head>
     <body>
       <?php include 'en_tete.php';?>
-      <div>
+      <div >
         
 
         <div id="container">
@@ -36,7 +36,9 @@
               </div>
             </fieldset>
           </form>
-          <div id="preinscription">
+        </div>
+          <div id="login">
+          <h2>Inscription</h2>
         <form method="post" action="">
               <fieldset>
                   <p>
@@ -82,7 +84,7 @@
                 }
           ?>
           </div>
-          </div>
+
         </div>
       <?php include 'pied_de_page.php';?>
       </div>
