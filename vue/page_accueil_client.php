@@ -15,7 +15,8 @@
 // BOUTON POUR RAFRAICHIR LA PAGE
 
     ?><div class="ensemble_refresh">
-        <p class="date"><?php
+        <p class="date">
+        <?php
 
     // Affichage de la date exacte actuelle
             echo 'Dernière mise à jour : '; 
@@ -161,9 +162,14 @@
                 // Gestion du capteur de temperature
                             if ($type_du_capteur == 'Temperature') 
                             {
+                                ?>
+                                <div class="temperature">
+                                <?php
                                echo  '<img  src="picture/temperature.png" title="temperature" />';
 
-                                echo '<h1>'.$valeur.'°C'.'</h1>' ;?><br /><?php                         
+                                echo '<h1>'.$valeur.'°C'.'</h1>' ;?><br />
+                                </div><?php   
+
                             }
 
 
