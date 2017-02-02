@@ -214,7 +214,7 @@
                 // Gestion du capteur de luminosite
                             if ($type_du_capteur == 'Luminosite') 
                             {
-                                echo 'img  src="picture/temperature.png" title="temperature" />';
+                                echo '<img  src="picture/luminiosity.png" title="temperature" />';
                                 echo 'Pas encore pris en charge.';?><br /><br /><?php
                             }
 
