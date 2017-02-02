@@ -11,12 +11,12 @@ $reqappartement = $bdd -> prepare('SELECT * FROM appartement WHERE id_client=?')
 $reqappartement -> execute(array($_SESSION['id_client']));
 $appartement = $reqappartement -> fetch();
 $reqpiece=$bdd->prepare('SELECT * FROM piece WHERE nom_piece=? AND id_client=?');
-if(isset($_POST['pieces']) )
+if(isset($_POST['pieces']) AND isset($_POST['ajouter']) AND !empty($_POST['pieces']))
 {
 
   $reqpiece->execute(array($_POST['pieces'],$_SESSION['id_client']));
   $pieceexist=$reqpiece->rowCount();
-  if(isset($_POST['ajouter']) AND !empty($_POST['pieces']) AND $pieceexist==0 )
+  if( $pieceexist==0 )
   {
     $nompiece=$_POST['pieces'];
     $reqpiece = $bdd->prepare('INSERT INTO piece (nom_piece, id_appartement, id_maison, id_client) VALUES (:nom_piece, :id_appartement, :id_maison, :id_client)');

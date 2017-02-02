@@ -6,7 +6,7 @@ $reqpiece=$bdd->prepare('SELECT * FROM piece WHERE id_client=?');
 $reqpiece->execute(array($_SESSION['id_client']));
 
 
-$reqcapteur=$bdd->prepare('SELECT * FROM capteur WHERE id_client=?');
+$reqcapteur=$bdd->prepare('SELECT * FROM capteur WHERE id_client=? AND ISNULL(id_piece)');
 $reqcapteur->execute(array($_SESSION['id_client']));
 
 

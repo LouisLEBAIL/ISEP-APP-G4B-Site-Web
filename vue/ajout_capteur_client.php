@@ -4,10 +4,11 @@
 
     <head>
 
-        <meta charset="utf-8" /> <link rel="stylesheet" href="style/accueil_admin.css" />
-        <link rel="stylesheet" href="style/style.css" />
+        <meta charset="utf-8" /> 
+        
         <link rel="stylesheet" href="style/banniere.css" />
-        <meta charset="utf-8" /> <link rel="stylesheet" href="style/ajout_capteur_client.css" />
+        <meta charset="utf-8" /> <link rel="stylesheet" href="style/ajoutcapteur.css" />
+        
 
         <title>Ajout Capteur</title>
     </head>
@@ -18,19 +19,19 @@
       
       
         <form method="post" action="index.php?redirection=ajout_capteur_client">
-          <fieldset>
-          <p><label for="numerocapteur">Numero du Capteur </label></p>
-            <p><input type="number" name="numero_du_capteur" step="1" min="1" max="98""></p>
-            <p><label for="numeroserie">Numero Série</label></p>
-            <p><input type="text" name="numero_de_serie"></p>
-            <p><input type="submit" name="validercapteur" value="Valider"></p>
+         
+          <label for="numerocapteur">Numero du Capteur : </label>
+            <input type="number" name="numero_du_capteur" step="1" min="1" max="98"">
+            <label for="numeroserie">Numero Série :</label>
+            <input type="text" name="numero_de_serie">
+            <input type="submit" name="validercapteur" value="Valider">
             <p><?php 
             if(isset($erreur))
             {
               echo $erreur;
             }
              ?></p>
-          </fieldset>
+          
         </form>
         <?php
         $reqcapteur2 = $bdd -> prepare('SELECT * FROM capteur WHERE id_client=?');

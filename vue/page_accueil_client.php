@@ -147,9 +147,13 @@
 
 
     // Affichage des informations
-                    ?><div class='un_capteur'><br /><?php
+                    ?><div class='un_capteur'><?php
 
-                        echo $type_du_capteur ;?><br /><?php
+                        echo $type_du_capteur.':'.'<br/>' ;?>
+        
+
+
+                        <?php
 
                         ?><div class='boite_pour_un_capteur'><?php
 
@@ -157,7 +161,9 @@
                 // Gestion du capteur de temperature
                             if ($type_du_capteur == 'Temperature') 
                             {
-                                echo $valeur.' °C' ;?><br /><?php                         
+                               echo  '<img  src="picture/temperature.png" title="temperature" />';
+
+                                echo '<h1>'.$valeur.'°C'.'</h1>' ;?><br /><?php                         
                             }
 
 
@@ -166,6 +172,8 @@
                             {
                                 if ($valeur == 0) // Si il n y a pas de fumée
                                 {
+                                    echo  '<img  src="picture/fire.png" title="temperature" />';
+
                                     ?><div class='pre_circle'>
                                         <div class='circle_green'></div><br />
                                         </div><?php
@@ -200,12 +208,13 @@
                 // Gestion du capteur de luminosite
                             if ($type_du_capteur == 'Luminosite') 
                             {
+                                echo 'img  src="picture/temperature.png" title="temperature" />';
                                 echo 'Pas encore pris en charge.';?><br /><br /><?php
                             }
 
 
                 // Gestion de l etat du capteur
-                            echo 'Etat du capteur : ';
+                            echo '<p>'.'Etat du capteur : '.'</p>';
                             if ($etat_du_capteur == 0)
                             {
                                 ?><div class='pre_circle'>

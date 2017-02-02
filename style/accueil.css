@@ -50,13 +50,21 @@ body
 }
 .tous_les_capteurs
 {
-	border: solid;
-	width: 100%;
-	padding: auto;
+	
+	
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 0.5%;
+  border:solid 1px rgba(0,0,0,.2);
+  width:300px;
+  padding:50px;
+  margin:40px auto;
+  background:rgba(0,0,0,.2);
+  border-radius:10px;
+  box-shadow: 0 1px 12px rgba(0,0,0,.5);
+  -webkit-transition: box-shadow .15s, 
+    border .15s;
 }
 .une_piece
 {
@@ -66,13 +74,39 @@ body
 .un_capteur
 {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+
+  border:solid 1px rgba(0,0,0,.2);
+  width:300px;
+  padding:auto;
+  margin:40px auto;
+  background:rgba(0,0,0,.2);
+  border-radius:10px;
+  box-shadow: 0 1px 12px rgba(0,0,0,.5);
+  -webkit-transition: box-shadow .15s, 
+    border .15s;
+
+}
+.temperature
+{
+  border:solid;
+  display:flex;
+  flex-direction:row;
+}
+.etat_capteur
+{
+  display:flex;
+  border:solid;
+  
 }
 .boite_pour_un_capteur
 {
+  display:flex;
+
 	border: solid;
   margin: 0.5%;
   padding: auto;
+
 }
 .nom_piece
 {
