@@ -56,9 +56,10 @@
             $req_doublon = $bdd->prepare('SELECT type FROM capteur WHERE id_client=? AND id_piece=?');
             $req_doublon->execute(array($_SESSION['id_client'],$info_de_la_piece['id_piece']));
 
-            ?><div class='une_piece'><div class='nom_piece'>
-                <?php echo $info_de_la_piece['nom_piece'];?><br />
-            </div><?php
+            ?><div class='nom_piece'>
+                <?php echo '<h2>'.$info_de_la_piece['nom_piece'];'</h2>';?><br />
+            </div>
+            <div class='une_piece'><?php
  
 
 
@@ -151,12 +152,8 @@
                     ?><div class='un_capteur'><?php
 
                         echo $type_du_capteur.':'.'<hr/>' ;?>
-        
 
-
-                        <?php
-
-                        ?><div class='boite_pour_un_capteur'><?php
+                        <div class='boite_pour_un_capteur'><?php
 
 
                 // Gestion du capteur de temperature
@@ -164,10 +161,9 @@
                             {
                                 ?>
                                 <div class="temperature">
-                                <?php
-                               echo  '<img  src="picture/temperature.png" title="temperature" />';
-
-                                echo '<h1>'.$valeur.'°C'.'</h1>' ;?><br />
+                                    <?php
+                                    echo  '<img  src="picture/temperature.png" title="temperature" />';
+                                    echo '<h1>'.$valeur.'°C'.'</h1>' ;?><br />
                                 </div><?php   
 
                             }
@@ -220,38 +216,29 @@
 
 
                 // Gestion de l etat du capteur
-                            echo '<p>'.'Etat du capteur : '.'</p>';
-                            if ($etat_du_capteur == 0)
-                            {
-                                ?><div class='pre_circle'>
-                                    <div class='circle_green'></div><br />
-                                </div><?php
-                            }
-                            if ($etat_du_capteur == 1)
-                            {
-                                ?><div class='pre_circle'>
-                                    <div class='circle_orange'></div><br />
-                                </div><?php
-                            }
-                            if ($etat_du_capteur == 2)
-                            {
-                                ?><div class='pre_circle'>
-                                    <div class='circle_red'></div><br />
-                                </div><?php
-                            }
-                            if ($etat_du_capteur == 3)
-                            {
-                                ?><div class='pre_circle'>
-                                <div class='circle_black'></div><br />
-                                </div><?php
-                                echo 'Capteur Hors Service';?><br /><?php
-                                echo 'Veuillez remplacer la batterie';
-                            }
-
-
-
-
-                    ?></div>
+                            ?><div class='pre_circle'><?php
+                                echo '<p>'.'Etat du capteur : '.'</p>';
+                                if ($etat_du_capteur == 0)
+                                {
+                                    ?><div class='circle_green'></div><br /><?php
+                                }
+                                if ($etat_du_capteur == 1)
+                                {
+                                    ?><div class='circle_orange'></div><br /><?php
+                                }
+                                if ($etat_du_capteur == 2)
+                                {
+                                    ?><div class='circle_red'></div><br /><?php
+                                }
+                            ?></div><?php
+                                if ($etat_du_capteur == 3)
+                                {
+                                    ?><div class='circle_black'></div><br /><?php
+                                    echo 'Capteur Hors Service.';?><br /><br /><?php
+                                    echo 'Veuillez remplacer la batterie.';
+                                }
+                            
+                        ?></div>
                     </div><?php                 
                 }
                 ?></div><?php

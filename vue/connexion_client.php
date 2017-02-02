@@ -69,7 +69,7 @@
                             </p>
          
                             
-                            <div class="valider">
+                            <div id="valider">
                              <p>
 
                                 <input type="submit" name="formvalider" value="Ajouter"/>  
