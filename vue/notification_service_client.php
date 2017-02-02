@@ -40,8 +40,11 @@ window.webkitNotifications.requestPermission();
 
 }
 
-var notif = window.webkitNotifications.createNotification('logo_transparent.png', 'Bonjour de la part de DHomeLab', "Voici les statistiques de votre consommation énergétique ce mois-ci");
+var notif = window.webkitNotifications.createNotification('logo_transparent.png', 'Bonjour de la part de DHomeLab', "Voici les statistiques de votre consommation énergétique ce mois-ci concernant votre chauffage");
 
+var notif = window.webkitNotifications.createNotification('logo_transparent.png', 'Bonjour de la part de DHomeLab', "Voici les statistiques de votre consommation énergétique ce mois-ci concernant votre climatisation");
+
+var notif = window.webkitNotifications.createNotification('logo_transparent.png', 'Bonjour de la part de DHomeLab', "Voici les statistiques de votre consommation énergétique ce mois-ci concernant votre éclairage");
 
 					?>
          			</div>
