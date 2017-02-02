@@ -58,7 +58,7 @@ body
   justify-content: space-around;
   border:solid 1px rgba(0,0,0,.2);
   width:300px;
-  padding:50px;
+  padding:30px;
   margin:40px auto;
   background:rgba(0,0,0,.2);
   border-radius:10px;
@@ -71,12 +71,18 @@ body
   display: flex;
   margin-bottom: 5%;
 }
+hr
+{
+   width: 100%;
+   color:black; 
+   height: 2px;
+}
 .un_capteur
 {
   display: flex;
   flex-direction: column;
   border:solid 1px rgba(0,0,0,.2);
-  width:300px;
+  width:200px;
   padding:auto;
   margin:40px auto;
   background:rgba(0,0,0,.2);

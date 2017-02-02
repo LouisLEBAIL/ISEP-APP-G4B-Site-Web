@@ -150,7 +150,7 @@
     // Affichage des informations
                     ?><div class='un_capteur'><?php
 
-                        echo $type_du_capteur.':'.'<br/>' ;?>
+                        echo $type_du_capteur.':'.'<hr/>' ;?>
         
 
 
