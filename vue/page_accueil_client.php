@@ -38,23 +38,17 @@
 // BOUCLE POUR UNE PIECE
 
     ?><div class='tous_les_encadres'><?php
-        $req_id_piece = $bdd->prepare('SELECT id_piece,nom_piece FROM piece WHERE id_client=?');
-        $req_id_piece->execute(array($_SESSION['id_client']));
 
+        require 'modele/SQL_Page_Accueil/SQL_1.php';
+        
         while ($info_de_la_piece = $req_id_piece -> fetch())
         {  
 
 
 
     // Requetes a la base de donnee pour connaitre les capteurs d une piece ( deux requetes identiques car besoin de deux boucles sur id_capteur par la suite)
-            $req_id_capteur_test = $bdd->prepare('SELECT id_capteur FROM capteur WHERE id_client=? AND id_piece=?');
-            $req_id_capteur_test->execute(array($_SESSION['id_client'],$info_de_la_piece['id_piece']));
 
-            $req_id_capteur = $bdd->prepare('SELECT id_capteur FROM capteur WHERE id_client=? AND id_piece=?');
-            $req_id_capteur->execute(array($_SESSION['id_client'],$info_de_la_piece['id_piece']));
-
-            $req_doublon = $bdd->prepare('SELECT type FROM capteur WHERE id_client=? AND id_piece=?');
-            $req_doublon->execute(array($_SESSION['id_client'],$info_de_la_piece['id_piece']));
+            require 'modele/SQL_Page_Accueil/SQL_2.php';
 
             ?><div class='nom_piece'>
                 <?php echo '<h2>'.$info_de_la_piece['nom_piece'];'</h2>';?><br />
@@ -122,11 +116,7 @@
 
 
     // Requetes a la base de donnee
-                    $donnee_capteur = $bdd->prepare('SELECT * FROM donnee_capteur WHERE id_client=? AND id_capteur=?');
-                    $donnee_capteur->execute(array($_SESSION['id_client'],$id_du_capteur['id_capteur']));
-
-                    $capteur = $bdd->prepare('SELECT * FROM capteur WHERE  id_capteur=?');
-                    $capteur->execute(array($id_du_capteur['id_capteur']));
+                    require 'modele/SQL_Page_Accueil/SQL_3.php';
 
 
 
