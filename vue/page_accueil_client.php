@@ -174,9 +174,14 @@
                             {
                                 if ($valeur == 0) // Si il n y a pas de fumée
                                 {
+                                    ?>
+                                    <div class="temperature">
+                                    <?php
                                     echo  '<img  src="picture/fire.png" title="temperature" />';
+                                   ?> </div>
 
-                                    ?><div class='pre_circle'>
+
+                                    <div class='pre_circle'>
                                         <div class='circle_green'></div><br />
                                         </div><?php
                                 }
@@ -210,8 +215,12 @@
                 // Gestion du capteur de luminosite
                             if ($type_du_capteur == 'Luminosite') 
                             {
+                                ?> 
+                                <div class="temperature">
+                                <?php
                                 echo '<img  src="picture/luminiosity.png" title="temperature" />';
-                                echo 'Pas encore pris en charge.';?><br /><br /><?php
+                                echo ' ';?><br /><br />
+                                </div><?php
                             }
 
 
