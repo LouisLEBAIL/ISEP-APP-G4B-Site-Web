@@ -50,10 +50,9 @@
 
             require 'modele/SQL_Page_Accueil/SQL_2.php';
 
-            ?><div class='nom_piece'>
+            ?><div class='une_piece'><div class='nom_piece'>
                 <?php echo '<h2>'.$info_de_la_piece['nom_piece'];'</h2>';?><br />
-            </div>
-            <div class='une_piece'><?php
+            </div><?php
  
 
 
@@ -141,7 +140,7 @@
     // Affichage des informations
                     ?><div class='un_capteur'><?php
 
-                        echo $type_du_capteur.':'.'<hr/>' ;?>
+                        echo $type_du_capteur.':'.'<hr />' ;?>
 
                         <div class='boite_pour_un_capteur'><?php
 
@@ -150,10 +149,10 @@
                             if ($type_du_capteur == 'Temperature') 
                             {
                                 ?>
-                                <div class="temperature">
+                                <div class="image">
                                     <?php
-                                    echo  '<img  src="picture/temperature.png" title="temperature" />';
-                                    echo '<h1>'.$valeur.'°C'.'</h1>' ;?><br />
+                                    echo  '<img  src="picture/temperature.png" title="Temperature" />';
+                                    echo '<h3>'.$valeur.'°C'.'</h3>' ;?><br />
                                 </div><?php   
 
                             }
@@ -162,18 +161,17 @@
                 // Gestion du capteur de fumee
                             if ($type_du_capteur == 'Fumee') 
                             {
+                                ?><div class="image"><?php
+                                    echo  '<img  src="picture/fire.png" title="Fumée" />';
+                                ?></div><?php
+
+                                /* A REVOIR
+
                                 if ($valeur == 0) // Si il n y a pas de fumée
                                 {
-                                    ?>
-                                    <div class="temperature">
-                                    <?php
-                                    echo  '<img  src="picture/fire.png" title="temperature" />';
-                                   ?> </div>
-
-
-                                    <div class='pre_circle'>
+                                    ?><div class='pre_circle'>
                                         <div class='circle_green'></div><br />
-                                        </div><?php
+                                    </div><?php
                                 }
                                 if ($valeur == 1) // Si il y a de la fumee
                                 {
@@ -181,6 +179,8 @@
                                         <div class='circle_red'></div><br />
                                     </div><?php
                                 }
+
+                                */
                             }
 
 
@@ -206,9 +206,9 @@
                             if ($type_du_capteur == 'Luminosite') 
                             {
                                 ?> 
-                                <div class="temperature">
+                                <div class="image">
                                 <?php
-                                echo '<img  src="picture/luminiosity.png" title="temperature" />';
+                                echo '<img  src="picture/luminiosity.png" title="Luminosité" />';
                                 echo ' ';?><br /><br />
                                 </div><?php
                             }
@@ -216,7 +216,7 @@
 
                 // Gestion de l etat du capteur
                             ?><div class='pre_circle'><?php
-                                echo '<p>'.'Etat du capteur : '.'</p>';
+                                echo '<hr /  class="vertical">'.'<p>'.'Etat : '.'</p>';
                                 if ($etat_du_capteur == 0)
                                 {
                                     ?><div class='circle_green'></div><br /><?php
@@ -229,15 +229,12 @@
                                 {
                                     ?><div class='circle_red'></div><br /><?php
                                 }
-                            ?></div><?php
                                 if ($etat_du_capteur == 3)
                                 {
                                     ?><div class='circle_black'></div><br /><?php
-                                    echo 'Capteur Hors Service.';?><br /><br /><?php
-                                    echo 'Veuillez remplacer la batterie.';
                                 }
-                            
-                        ?></div>
+                            ?></div>                                                        
+                        </div>
                     </div><?php                 
                 }
                 ?></div><?php
