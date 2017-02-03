@@ -158,6 +158,9 @@
                             }
 
 
+
+
+
                 // Gestion du capteur de fumee
                             if ($type_du_capteur == 'Fumee') 
                             {
@@ -186,6 +189,16 @@
 
                 // Gestion du capteur de presence
                             if ($type_du_capteur == 'Intrusion')
+
+                                                 // Gestion du capteur d intrusion
+                            if ($type_du_capteur == 'Intrusion') 
+                            {
+                                ?>
+                                <div class="image">
+                                    <?php
+                                    echo  '<img  src="picture/house.png" title="Sécurité" />';?>
+                                </div><?php   
+                            }
                             {
                                 if ($valeur == 0) // Si il n y personne
                                 {
@@ -224,11 +237,7 @@
 
                 // Gestion de l actionneur de l alarme
 
-                            $req_alarme = $bdd -> prepare('SELECT valeur FROM donnee_capteur WHERE id_client=? AND id_capteur=?');
-                            $req_alarme -> execute(array(
-                                $_SESSION['id_client'],$id_capteur));
-                            $alarme = $req_alarme -> fetch();
-                            
+                            require 'modele/SQL_Page_Accueil/SQL_4.php';
 
                             if ($type_du_capteur == 'Alarme')
                             {
@@ -252,36 +261,36 @@
                 // Gestion de l etat du capteur SI CAPTEUR
                             if ($type_du_capteur == 'Luminosite' OR $type_du_capteur == 'Presence' OR $type_du_capteur == 'Fumee' OR $type_du_capteur == 'Temperature')
                             {
-                                ?><div class='pre_circle'><?php
-                                    echo '<hr /  class="vertical">'.'<p>'.'Etat : '.'</p>';
+                                echo '<hr /  class="vertical">';
+                                ?><div class='batterie'><?php
                                     if ($etat_du_capteur == 0)
                                     {
-                                        ?><div class='circle_green'></div><br /><?php
+                                        echo '<img  src="picture/battery_1.png" title="Batterie" />';
                                     }
-                                    if ($etat_du_capteur == 1)
+                                    elseif ($etat_du_capteur == 1)
                                     {
-                                        ?><div class='circle_orange'></div><br /><?php
+                                        echo '<img  src="picture/battery_2.png" title="Batterie" />';                                    
                                     }
-                                    if ($etat_du_capteur == 2)
+                                    elseif ($etat_du_capteur == 2)
                                     {
-                                        ?><div class='circle_red'></div><br /><?php
+                                        echo '<img  src="picture/battery_3.png" title="Batterie" />';
                                     }
-                                    if ($etat_du_capteur == 3)
+                                    elseif ($etat_du_capteur == 3)
                                     {
-                                        ?><div class='circle_black'></div><br /><?php
+                                        echo '<img  src="picture/battery_4.png" title="Batterie" />';
                                     }
                                 ?></div> <?php                                
                             } 
 
                 // Bouton ON/OFF NE METTRE QUE SI PAS DE BATTERIE CAPTEUR (Pb CSS)
-                            if ($type_du_capteur == 'Volet' OR $type_du_capteur == 'Alarme')
+                            if ($type_du_capteur == 'Volet' OR $type_du_capteur == 'Alarme' OR $type_du_capteur == 'Intrusion')
                             {
                                 echo '<hr /  class="vertical">';
 
                                 if ($alarme['valeur'] == 1)
                                 {
-                                    ?><form method="post">
-                                        <input type="submit" name="padlockon" value="valider1">
+                                    ?><form method="post" class='onoff'>
+                                        <input type="submit" name="padlockon" value="Alarme OFF">
                                     </form><?php
 
                                     if (isset($_POST['padlockon']))
@@ -291,12 +300,14 @@
                                             0,
                                             $id_capteur,
                                             $_SESSION['id_client']));
+
+                                        ?><meta http-equiv="refresh" content="0" /><?php
                                     }
                                 }
                                 elseif ($alarme['valeur'] == 0)
                                 {
-                                    ?><form method="post">
-                                        <input type="submit" name="padlockoff" value="valider2">
+                                    ?><form method="post" class='onoff'>
+                                        <input type="submit" name="padlockoff" value="Alarme ON">
                                     </form><?php
 
                                     if (isset($_POST['padlockoff']))
@@ -307,6 +318,8 @@
                                             1,
                                             $id_capteur,
                                             $_SESSION['id_client']));
+
+                                        ?><meta http-equiv="refresh" content="0" /><?php
                                     }
                                 }
                             }                      
