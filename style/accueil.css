@@ -1,12 +1,12 @@
 body
 {
   flex-direction: column;
-  zoom : 80%;
 }
 
 /* BOUTON REFRESH */
 .ensemble_refresh
 {
+  zoom : 80%;
   display: flex;
   margin-left: 60%;
   margin-top: -3%;
@@ -46,6 +46,7 @@ body
 
 .tous_les_encadres
 {
+  zoom : 80%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
