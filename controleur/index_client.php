@@ -84,6 +84,11 @@ else
 		require"modele/mot_de_passe_oublie_2.php";
 		require"vue/mot_de_passe_oublie_2.php";
 	}
+	elseif($redirection=="pagedecontact")
+	{
+		require"modele/Page_de_contacts.php";
+		require"vue/page_de_contact.php";
+	}
 	elseif ($redirection == 'deconnexion') /*Pour se deconnecter de la session*/
 	{
 		$_SESSION = array(); /*vider la variable session*/
