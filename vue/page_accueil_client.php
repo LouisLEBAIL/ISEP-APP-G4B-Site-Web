@@ -205,36 +205,112 @@
                 // Gestion du capteur de luminosite
                             if ($type_du_capteur == 'Luminosite') 
                             {
-                                ?> 
-                                <div class="image">
-                                <?php
-                                echo '<img  src="picture/luminiosity.png" title="Luminosité" />';
-                                echo ' ';?><br /><br />
+                                ?><div class="image"><?php
+                                    echo '<img  src="picture/luminiosity.png" title="Luminosité" />';
+                                    echo ' ';?><br /><br />
                                 </div><?php
                             }
 
 
-                // Gestion de l etat du capteur
-                            ?><div class='pre_circle'><?php
-                                echo '<hr /  class="vertical">'.'<p>'.'Etat : '.'</p>';
-                                if ($etat_du_capteur == 0)
+                // Gestion de l actionneur des volets
+                            if ($type_du_capteur == 'Volet')
+                            {
+                                ?><div class="image"><?php
+                                    echo '<img  src="picture/volet.png" title="Volets" />';
+                                    echo ' ';?><br /><br />
+                                </div><?php
+                            }
+
+
+                // Gestion de l actionneur de l alarme
+
+                            $req_alarme = $bdd -> prepare('SELECT valeur FROM donnee_capteur WHERE id_client=? AND id_capteur=?');
+                            $req_alarme -> execute(array(
+                                $_SESSION['id_client'],$id_capteur));
+                            $alarme = $req_alarme -> fetch();
+                            
+
+                            if ($type_du_capteur == 'Alarme')
+                            {
+                                if ($alarme['valeur'] == 1)
                                 {
-                                    ?><div class='circle_green'></div><br /><?php
+                                ?><div class="image"><?php
+                                    echo '<img  src="picture/padlock.png" title="Alarme" />';
+                                    echo ' ';?><br /><br />
+                                </div><?php                    
                                 }
-                                if ($etat_du_capteur == 1)
+                                elseif ($alarme['valeur'] == 0)
                                 {
-                                    ?><div class='circle_orange'></div><br /><?php
+                                ?><div class="image"><?php
+                                    echo '<img  src="picture/unlocked.png" title="Alarme" />';
+                                    echo ' ';?><br /><br />
+                                </div><?php                                
                                 }
-                                if ($etat_du_capteur == 2)
+                            }
+
+
+                // Gestion de l etat du capteur SI CAPTEUR
+                            if ($type_du_capteur == 'Luminosite' OR $type_du_capteur == 'Presence' OR $type_du_capteur == 'Fumee' OR $type_du_capteur == 'Temperature')
+                            {
+                                ?><div class='pre_circle'><?php
+                                    echo '<hr /  class="vertical">'.'<p>'.'Etat : '.'</p>';
+                                    if ($etat_du_capteur == 0)
+                                    {
+                                        ?><div class='circle_green'></div><br /><?php
+                                    }
+                                    if ($etat_du_capteur == 1)
+                                    {
+                                        ?><div class='circle_orange'></div><br /><?php
+                                    }
+                                    if ($etat_du_capteur == 2)
+                                    {
+                                        ?><div class='circle_red'></div><br /><?php
+                                    }
+                                    if ($etat_du_capteur == 3)
+                                    {
+                                        ?><div class='circle_black'></div><br /><?php
+                                    }
+                                ?></div> <?php                                
+                            } 
+
+                // Bouton ON/OFF NE METTRE QUE SI PAS DE BATTERIE CAPTEUR (Pb CSS)
+                            if ($type_du_capteur == 'Volet' OR $type_du_capteur == 'Alarme')
+                            {
+                                echo '<hr /  class="vertical">';
+
+                                if ($alarme['valeur'] == 1)
                                 {
-                                    ?><div class='circle_red'></div><br /><?php
+                                    ?><form method="post">
+                                        <input type="submit" name="padlockon" value="valider1">
+                                    </form><?php
+
+                                    if (isset($_POST['padlockon']))
+                                    {
+                                        $a = $bdd -> prepare('UPDATE donnee_capteur SET valeur=? WHERE id_capteur=? AND id_client=?');
+                                        $a -> execute(array(
+                                            0,
+                                            $id_capteur,
+                                            $_SESSION['id_client']));
+                                    }
                                 }
-                                if ($etat_du_capteur == 3)
+                                elseif ($alarme['valeur'] == 0)
                                 {
-                                    ?><div class='circle_black'></div><br /><?php
+                                    ?><form method="post">
+                                        <input type="submit" name="padlockoff" value="valider2">
+                                    </form><?php
+
+                                    if (isset($_POST['padlockoff']))
+                                    {
+
+                                        $b = $bdd -> prepare('UPDATE donnee_capteur SET valeur=? WHERE id_capteur=? AND id_client=?');
+                                        $b -> execute(array(
+                                            1,
+                                            $id_capteur,
+                                            $_SESSION['id_client']));
+                                    }
                                 }
-                            ?></div>                                                        
-                        </div>
+                            }                      
+                        ?></div>
                     </div><?php                 
                 }
                 ?></div><?php

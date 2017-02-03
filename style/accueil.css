@@ -181,3 +181,55 @@ hr
   border-radius: 10px;
 }
 
+/* SWITCH ON/OFF */
+
+.switch{
+   display:none;
+}
+.ui-content{
+   background: -webkit-linear-gradient(top,#dedede,#fefefe);
+   border-radius: 20px;
+   display: inline-block;
+   float: right;
+   height: 26px;
+   overflow: hidden;
+   padding: 5px;
+}
+.ui-switch-range{
+   background: #FFF;
+   border: 1px #cfc8bc solid;
+   border-radius: 15px;
+   box-shadow: 0 1px 1px rgba(255, 255, 255, 1), 0 1px 1px rgba(0, 0, 0, .15) inset;
+   display: inline-block;
+   height: 20px;
+   margin-bottom: 15px;
+   padding: 2px;
+   position: relative;
+   width: 70px;
+}
+.switch:checked ~ label .ui-switch-range{
+   background: -webkit-linear-gradient(top,#fa9100,#f44800);
+}
+.ui-switch-handle{
+   background: -webkit-linear-gradient(top,#f7f5f2,#e3dfd6);
+   border-radius: 20px;
+   box-shadow: 0 1px 3px 1px rgba(0,0,0,.3), 0 1px 1px rgba(255,255,255,.8) inset;
+   display: inline-block;
+   height: 20px;
+   position: absolute;
+   width: 20px;
+}
+.switch:checked ~ label .ui-switch-handle{
+   right: 2px;
+}
+.ui-switch-handle:before{
+   margin-left: -30px;
+   line-height: 22px;
+   content: "ON";
+   color: #FFF;
+}
+.ui-switch-handle:after{
+   position: relative;
+   right: -35px;
+   content: "OFF";
+}

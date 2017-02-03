@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.1.14
+-- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 26 Janvier 2017 à 19:43
--- Version du serveur :  5.7.14
--- Version de PHP :  5.6.25
+-- Généré le :  Ven 03 Février 2017 à 11:39
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de données :  `bdd_site`
@@ -26,11 +26,13 @@ SET time_zone = "+00:00";
 -- Structure de la table `administrateur`
 --
 
-CREATE TABLE `administrateur` (
-  `id_administrateur` int(10) UNSIGNED ZEROFILL NOT NULL,
+CREATE TABLE IF NOT EXISTS `administrateur` (
+  `id_administrateur` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `login_administrateur` varchar(255) NOT NULL,
-  `password_administrateur` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `password_administrateur` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_administrateur`),
+  UNIQUE KEY `login` (`login_administrateur`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `administrateur`
@@ -45,14 +47,24 @@ INSERT INTO `administrateur` (`id_administrateur`, `login_administrateur`, `pass
 -- Structure de la table `appartement`
 --
 
-CREATE TABLE `appartement` (
-  `id_appartement` int(10) UNSIGNED ZEROFILL NOT NULL,
-  `id_client` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
-  `id_immeuble` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
-  `surface` int(10) UNSIGNED NOT NULL COMMENT 'Surface de l''appartement',
-  `etage` int(10) UNSIGNED NOT NULL COMMENT 'Etage de l''appartement',
-  `numero` int(10) UNSIGNED NOT NULL COMMENT 'Numero de l''apartement'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `appartement` (
+  `id_appartement` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `id_client` int(10) unsigned zerofill DEFAULT NULL,
+  `id_immeuble` int(10) unsigned zerofill DEFAULT NULL,
+  `surface` int(10) unsigned NOT NULL COMMENT 'Surface de l''appartement',
+  `etage` int(10) unsigned NOT NULL COMMENT 'Etage de l''appartement',
+  `numero` int(10) unsigned NOT NULL COMMENT 'Numero de l''apartement',
+  PRIMARY KEY (`id_appartement`),
+  KEY `id_client` (`id_client`),
+  KEY `id_immeuble` (`id_immeuble`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `appartement`
+--
+
+INSERT INTO `appartement` (`id_appartement`, `id_client`, `id_immeuble`, `surface`, `etage`, `numero`) VALUES
+(0000000001, 0000000004, 0000000001, 100, 2, 123);
 
 -- --------------------------------------------------------
 
@@ -60,37 +72,48 @@ CREATE TABLE `appartement` (
 -- Structure de la table `capteur`
 --
 
-CREATE TABLE `capteur` (
-  `id_capteur` int(10) UNSIGNED ZEROFILL NOT NULL,
+CREATE TABLE IF NOT EXISTS `capteur` (
+  `id_capteur` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `type` varchar(255) NOT NULL,
   `numero_serie_capteur` varchar(20) NOT NULL,
-  `numero_capteur` int(10) UNSIGNED ZEROFILL NOT NULL,
-  `etat` int(10) UNSIGNED NOT NULL COMMENT 'chiffre entre 0(bon) et 3(mauvais)',
-  `id_piece` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
-  `id_client` int(10) UNSIGNED ZEROFILL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `numero_capteur` int(2) unsigned zerofill NOT NULL,
+  `etat` int(10) unsigned NOT NULL COMMENT 'chiffre entre 0(bon) et 3(mauvais)',
+  `id_piece` int(10) unsigned zerofill DEFAULT NULL,
+  `id_client` int(10) unsigned zerofill DEFAULT NULL,
+  PRIMARY KEY (`id_capteur`),
+  KEY `id_piece` (`id_piece`,`id_client`),
+  KEY `id_client` (`id_client`),
+  KEY `numero_serie_capteur` (`numero_serie_capteur`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
 
 --
 -- Contenu de la table `capteur`
 --
 
 INSERT INTO `capteur` (`id_capteur`, `type`, `numero_serie_capteur`, `numero_capteur`, `etat`, `id_piece`, `id_client`) VALUES
-(0000000001, 'Temperature', 'T0000000002', 0000000001, 0, 0000000003, 0000000003),
-(0000000002, 'Temperature', 'T0000000003', 0000000002, 3, 0000000003, 0000000003),
-(0000000003, 'Luminosite', 'L0000000001', 0000000003, 1, 0000000003, 0000000003),
-(0000000004, 'Fumee', 'F0000000001', 0000000004, 0, 0000000003, 0000000003),
-(0000000005, 'Intrusion', 'I0000000002', 0000000005, 0, 0000000003, 0000000003),
-(0000000006, 'Temperature', 'T0000000005', 0000000006, 0, 0000000004, 0000000003),
-(0000000007, 'Luminosite', 'L0000000003', 0000000007, 1, 0000000004, 0000000003),
-(0000000008, 'Fumee', 'F0000000003', 0000000008, 2, 0000000004, 0000000003),
-(0000000009, 'Temperature', 'T0000000004', 0000000004, 0, 0000000005, 0000000003),
-(0000000010, 'Luminosite', 'L0000000002', 0000000010, 0, 0000000005, 0000000003),
-(0000000011, 'Fumee', 'F0000000002', 0000000011, 2, 0000000005, 0000000003),
-(0000000012, 'Intrusion', 'I0000000001', 0000000012, 0, 0000000005, 0000000003),
-(0000000013, 'Temperature', 'T0000000006', 0000000013, 0, 0000000006, 0000000003),
-(0000000014, 'Luminosite', 'L0000000004', 0000000014, 0, 0000000006, 0000000003),
-(0000000015, 'Fumee', 'F0000000004', 0000000015, 0, 0000000006, 0000000003),
-(0000000016, 'Intrusion', 'I0000000003', 0000000016, 0, 0000000006, 0000000003);
+(0000000001, 'Temperature', 'T0000000002', 01, 0, 0000000003, 0000000003),
+(0000000002, 'Temperature', 'T0000000003', 02, 3, 0000000003, 0000000003),
+(0000000003, 'Luminosite', 'L0000000001', 03, 1, 0000000003, 0000000003),
+(0000000004, 'Fumee', 'F0000000001', 04, 0, 0000000003, 0000000003),
+(0000000005, 'Intrusion', 'I0000000002', 05, 0, 0000000003, 0000000003),
+(0000000006, 'Temperature', 'T0000000005', 06, 0, 0000000004, 0000000003),
+(0000000007, 'Luminosite', 'L0000000003', 07, 1, 0000000004, 0000000003),
+(0000000008, 'Fumee', 'F0000000003', 08, 2, 0000000004, 0000000003),
+(0000000009, 'Temperature', 'T0000000004', 04, 0, 0000000005, 0000000003),
+(0000000010, 'Luminosite', 'L0000000002', 10, 0, 0000000005, 0000000003),
+(0000000011, 'Fumee', 'F0000000002', 11, 2, 0000000005, 0000000003),
+(0000000012, 'Intrusion', 'I0000000001', 12, 0, 0000000005, 0000000003),
+(0000000013, 'Temperature', 'T0000000006', 13, 0, 0000000006, 0000000003),
+(0000000014, 'Luminosite', 'L0000000004', 14, 0, 0000000006, 0000000003),
+(0000000015, 'Fumee', 'F0000000004', 15, 0, 0000000006, 0000000003),
+(0000000016, 'Intrusion', 'I0000000003', 16, 0, 0000000006, 0000000003),
+(0000000017, 'Temperature', 'T0000000001', 01, 0, 0000000008, 0000000004),
+(0000000019, 'Fumee', 'F0000000001', 03, 0, 0000000008, 0000000004),
+(0000000020, 'Presence', 'I0000000001', 04, 0, 0000000009, 0000000004),
+(0000000021, 'Temperature', 'T0000000003', 05, 0, 0000000009, 0000000004),
+(0000000022, 'Temperature', 'T0000000004', 06, 0, 0000000008, 0000000004),
+(0000000023, 'Luminosite', 'L0000000001', 07, 0, 0000000008, 0000000004),
+(0000000028, 'Alarme', 'A0000000001', 12, 0, NULL, 0000000004);
 
 -- --------------------------------------------------------
 
@@ -98,8 +121,9 @@ INSERT INTO `capteur` (`id_capteur`, `type`, `numero_serie_capteur`, `numero_cap
 -- Structure de la table `cemac`
 --
 
-CREATE TABLE `cemac` (
-  `numero_serie_ceMAC` varchar(20) NOT NULL
+CREATE TABLE IF NOT EXISTS `cemac` (
+  `numero_serie_ceMAC` varchar(20) NOT NULL,
+  PRIMARY KEY (`numero_serie_ceMAC`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -124,8 +148,8 @@ INSERT INTO `cemac` (`numero_serie_ceMAC`) VALUES
 -- Structure de la table `client`
 --
 
-CREATE TABLE `client` (
-  `id_client` int(10) UNSIGNED ZEROFILL NOT NULL,
+CREATE TABLE IF NOT EXISTS `client` (
+  `id_client` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) DEFAULT NULL,
   `prenom` varchar(255) DEFAULT NULL,
   `date_de_naissance` date DEFAULT NULL,
@@ -133,15 +157,23 @@ CREATE TABLE `client` (
   `telephone_mobile` int(11) DEFAULT NULL,
   `telephone_fixe` int(11) DEFAULT NULL,
   `numero_serie_ceMAC` varchar(20) NOT NULL,
-  `password_client` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `password_client` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_client`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `telephone_mobile` (`telephone_mobile`),
+  UNIQUE KEY `telephone_fixe` (`telephone_fixe`),
+  KEY `numero_serie_ceMAC` (`numero_serie_ceMAC`),
+  KEY `numero_serie_ceMAC_2` (`numero_serie_ceMAC`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `client`
 --
 
 INSERT INTO `client` (`id_client`, `nom`, `prenom`, `date_de_naissance`, `email`, `telephone_mobile`, `telephone_fixe`, `numero_serie_ceMAC`, `password_client`) VALUES
-(0000000003, 'Client', 'Client', '2017-01-23', 'client@gmail.com', 606060606, 303030303, 'CM0001', 'd2a04d71301a8915217dd5faf81d12cffd6cd958');
+(0000000003, 'Client', 'Client', '2017-01-23', 'client@gmail.com', 606060606, 303030303, 'CM0001', 'd2a04d71301a8915217dd5faf81d12cffd6cd958'),
+(0000000004, 'bank', 'cody', '0000-00-00', 'cody@gmail.com', 685252624, 625252424, 'CM0002', 'bdd240c8fe7174e6ac1cfdd5282de76eb7ad6815'),
+(0000000005, NULL, NULL, NULL, 'bower.jack@gmail.com', NULL, NULL, 'CM0003', '206e3ce5fc4ce687422f7c1bd717b8b6bb7859c0');
 
 -- --------------------------------------------------------
 
@@ -149,13 +181,16 @@ INSERT INTO `client` (`id_client`, `nom`, `prenom`, `date_de_naissance`, `email`
 -- Structure de la table `donnee_capteur`
 --
 
-CREATE TABLE `donnee_capteur` (
-  `id_donnee_capteur` int(10) UNSIGNED ZEROFILL NOT NULL,
+CREATE TABLE IF NOT EXISTS `donnee_capteur` (
+  `id_donnee_capteur` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `dates` datetime NOT NULL,
   `valeur` text NOT NULL,
-  `id_capteur` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
-  `id_client` int(10) UNSIGNED ZEROFILL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_capteur` int(10) unsigned zerofill DEFAULT NULL,
+  `id_client` int(10) unsigned zerofill DEFAULT NULL,
+  PRIMARY KEY (`id_donnee_capteur`),
+  KEY `id_capteur` (`id_capteur`,`id_client`),
+  KEY `id_client` (`id_client`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=352 ;
 
 --
 -- Contenu de la table `donnee_capteur`
@@ -177,7 +212,223 @@ INSERT INTO `donnee_capteur` (`id_donnee_capteur`, `dates`, `valeur`, `id_capteu
 (0000000013, '2017-01-23 23:25:43', '24', 0000000013, 0000000003),
 (0000000014, '2017-01-23 18:19:59', '10', 0000000014, 0000000003),
 (0000000015, '2017-01-23 23:59:59', '0', 0000000015, 0000000003),
-(0000000016, '2017-01-23 10:18:49', '0', 0000000016, 0000000003);
+(0000000016, '2017-01-23 10:18:49', '0', 0000000016, 0000000003),
+(0000000023, '2017-02-02 15:31:45', '25', 0000000017, 0000000004),
+(0000000024, '2017-02-03 15:31:45', '23', 0000000017, 0000000004),
+(0000000025, '2017-02-04 15:31:45', '25', 0000000017, 0000000004),
+(0000000026, '2017-02-05 15:31:45', '28', 0000000017, 0000000004),
+(0000000027, '2017-02-06 15:31:45', '27', 0000000017, 0000000004),
+(0000000028, '2017-02-07 15:31:45', '23', 0000000017, 0000000004),
+(0000000029, '2017-02-08 15:31:45', '23', 0000000017, 0000000004),
+(0000000030, '2017-02-09 15:31:45', '23', 0000000017, 0000000004),
+(0000000031, '2017-02-10 15:31:45', '21', 0000000017, 0000000004),
+(0000000032, '2017-02-11 15:31:45', '15', 0000000017, 0000000004),
+(0000000033, '2017-02-12 15:31:45', '27', 0000000017, 0000000004),
+(0000000085, '2017-02-02 15:34:58', '0', 0000000019, 0000000004),
+(0000000086, '2017-02-03 15:34:58', '0', 0000000019, 0000000004),
+(0000000087, '2017-02-04 15:34:58', '0', 0000000019, 0000000004),
+(0000000088, '2017-02-05 15:34:58', '0', 0000000019, 0000000004),
+(0000000089, '2017-02-06 15:34:58', '0', 0000000019, 0000000004),
+(0000000090, '2017-02-07 15:34:58', '0', 0000000019, 0000000004),
+(0000000091, '2017-02-08 15:34:58', '0', 0000000019, 0000000004),
+(0000000092, '2017-02-09 15:34:58', '0', 0000000019, 0000000004),
+(0000000093, '2017-02-10 15:34:58', '0', 0000000019, 0000000004),
+(0000000094, '2017-02-11 15:34:58', '0', 0000000019, 0000000004),
+(0000000095, '2017-02-12 15:34:58', '0', 0000000019, 0000000004),
+(0000000096, '2017-02-13 15:34:58', '0', 0000000019, 0000000004),
+(0000000097, '2017-02-14 15:34:58', '0', 0000000019, 0000000004),
+(0000000098, '2017-02-15 15:34:58', '0', 0000000019, 0000000004),
+(0000000099, '2017-02-16 15:34:58', '0', 0000000019, 0000000004),
+(0000000100, '2017-02-17 15:34:58', '0', 0000000019, 0000000004),
+(0000000101, '2017-02-18 15:34:58', '0', 0000000019, 0000000004),
+(0000000102, '2017-02-19 15:34:58', '0', 0000000019, 0000000004),
+(0000000103, '2017-02-20 15:34:58', '0', 0000000019, 0000000004),
+(0000000104, '2017-02-21 15:34:58', '0', 0000000019, 0000000004),
+(0000000105, '2017-02-22 15:34:58', '0', 0000000019, 0000000004),
+(0000000106, '2017-02-23 15:34:58', '0', 0000000019, 0000000004),
+(0000000107, '2017-02-24 15:34:58', '0', 0000000019, 0000000004),
+(0000000108, '2017-02-25 15:34:58', '0', 0000000019, 0000000004),
+(0000000109, '2017-02-26 15:34:58', '0', 0000000019, 0000000004),
+(0000000110, '2017-02-27 15:34:58', '0', 0000000019, 0000000004),
+(0000000111, '2017-02-28 15:34:58', '0', 0000000019, 0000000004),
+(0000000112, '2017-03-01 15:34:58', '0', 0000000019, 0000000004),
+(0000000113, '2017-03-02 15:34:58', '0', 0000000019, 0000000004),
+(0000000114, '2017-03-03 15:34:58', '0', 0000000019, 0000000004),
+(0000000115, '2017-03-04 15:34:58', '0', 0000000019, 0000000004),
+(0000000116, '2017-03-05 15:34:58', '0', 0000000019, 0000000004),
+(0000000117, '2017-03-06 15:34:58', '0', 0000000019, 0000000004),
+(0000000118, '2017-03-07 15:34:58', '0', 0000000019, 0000000004),
+(0000000119, '2017-03-08 15:34:59', '0', 0000000019, 0000000004),
+(0000000120, '2017-03-09 15:34:59', '0', 0000000019, 0000000004),
+(0000000121, '2017-03-10 15:34:59', '0', 0000000019, 0000000004),
+(0000000122, '2017-03-11 15:34:59', '0', 0000000019, 0000000004),
+(0000000123, '2017-03-12 15:34:59', '0', 0000000019, 0000000004),
+(0000000124, '2017-03-13 15:34:59', '0', 0000000019, 0000000004),
+(0000000125, '2017-03-14 15:34:59', '0', 0000000019, 0000000004),
+(0000000126, '2017-03-15 15:34:59', '0', 0000000019, 0000000004),
+(0000000127, '2017-03-16 15:34:59', '0', 0000000019, 0000000004),
+(0000000128, '2017-03-17 15:34:59', '0', 0000000019, 0000000004),
+(0000000129, '2017-03-18 15:34:59', '0', 0000000019, 0000000004),
+(0000000130, '2017-03-19 15:34:59', '0', 0000000019, 0000000004),
+(0000000131, '2017-03-20 15:34:59', '0', 0000000019, 0000000004),
+(0000000132, '2017-03-21 15:34:59', '0', 0000000019, 0000000004),
+(0000000133, '2017-03-22 15:34:59', '0', 0000000019, 0000000004),
+(0000000134, '2017-03-23 15:34:59', '0', 0000000019, 0000000004),
+(0000000135, '2017-03-24 15:34:59', '0', 0000000019, 0000000004),
+(0000000136, '2017-02-04 00:21:23', '24', 0000000017, 0000000004),
+(0000000137, '2017-02-05 00:21:23', '22', 0000000017, 0000000004),
+(0000000138, '2017-02-06 00:21:23', '23', 0000000017, 0000000004),
+(0000000139, '2017-02-07 00:21:23', '20', 0000000017, 0000000004),
+(0000000140, '2017-02-08 00:21:23', '24', 0000000017, 0000000004),
+(0000000141, '2017-02-09 00:21:23', '17', 0000000017, 0000000004),
+(0000000142, '2017-02-10 00:21:23', '30', 0000000017, 0000000004),
+(0000000143, '2017-02-11 00:21:23', '24', 0000000017, 0000000004),
+(0000000144, '2017-02-12 00:21:23', '22', 0000000017, 0000000004),
+(0000000145, '2017-02-13 00:21:23', '24', 0000000017, 0000000004),
+(0000000146, '2017-02-14 00:21:23', '27', 0000000017, 0000000004),
+(0000000147, '2017-02-15 00:21:23', '24', 0000000017, 0000000004),
+(0000000148, '2017-02-16 00:21:23', '21', 0000000017, 0000000004),
+(0000000149, '2017-02-17 00:21:23', '33', 0000000017, 0000000004),
+(0000000150, '2017-02-18 00:21:23', '27', 0000000017, 0000000004),
+(0000000151, '2017-02-19 00:21:23', '23', 0000000017, 0000000004),
+(0000000152, '2017-02-20 00:21:23', '17', 0000000017, 0000000004),
+(0000000153, '2017-02-21 00:21:23', '26', 0000000017, 0000000004),
+(0000000154, '2017-02-22 00:21:23', '24', 0000000017, 0000000004),
+(0000000155, '2017-02-23 00:21:23', '25', 0000000017, 0000000004),
+(0000000156, '2017-02-24 00:21:23', '24', 0000000017, 0000000004),
+(0000000157, '2017-02-25 00:21:23', '22', 0000000017, 0000000004),
+(0000000158, '2017-02-26 00:21:23', '24', 0000000017, 0000000004),
+(0000000159, '2017-02-27 00:21:23', '24', 0000000017, 0000000004),
+(0000000160, '2017-02-28 00:21:23', '19', 0000000017, 0000000004),
+(0000000161, '2017-03-01 00:21:23', '25', 0000000017, 0000000004),
+(0000000162, '2017-03-02 00:21:23', '23', 0000000017, 0000000004),
+(0000000163, '2017-03-03 00:21:23', '24', 0000000017, 0000000004),
+(0000000164, '2017-03-04 00:21:23', '23', 0000000017, 0000000004),
+(0000000165, '2017-03-05 00:21:23', '24', 0000000017, 0000000004),
+(0000000166, '2017-03-06 00:21:23', '24', 0000000017, 0000000004),
+(0000000167, '2017-03-07 00:21:23', '23', 0000000017, 0000000004),
+(0000000168, '2017-03-08 00:21:23', '23', 0000000017, 0000000004),
+(0000000169, '2017-03-09 00:21:23', '28', 0000000017, 0000000004),
+(0000000170, '2017-03-10 00:21:23', '24', 0000000017, 0000000004),
+(0000000171, '2017-03-11 00:21:23', '26', 0000000017, 0000000004),
+(0000000172, '2017-03-12 00:21:23', '24', 0000000017, 0000000004),
+(0000000173, '2017-03-13 00:21:23', '25', 0000000017, 0000000004),
+(0000000174, '2017-03-14 00:21:23', '22', 0000000017, 0000000004),
+(0000000175, '2017-03-15 00:21:23', '26', 0000000017, 0000000004),
+(0000000176, '2017-03-16 00:21:23', '23', 0000000017, 0000000004),
+(0000000177, '2017-03-17 00:21:23', '22', 0000000017, 0000000004),
+(0000000178, '2017-03-18 00:21:23', '26', 0000000017, 0000000004),
+(0000000179, '2017-03-19 00:21:23', '18', 0000000017, 0000000004),
+(0000000180, '2017-03-20 00:21:23', '24', 0000000017, 0000000004),
+(0000000181, '2017-03-21 00:21:23', '20', 0000000017, 0000000004),
+(0000000182, '2017-03-22 00:21:23', '24', 0000000017, 0000000004),
+(0000000183, '2017-03-23 00:21:23', '22', 0000000017, 0000000004),
+(0000000184, '2017-03-24 00:21:23', '28', 0000000017, 0000000004),
+(0000000185, '2017-03-25 00:21:23', '23', 0000000017, 0000000004),
+(0000000186, '2017-03-26 00:21:23', '30', 0000000017, 0000000004),
+(0000000238, '2017-02-04 00:21:32', '25', 0000000021, 0000000004),
+(0000000239, '2017-02-05 00:21:32', '27', 0000000021, 0000000004),
+(0000000240, '2017-02-06 00:21:32', '20', 0000000021, 0000000004),
+(0000000241, '2017-02-07 00:21:32', '19', 0000000021, 0000000004),
+(0000000242, '2017-02-08 00:21:32', '23', 0000000021, 0000000004),
+(0000000243, '2017-02-09 00:21:32', '26', 0000000021, 0000000004),
+(0000000244, '2017-02-10 00:21:32', '24', 0000000021, 0000000004),
+(0000000245, '2017-02-11 00:21:32', '24', 0000000021, 0000000004),
+(0000000246, '2017-02-12 00:21:32', '30', 0000000021, 0000000004),
+(0000000247, '2017-02-13 00:21:32', '28', 0000000021, 0000000004),
+(0000000248, '2017-02-14 00:21:32', '24', 0000000021, 0000000004),
+(0000000249, '2017-02-15 00:21:32', '21', 0000000021, 0000000004),
+(0000000250, '2017-02-16 00:21:32', '22', 0000000021, 0000000004),
+(0000000251, '2017-02-17 00:21:32', '14', 0000000021, 0000000004),
+(0000000252, '2017-02-18 00:21:32', '25', 0000000021, 0000000004),
+(0000000253, '2017-02-19 00:21:32', '25', 0000000021, 0000000004),
+(0000000254, '2017-02-20 00:21:32', '29', 0000000021, 0000000004),
+(0000000255, '2017-02-21 00:21:32', '23', 0000000021, 0000000004),
+(0000000256, '2017-02-22 00:21:32', '24', 0000000021, 0000000004),
+(0000000257, '2017-02-23 00:21:32', '23', 0000000021, 0000000004),
+(0000000258, '2017-02-24 00:21:32', '21', 0000000021, 0000000004),
+(0000000259, '2017-02-25 00:21:32', '24', 0000000021, 0000000004),
+(0000000260, '2017-02-26 00:21:32', '25', 0000000021, 0000000004),
+(0000000261, '2017-02-27 00:21:32', '22', 0000000021, 0000000004),
+(0000000262, '2017-02-28 00:21:32', '25', 0000000021, 0000000004),
+(0000000263, '2017-03-01 00:21:32', '23', 0000000021, 0000000004),
+(0000000264, '2017-03-02 00:21:32', '24', 0000000021, 0000000004),
+(0000000265, '2017-03-03 00:21:32', '24', 0000000021, 0000000004),
+(0000000266, '2017-03-04 00:21:32', '24', 0000000021, 0000000004),
+(0000000267, '2017-03-05 00:21:32', '28', 0000000021, 0000000004),
+(0000000268, '2017-03-06 00:21:32', '22', 0000000021, 0000000004),
+(0000000269, '2017-03-07 00:21:32', '21', 0000000021, 0000000004),
+(0000000270, '2017-03-08 00:21:32', '24', 0000000021, 0000000004),
+(0000000271, '2017-03-09 00:21:32', '26', 0000000021, 0000000004),
+(0000000272, '2017-03-10 00:21:32', '24', 0000000021, 0000000004),
+(0000000273, '2017-03-11 00:21:32', '28', 0000000021, 0000000004),
+(0000000274, '2017-03-12 00:21:32', '24', 0000000021, 0000000004),
+(0000000275, '2017-03-13 00:21:32', '21', 0000000021, 0000000004),
+(0000000276, '2017-03-14 00:21:32', '20', 0000000021, 0000000004),
+(0000000277, '2017-03-15 00:21:32', '20', 0000000021, 0000000004),
+(0000000278, '2017-03-16 00:21:32', '24', 0000000021, 0000000004),
+(0000000279, '2017-03-17 00:21:32', '28', 0000000021, 0000000004),
+(0000000280, '2017-03-18 00:21:32', '25', 0000000021, 0000000004),
+(0000000281, '2017-03-19 00:21:32', '22', 0000000021, 0000000004),
+(0000000282, '2017-03-20 00:21:32', '16', 0000000021, 0000000004),
+(0000000283, '2017-03-21 00:21:32', '25', 0000000021, 0000000004),
+(0000000284, '2017-03-22 00:21:32', '29', 0000000021, 0000000004),
+(0000000285, '2017-03-23 00:21:32', '27', 0000000021, 0000000004),
+(0000000286, '2017-03-24 00:21:32', '26', 0000000021, 0000000004),
+(0000000287, '2017-03-25 00:21:32', '21', 0000000021, 0000000004),
+(0000000288, '2017-03-26 00:21:32', '22', 0000000021, 0000000004),
+(0000000289, '2017-02-04 00:21:34', '21', 0000000022, 0000000004),
+(0000000290, '2017-02-05 00:21:34', '24', 0000000022, 0000000004),
+(0000000291, '2017-02-06 00:21:34', '21', 0000000022, 0000000004),
+(0000000292, '2017-02-07 00:21:34', '24', 0000000022, 0000000004),
+(0000000293, '2017-02-08 00:21:34', '26', 0000000022, 0000000004),
+(0000000294, '2017-02-09 00:21:34', '26', 0000000022, 0000000004),
+(0000000295, '2017-02-10 00:21:34', '26', 0000000022, 0000000004),
+(0000000296, '2017-02-11 00:21:34', '24', 0000000022, 0000000004),
+(0000000297, '2017-02-12 00:21:34', '24', 0000000022, 0000000004),
+(0000000298, '2017-02-13 00:21:34', '26', 0000000022, 0000000004),
+(0000000299, '2017-02-14 00:21:34', '24', 0000000022, 0000000004),
+(0000000300, '2017-02-15 00:21:34', '30', 0000000022, 0000000004),
+(0000000301, '2017-02-16 00:21:34', '23', 0000000022, 0000000004),
+(0000000302, '2017-02-17 00:21:34', '26', 0000000022, 0000000004),
+(0000000303, '2017-02-18 00:21:34', '32', 0000000022, 0000000004),
+(0000000304, '2017-02-19 00:21:34', '23', 0000000022, 0000000004),
+(0000000305, '2017-02-20 00:21:34', '26', 0000000022, 0000000004),
+(0000000306, '2017-02-21 00:21:34', '20', 0000000022, 0000000004),
+(0000000307, '2017-02-22 00:21:34', '21', 0000000022, 0000000004),
+(0000000308, '2017-02-23 00:21:34', '26', 0000000022, 0000000004),
+(0000000309, '2017-02-24 00:21:34', '25', 0000000022, 0000000004),
+(0000000310, '2017-02-25 00:21:34', '24', 0000000022, 0000000004),
+(0000000311, '2017-02-26 00:21:34', '24', 0000000022, 0000000004),
+(0000000312, '2017-02-27 00:21:34', '24', 0000000022, 0000000004),
+(0000000313, '2017-02-28 00:21:34', '25', 0000000022, 0000000004),
+(0000000314, '2017-03-01 00:21:35', '23', 0000000022, 0000000004),
+(0000000315, '2017-03-02 00:21:35', '30', 0000000022, 0000000004),
+(0000000316, '2017-03-03 00:21:35', '22', 0000000022, 0000000004),
+(0000000317, '2017-03-04 00:21:35', '22', 0000000022, 0000000004),
+(0000000318, '2017-03-05 00:21:35', '24', 0000000022, 0000000004),
+(0000000319, '2017-03-06 00:21:35', '24', 0000000022, 0000000004),
+(0000000320, '2017-03-07 00:21:35', '24', 0000000022, 0000000004),
+(0000000321, '2017-03-08 00:21:35', '24', 0000000022, 0000000004),
+(0000000322, '2017-03-09 00:21:35', '22', 0000000022, 0000000004),
+(0000000323, '2017-03-10 00:21:35', '27', 0000000022, 0000000004),
+(0000000324, '2017-03-11 00:21:35', '23', 0000000022, 0000000004),
+(0000000325, '2017-03-12 00:21:35', '28', 0000000022, 0000000004),
+(0000000326, '2017-03-13 00:21:35', '17', 0000000022, 0000000004),
+(0000000327, '2017-03-14 00:21:35', '23', 0000000022, 0000000004),
+(0000000328, '2017-03-15 00:21:35', '24', 0000000022, 0000000004),
+(0000000329, '2017-03-16 00:21:35', '26', 0000000022, 0000000004),
+(0000000330, '2017-03-17 00:21:35', '25', 0000000022, 0000000004),
+(0000000331, '2017-03-18 00:21:35', '25', 0000000022, 0000000004),
+(0000000332, '2017-03-19 00:21:35', '30', 0000000022, 0000000004),
+(0000000333, '2017-03-20 00:21:35', '24', 0000000022, 0000000004),
+(0000000334, '2017-03-21 00:21:35', '22', 0000000022, 0000000004),
+(0000000335, '2017-03-22 00:21:35', '14', 0000000022, 0000000004),
+(0000000336, '2017-03-23 00:21:35', '24', 0000000022, 0000000004),
+(0000000337, '2017-03-24 00:21:35', '23', 0000000022, 0000000004),
+(0000000338, '2017-03-25 00:21:35', '23', 0000000022, 0000000004),
+(0000000339, '2017-03-26 00:21:35', '22', 0000000022, 0000000004),
+(0000000340, '2017-01-23 05:18:14', '0', 0000000028, 0000000004);
 
 -- --------------------------------------------------------
 
@@ -185,14 +436,23 @@ INSERT INTO `donnee_capteur` (`id_donnee_capteur`, `dates`, `valeur`, `id_capteu
 -- Structure de la table `immeuble`
 --
 
-CREATE TABLE `immeuble` (
-  `id_immeuble` int(10) UNSIGNED ZEROFILL NOT NULL,
-  `code_postal` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `immeuble` (
+  `id_immeuble` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `code_postal` int(10) unsigned NOT NULL,
   `ville` varchar(255) NOT NULL,
   `adresse_1` varchar(255) NOT NULL,
   `adresse_2` varchar(255) NOT NULL,
-  `id_client` int(10) UNSIGNED ZEROFILL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_client` int(10) unsigned zerofill DEFAULT NULL,
+  PRIMARY KEY (`id_immeuble`),
+  KEY `id_client` (`id_client`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `immeuble`
+--
+
+INSERT INTO `immeuble` (`id_immeuble`, `code_postal`, `ville`, `adresse_1`, `adresse_2`, `id_client`) VALUES
+(0000000001, 75008, 'champs elysee', '75 rue rivoli', '', 0000000004);
 
 -- --------------------------------------------------------
 
@@ -200,15 +460,18 @@ CREATE TABLE `immeuble` (
 -- Structure de la table `maison`
 --
 
-CREATE TABLE `maison` (
-  `id_maison` int(10) UNSIGNED ZEROFILL NOT NULL,
-  `code_postal` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `maison` (
+  `id_maison` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `code_postal` int(10) unsigned NOT NULL,
   `ville` varchar(255) NOT NULL,
   `adresse_1` varchar(255) NOT NULL,
   `adresse_2` varchar(255) NOT NULL,
-  `id_client` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
-  `surface` int(11) NOT NULL COMMENT 'Surface de la maison'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_client` int(10) unsigned zerofill DEFAULT NULL,
+  `surface` int(11) NOT NULL COMMENT 'Surface de la maison',
+  PRIMARY KEY (`id_maison`),
+  KEY `id_client` (`id_client`),
+  KEY `id_client_2` (`id_client`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `maison`
@@ -223,12 +486,14 @@ INSERT INTO `maison` (`id_maison`, `code_postal`, `ville`, `adresse_1`, `adresse
 -- Structure de la table `messagerie`
 --
 
-CREATE TABLE `messagerie` (
-  `id_messagerie` int(10) UNSIGNED ZEROFILL NOT NULL,
+CREATE TABLE IF NOT EXISTS `messagerie` (
+  `id_messagerie` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `message` text NOT NULL,
-  `id_client` int(10) UNSIGNED ZEROFILL NOT NULL,
-  `date_message` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_client` int(10) unsigned zerofill NOT NULL,
+  `date_message` date NOT NULL,
+  PRIMARY KEY (`id_messagerie`),
+  KEY `id_client` (`id_client`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -236,8 +501,9 @@ CREATE TABLE `messagerie` (
 -- Structure de la table `numero_serie_capteur`
 --
 
-CREATE TABLE `numero_serie_capteur` (
-  `numero_serie_capteur` varchar(20) NOT NULL
+CREATE TABLE IF NOT EXISTS `numero_serie_capteur` (
+  `numero_serie_capteur` varchar(20) NOT NULL,
+  PRIMARY KEY (`numero_serie_capteur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -245,6 +511,8 @@ CREATE TABLE `numero_serie_capteur` (
 --
 
 INSERT INTO `numero_serie_capteur` (`numero_serie_capteur`) VALUES
+('A0000000001'),
+('A0000000002'),
 ('F0000000001'),
 ('F0000000002'),
 ('F0000000003'),
@@ -284,7 +552,9 @@ INSERT INTO `numero_serie_capteur` (`numero_serie_capteur`) VALUES
 ('T0000000007'),
 ('T0000000008'),
 ('T0000000009'),
-('T0000000010');
+('T0000000010'),
+('W0000000001'),
+('W0000000002');
 
 -- --------------------------------------------------------
 
@@ -292,13 +562,19 @@ INSERT INTO `numero_serie_capteur` (`numero_serie_capteur`) VALUES
 -- Structure de la table `piece`
 --
 
-CREATE TABLE `piece` (
-  `id_piece` int(10) UNSIGNED ZEROFILL NOT NULL,
+CREATE TABLE IF NOT EXISTS `piece` (
+  `id_piece` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `nom_piece` varchar(255) NOT NULL,
-  `id_appartement` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
-  `id_maison` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
-  `id_client` int(10) UNSIGNED ZEROFILL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_appartement` int(10) unsigned zerofill DEFAULT NULL,
+  `id_maison` int(10) unsigned zerofill DEFAULT NULL,
+  `id_client` int(10) unsigned zerofill DEFAULT NULL,
+  PRIMARY KEY (`id_piece`),
+  KEY `id_client` (`id_client`,`id_appartement`),
+  KEY `id_immeuble` (`id_appartement`),
+  KEY `id_maison` (`id_maison`),
+  KEY `id_appartement` (`id_appartement`),
+  KEY `id_maison_2` (`id_maison`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Contenu de la table `piece`
@@ -309,7 +585,11 @@ INSERT INTO `piece` (`id_piece`, `nom_piece`, `id_appartement`, `id_maison`, `id
 (0000000004, 'Chambre', NULL, 0000000003, 0000000003),
 (0000000005, 'Cuisine', NULL, 0000000003, 0000000003),
 (0000000006, 'Bureau', NULL, 0000000003, 0000000003),
-(0000000007, 'Garage', NULL, 0000000003, 0000000003);
+(0000000007, 'Garage', NULL, 0000000003, 0000000003),
+(0000000008, 'chambre de cody', 0000000001, NULL, 0000000004),
+(0000000009, 'cuisine', 0000000001, NULL, 0000000004),
+(0000000010, 'verranda', 0000000001, NULL, 0000000004),
+(0000000011, 'chambre de bank', 0000000001, NULL, 0000000004);
 
 -- --------------------------------------------------------
 
@@ -317,165 +597,14 @@ INSERT INTO `piece` (`id_piece`, `nom_piece`, `id_appartement`, `id_maison`, `id
 -- Structure de la table `service_client`
 --
 
-CREATE TABLE `service_client` (
-  `id_service_client` int(10) UNSIGNED ZEROFILL NOT NULL,
+CREATE TABLE IF NOT EXISTS `service_client` (
+  `id_service_client` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `email_service_client` varchar(255) NOT NULL,
-  `password_service_client` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `password_service_client` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_service_client`),
+  UNIQUE KEY `login` (`email_service_client`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Index pour les tables exportées
---
-
---
--- Index pour la table `administrateur`
---
-ALTER TABLE `administrateur`
-  ADD PRIMARY KEY (`id_administrateur`),
-  ADD UNIQUE KEY `login` (`login_administrateur`);
-
---
--- Index pour la table `appartement`
---
-ALTER TABLE `appartement`
-  ADD PRIMARY KEY (`id_appartement`),
-  ADD KEY `id_client` (`id_client`),
-  ADD KEY `id_immeuble` (`id_immeuble`);
-
---
--- Index pour la table `capteur`
---
-ALTER TABLE `capteur`
-  ADD PRIMARY KEY (`id_capteur`),
-  ADD KEY `id_piece` (`id_piece`,`id_client`),
-  ADD KEY `id_client` (`id_client`),
-  ADD KEY `numero_serie_capteur` (`numero_serie_capteur`);
-
---
--- Index pour la table `cemac`
---
-ALTER TABLE `cemac`
-  ADD PRIMARY KEY (`numero_serie_ceMAC`);
-
---
--- Index pour la table `client`
---
-ALTER TABLE `client`
-  ADD PRIMARY KEY (`id_client`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `telephone_mobile` (`telephone_mobile`),
-  ADD UNIQUE KEY `telephone_fixe` (`telephone_fixe`),
-  ADD KEY `numero_serie_ceMAC` (`numero_serie_ceMAC`),
-  ADD KEY `numero_serie_ceMAC_2` (`numero_serie_ceMAC`);
-
---
--- Index pour la table `donnee_capteur`
---
-ALTER TABLE `donnee_capteur`
-  ADD PRIMARY KEY (`id_donnee_capteur`),
-  ADD KEY `id_capteur` (`id_capteur`,`id_client`),
-  ADD KEY `id_client` (`id_client`);
-
---
--- Index pour la table `immeuble`
---
-ALTER TABLE `immeuble`
-  ADD PRIMARY KEY (`id_immeuble`),
-  ADD KEY `id_client` (`id_client`);
-
---
--- Index pour la table `maison`
---
-ALTER TABLE `maison`
-  ADD PRIMARY KEY (`id_maison`),
-  ADD KEY `id_client` (`id_client`),
-  ADD KEY `id_client_2` (`id_client`);
-
---
--- Index pour la table `messagerie`
---
-ALTER TABLE `messagerie`
-  ADD PRIMARY KEY (`id_messagerie`),
-  ADD KEY `id_client` (`id_client`);
-
---
--- Index pour la table `numero_serie_capteur`
---
-ALTER TABLE `numero_serie_capteur`
-  ADD PRIMARY KEY (`numero_serie_capteur`);
-
---
--- Index pour la table `piece`
---
-ALTER TABLE `piece`
-  ADD PRIMARY KEY (`id_piece`),
-  ADD KEY `id_client` (`id_client`,`id_appartement`),
-  ADD KEY `id_immeuble` (`id_appartement`),
-  ADD KEY `id_maison` (`id_maison`),
-  ADD KEY `id_appartement` (`id_appartement`),
-  ADD KEY `id_maison_2` (`id_maison`);
-
---
--- Index pour la table `service_client`
---
-ALTER TABLE `service_client`
-  ADD PRIMARY KEY (`id_service_client`),
-  ADD UNIQUE KEY `login` (`email_service_client`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `administrateur`
---
-ALTER TABLE `administrateur`
-  MODIFY `id_administrateur` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT pour la table `appartement`
---
-ALTER TABLE `appartement`
-  MODIFY `id_appartement` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `capteur`
---
-ALTER TABLE `capteur`
-  MODIFY `id_capteur` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
---
--- AUTO_INCREMENT pour la table `client`
---
-ALTER TABLE `client`
-  MODIFY `id_client` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT pour la table `donnee_capteur`
---
-ALTER TABLE `donnee_capteur`
-  MODIFY `id_donnee_capteur` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
---
--- AUTO_INCREMENT pour la table `immeuble`
---
-ALTER TABLE `immeuble`
-  MODIFY `id_immeuble` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `maison`
---
-ALTER TABLE `maison`
-  MODIFY `id_maison` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT pour la table `messagerie`
---
-ALTER TABLE `messagerie`
-  MODIFY `id_messagerie` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `piece`
---
-ALTER TABLE `piece`
-  MODIFY `id_piece` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT pour la table `service_client`
---
-ALTER TABLE `service_client`
-  MODIFY `id_service_client` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
 --
 -- Contraintes pour les tables exportées
 --
@@ -491,42 +620,42 @@ ALTER TABLE `appartement`
 -- Contraintes pour la table `capteur`
 --
 ALTER TABLE `capteur`
-  ADD CONSTRAINT `capteur_ibfk_1` FOREIGN KEY (`id_piece`) REFERENCES `piece` (`id_piece`),
-  ADD CONSTRAINT `capteur_ibfk_2` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`),
-  ADD CONSTRAINT `capteur_ibfk_3` FOREIGN KEY (`numero_serie_capteur`) REFERENCES `numero_serie_capteur` (`numero_serie_capteur`);
+  ADD CONSTRAINT `capteur_ibfk_2` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `capteur_ibfk_1` FOREIGN KEY (`id_piece`) REFERENCES `piece` (`id_piece`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `capteur_ibfk_3` FOREIGN KEY (`numero_serie_capteur`) REFERENCES `numero_serie_capteur` (`numero_serie_capteur`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `donnee_capteur`
 --
 ALTER TABLE `donnee_capteur`
-  ADD CONSTRAINT `donnee_capteur_ibfk_1` FOREIGN KEY (`id_capteur`) REFERENCES `capteur` (`id_capteur`),
-  ADD CONSTRAINT `donnee_capteur_ibfk_2` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`);
+  ADD CONSTRAINT `donnee_capteur_ibfk_2` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `donnee_capteur_ibfk_1` FOREIGN KEY (`id_capteur`) REFERENCES `capteur` (`id_capteur`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `immeuble`
 --
 ALTER TABLE `immeuble`
-  ADD CONSTRAINT `immeuble_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`);
+  ADD CONSTRAINT `immeuble_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `maison`
 --
 ALTER TABLE `maison`
-  ADD CONSTRAINT `maison_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`);
+  ADD CONSTRAINT `maison_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `messagerie`
 --
 ALTER TABLE `messagerie`
-  ADD CONSTRAINT `messagerie_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`);
+  ADD CONSTRAINT `messagerie_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `piece`
 --
 ALTER TABLE `piece`
-  ADD CONSTRAINT `piece_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`),
-  ADD CONSTRAINT `piece_ibfk_2` FOREIGN KEY (`id_appartement`) REFERENCES `appartement` (`id_appartement`),
-  ADD CONSTRAINT `piece_ibfk_3` FOREIGN KEY (`id_maison`) REFERENCES `maison` (`id_maison`);
+  ADD CONSTRAINT `piece_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `piece_ibfk_2` FOREIGN KEY (`id_appartement`) REFERENCES `appartement` (`id_appartement`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `piece_ibfk_3` FOREIGN KEY (`id_maison`) REFERENCES `maison` (`id_maison`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -18,6 +18,18 @@ function type_capteur($numeroserie)
   {
     $type2="Luminosite";
   }
+  elseif($type1=="W")
+  {
+    $type2="Volet";
+  }
+  elseif($type1=="P")
+  {
+    $type2="Prise";
+  }
+  elseif($type1=="A")
+  {
+    $type2="Alarme";
+  }
   return $type2;
 }
 ?>
