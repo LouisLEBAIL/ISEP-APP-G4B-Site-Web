@@ -9,4 +9,7 @@ $req_id_capteur->execute(array($_SESSION['id_client'],$info_de_la_piece['id_piec
 $req_doublon = $bdd->prepare('SELECT type FROM capteur WHERE id_client=? AND id_piece=?');
 $req_doublon->execute(array($_SESSION['id_client'],$info_de_la_piece['id_piece']));
 
+$req_triple = $bdd->prepare('SELECT etat FROM capteur WHERE id_client=? AND id_piece=?');
+$req_triple->execute(array($_SESSION['id_client'],$info_de_la_piece['id_piece']));
+
 ?>

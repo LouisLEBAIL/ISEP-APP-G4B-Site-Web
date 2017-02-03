@@ -40,6 +40,7 @@
     ?><div class='tous_les_encadres'><?php
 
         require 'modele/SQL_Page_Accueil/SQL_1.php';
+        $increment = 0;  // Increment pour avoir un nom unique par bouton valider
         
         while ($info_de_la_piece = $req_id_piece -> fetch())
         {  
@@ -49,6 +50,7 @@
     // Requetes a la base de donnee pour connaitre les capteurs d une piece ( deux requetes identiques car besoin de deux boucles sur id_capteur par la suite)
 
             require 'modele/SQL_Page_Accueil/SQL_2.php';
+            $increment++;
 
             ?><div class='une_piece'><div class='nom_piece'>
                 <?php echo '<h2>'.$info_de_la_piece['nom_piece'];'</h2>';?><br />
@@ -102,6 +104,12 @@
             }
 
 
+// CSS d un capteur en etat critique
+
+
+// CSS si le capteur n as pas de probleme
+
+
 
 // BOUCLE POUR UN CAPTEUR
 
@@ -120,7 +128,9 @@
 
 
     // Calcul des donnes a afficher
+                    $increment++;
                     $id_capteur = $id_du_capteur['id_capteur'];
+
                     while ($infos_de_la_table_capteur = $capteur -> fetch())  // Pour les infos de la table capteur
                     {
                 // Sortie: type de capteur
@@ -135,7 +145,7 @@
                         $valeur = $infos_de_la_table_donnee_capteur['valeur'];
                     }
 
-
+                    
 
     // Affichage des informations
                     ?><div class='un_capteur'><?php
@@ -289,11 +299,11 @@
 
                                 if ($alarme['valeur'] == 1)
                                 {
-                                    ?><form method="post" class='onoff'>
-                                        <input type="submit" name="padlockon" value="Alarme OFF">
-                                    </form><?php
+                                    ?><form method="post" class='onoff'><?php
+                                        echo '<input type="submit" name="padlockon['.$increment.']" value="Alarme OFF">';
+                                    ?></form><?php
 
-                                    if (isset($_POST['padlockon']))
+                                    if (isset($_POST['padlockon[$increment]']))
                                     {
                                         $a = $bdd -> prepare('UPDATE donnee_capteur SET valeur=? WHERE id_capteur=? AND id_client=?');
                                         $a -> execute(array(
@@ -306,11 +316,11 @@
                                 }
                                 elseif ($alarme['valeur'] == 0)
                                 {
-                                    ?><form method="post" class='onoff'>
-                                        <input type="submit" name="padlockoff" value="Alarme ON">
-                                    </form><?php
+                                    ?><form method="post" class='onoff'><?php
+                                        echo '<input type="submit" name="padlockon['.$increment.']" value="Alarme ON">';
+                                    ?></form><?php
 
-                                    if (isset($_POST['padlockoff']))
+                                    if (isset($_POST['padlockoff[$increment]']))
                                     {
 
                                         $b = $bdd -> prepare('UPDATE donnee_capteur SET valeur=? WHERE id_capteur=? AND id_client=?');
