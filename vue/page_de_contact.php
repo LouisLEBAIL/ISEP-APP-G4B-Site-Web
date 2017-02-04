@@ -10,8 +10,9 @@
     </head>
         <body>
             <?php include 'vue/en_tete_client.php';?>
-            <div id="bloc_page_3"> 
-                <div id="container_3">               
+            
+                <div id="container_3">  
+                <div class="formulaire">           
 
         
         
@@ -48,6 +49,7 @@
                      
 
                 </form>
+                </div>
                 
                 <?php 
                   if(isset($erreur))
@@ -56,7 +58,7 @@
                 }
           ?>
           </div>
-        </div>
+        
         
 
     <?php include("vue/pied_de_page.php");?>

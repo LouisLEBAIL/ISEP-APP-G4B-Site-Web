@@ -41,7 +41,7 @@
 
         require 'modele/SQL_Page_Accueil/SQL_1.php';
         $increment = 0;  // Increment pour avoir un nom unique par bouton valider
-        
+        $i=0;
         while ($info_de_la_piece = $req_id_piece -> fetch())
         {  
 
@@ -291,6 +291,7 @@
                                     }
                                 ?></div> <?php                                
                             } 
+                            
 
                 // Bouton ON/OFF NE METTRE QUE SI PAS DE BATTERIE CAPTEUR (Pb CSS)
                             if ($type_du_capteur == 'Volet' OR $type_du_capteur == 'Alarme' OR $type_du_capteur == 'Intrusion')
@@ -299,15 +300,20 @@
 
                                 if ($alarme['valeur'] == 1)
                                 {
-                                    ?><form method="post" class='onoff'><?php
-                                        echo '<input type="submit" name="padlockon['.$increment.']" value="Alarme OFF">';
-                                    ?></form><?php
+                                    ?>
+                                    <form method="post" class='onoff'>
+                                    <?php
 
-                                    if (isset($_POST['padlockon[$increment]']))
+                                  echo' <input type="submit" name="padlockoff'.$i.'" value="Alarme OFF">'?>
+                                    </form><?php
+                                    
+
+                                    if (isset($_POST['padlockoff'.$i.'']))
                                     {
                                         $a = $bdd -> prepare('UPDATE donnee_capteur SET valeur=? WHERE id_capteur=? AND id_client=?');
+                                        $var=0;
                                         $a -> execute(array(
-                                            0,
+                                            $var,
                                             $id_capteur,
                                             $_SESSION['id_client']));
 
@@ -316,22 +322,25 @@
                                 }
                                 elseif ($alarme['valeur'] == 0)
                                 {
-                                    ?><form method="post" class='onoff'><?php
-                                        echo '<input type="submit" name="padlockon['.$increment.']" value="Alarme ON">';
-                                    ?></form><?php
+                                    ?><form method="post" class='onoff'>
+                                        <?php echo'<input type="submit" name="padlockon'.$i.'" value="Alarme ON">'?>
+                                    </form><?php
 
-                                    if (isset($_POST['padlockoff[$increment]']))
+                                    if (isset($_POST['padlockon'.$i.'']))
                                     {
 
                                         $b = $bdd -> prepare('UPDATE donnee_capteur SET valeur=? WHERE id_capteur=? AND id_client=?');
+                                        $var1=1;
                                         $b -> execute(array(
-                                            1,
+                                            $var1,
                                             $id_capteur,
                                             $_SESSION['id_client']));
 
                                         ?><meta http-equiv="refresh" content="0" /><?php
                                     }
+                                    echo $alarme['valeur'];
                                 }
+                                $i++;
                             }                      
                         ?></div>
                     </div><?php                 
@@ -339,6 +348,7 @@
                 ?></div><?php
             }         
             ?></div><?php
+            
         }
     ?></div>
     <?php include("pied_de_page.php");?>   

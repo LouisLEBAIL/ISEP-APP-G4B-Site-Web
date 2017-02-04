@@ -22,12 +22,9 @@ input[type=text],input[type=email],input[type=password],input[type=tel] {
     border .15s;
 
 }
-input [type=submit]{
- box-shadow: 0 0 2px rgba(255,255,255,.05), 
-    inset 0 0 2px rgba(0,0,0,.15);
-  border:solid 1px #222;
-  padding:19px;
-  margin:41px auto;
+input[type="submit"]
+{
+  padding:20px;
 }
 .profil_formulaire_d_inscription
 {

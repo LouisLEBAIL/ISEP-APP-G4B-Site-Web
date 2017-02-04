@@ -3,13 +3,16 @@
 
     <head>
         <meta charset="utf-8" /> <link rel="stylesheet" href="style/banniere.css" />
+        <link rel="stylesheet" href="style/ajout_piece_capteur.css"
+
         <title>Ajout Capteur</title>
     </head>
 
   <body>
     <?php include("en_tete_client.php");?>
+      <div id="container_3">
         <form method="post" action="index.php?redirection=ajout_capteur_piece_client">
-          <select name="piece" id="nom">
+          <select name="piece" id="blue" >
           <?php
               while($piece=$reqpiece->fetch())
               {
@@ -25,7 +28,7 @@
         ?>
         </select>
         
-        <select name="capteur">
+        <select name="capteur" id="green">
         <?php
           while($capteur=$reqcapteur->fetch())
           {
@@ -40,13 +43,12 @@
             </option>
             <?php
           }
-          
             ?>
             </select>
             
 
         <p><input type="submit" name="validercapteurpiece" value="Valider"/>
-        <p><?php
+        </p><?php
         if(isset($erreur))
         {
           echo $erreur;
