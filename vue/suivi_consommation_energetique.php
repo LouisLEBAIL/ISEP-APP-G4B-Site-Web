@@ -9,7 +9,9 @@
 <body>
 
 <div>
-    <?php include("vue/en_tete_client.php");?>
+    <?php
+    session_start();
+    include("vue/en_tete_client.php");?>
 
 
 <p>Bienvenue
@@ -46,7 +48,7 @@
 		à la pièce*/
 
 		
-			while ($donnees_capteurs['type']=='Température' AND $donnees_capteurs['dates']==date('m')) /* Pour se recadrer dans le mois actuel*/
+			if ($donnees_capteurs['type']=='Température' AND $donnees_capteurs['dates']==date('m')) /* Pour se recadrer dans le mois actuel*/
 
 			{
 				//Récupération de toutes les valeurs de ces capteurs de type température dans la pièce X
