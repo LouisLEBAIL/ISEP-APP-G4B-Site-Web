@@ -63,8 +63,8 @@
               </p>
          
 
-          <fieldset>
-          </fieldset>
+          
+          
         </form>
       </div>
     <?php include("pied_de_page.php");?>   

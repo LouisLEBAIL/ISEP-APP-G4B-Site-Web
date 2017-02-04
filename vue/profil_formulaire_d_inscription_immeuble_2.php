@@ -3,8 +3,8 @@
 <html>
 
     <head>
-        <meta charset="utf-8" /> <link rel="stylesheet" href="style/client_modifier_profil.css" />
-        <link rel="stylesheet" href="style/style.css" />
+        <meta charset="utf-8" /> <link rel="stylesheet" href="style/banniere.css" />
+        <link rel="stylesheet" href="style/profil_immeuble.css" />
 
         <title>Modification du profil</title>
     </head>
@@ -15,7 +15,7 @@
 
 
                     <form method="post" action="#">
-                        <fieldset>
+                        
                             <p>
                                 <label for="surface">Surface : </label>
                             </p>
@@ -46,7 +46,7 @@
                                         }
                                 ?>
                             </p>
-                        </fieldset>
+                        
                     </form>
                 </div>
                 <?php include("vue/pied_de_page.php");?>

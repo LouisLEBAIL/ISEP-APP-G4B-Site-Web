@@ -11,9 +11,11 @@ redirection();// redirige le client vers la page client...maison ou client....ap
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" /> <link rel="stylesheet" href="style/client_modifier_profil.css" />
-        <link rel="stylesheet" href="style/style.css" />
+        <meta charset="utf-8" /> 
+        
         <link rel="stylesheet" href="style/banniere.css" />
+        <link rel="stylesheet" href="style/modifier_profil.css">
+
 
         <title>Modification du profil</title>
     </head>
