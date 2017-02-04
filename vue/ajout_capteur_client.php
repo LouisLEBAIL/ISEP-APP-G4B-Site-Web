@@ -20,9 +20,9 @@
       
         <form method="post" action="index.php?redirection=ajout_capteur_client">
          
-          <label for="numerocapteur">Numero du Capteur : </label>
+         <p> <label for="numerocapteur">Numero du Capteur : </label></p>
             <input type="number" name="numero_du_capteur" step="1" min="1" max="98"">
-            <label for="numeroserie">Numero Série :</label>
+           <p> <label for="numeroserie">Numero Série :</label></p>
             <input type="text" name="numero_de_serie">
             <input type="submit" name="validercapteur" value="Valider">
             <p><?php 
