@@ -4,6 +4,7 @@
 
     <head>
         <title>Visualisation des clients</title>
+  <link rel="stylesheet" href="../style/banniere.css" />
     </head>
 
 	<body>
