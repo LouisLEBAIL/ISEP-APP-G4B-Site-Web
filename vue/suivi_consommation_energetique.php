@@ -27,88 +27,53 @@
 <p>Cet onglet vous permettra de surveiller votre consommation énergétique.<br />
  Pour cela, les données concernant vos différentes pièces seront prises en compte de même que l'historique des données relatives à  <br /> l'utilisation de vos objets intelligents.</p>
 
-<caption>Consommation énergétique par pièce</caption>
-<table border=1>
-		<thead>
-			<tr>
-				<th> </th> <!--pour faire une marge dans le tableau et permettre que la première pièce ait sa case-->
-
-								
+					
 	<?php 
+	
 
 	//Sélection des pièces d'un client X
-	$req_id_piece = $bdd->prepare('SELECT id_piece,nom_piece FROM piece WHERE id_client=?');
-	$req_id_piece->execute(array($_SESSION['id_client']));
+	require 'modele/Requetes_de_suivi_consommation/selection_pieces_client.php';
 
 	while ($nom_des_pieces = $req_id_piece->fetch()) // Boucle par pièce de ce client X
 	{
-		?>
-		<!--Affichage du nom de la pièce correspondant à la boucle-->
-				
-				<th> <?php echo $nom_des_pieces['nom_piece']; ?> </th>
-			</tr>
-		</thead>
-
-		<?php
-		//Sélection des différents capteurs de cette pièce en fonction de leur type
-		$req_capteur = $bdd -> prepare('SELECT id_capteur,type FROM capteur WHERE  id_piece=? ');
-		$req_capteur->execute(array($nom_des_pieces['id_piece']));
-
-		while ($donnees_capteurs=$req_capteur->fetch()) // Boucle par capteur appartenant à la pièce
-				{
-					$donnees_capteurs['type'];		//Juste pour sortir de la boucle en ayant stocké ces valeurs
-				}
-
-
-		//Accès aux valeurs de chaque type de capteur
-
-		/* La table jointure est une table montrant les différents types de capteurs, leur id, leur valeur et la date à laquelle le transfert de données du capteur a été réalisé*/	
-
-		$jointure =$bdd->prepare('SELECT * FROM jointure where type_capteur=?'); 
-		$jointure->execute(array($donnees_capteurs['type']));
-
-		$jour=date('d');
-		$mois=date('m');
-		$annee=date('Y');
-		$heure=date('H');
-		$minute=date('i');
-
-		while ($mois)
-		{			
-							
-			while($tableau=$jointure->fetch())
-			{
-				$tableau['dates'];
-				$tableau['valeur'];			/*Juste pour sortir de la boucle en ayant déjà stocké ces valeurs car la 								moyenne ne devra pas nécessiter de while*/
-				$tableau['type'];
-			}
-			//Moyenne de la température sur un mois
-			if($tableau['type_capteur'] =='Temperature')
-			{
-				$tableau_temp = $bdd->query('SELECT AVG(valeur_capteur) AS temperature_moyenne FROM jointure ');
-				$temp_moy=$tableau_temp->fetch();
-			}
-
-			?>
-			<!--Affichage de la moyenne en température de la pièce correspondante -->
-			<tbody>
-
-				<tr>
-					<td> Chauffage </td>
-					<td> <?php echo $temp_moy['temperature_moyenne'];?> </td>
-				</tr>
-
-			</tbody>
-			<?php
-		}
 		
-		$tableau_temp->closeCursor();
-		$jointure->closeCursor();
+		//Sélection des différents capteurs de cette pièce en fonction de leur type
+		//require 'modele/Requetes_de_suivi_consommation/selection_capteur_piece.php';
+		$req_capteur = $bdd -> prepare('SELECT id_capteur,type FROM capteur WHERE  id_client=?, id_piece=?');
+		$req_capteur->execute(array($_SESSION['id_client'], $nom_des_pieces['id_piece']));
+
+		$donnees_capteurs=$req_capteur->fetch(); /*Récupération des caractéristiques des capteurs appartenant
+		à la pièce*/
+
+		
+			while ($donnees_capteurs['type']=='Température' AND $donnees_capteurs['dates']==date('m')) /* Pour se recadrer dans le mois actuel*/
+
+			{
+				//Récupération de toutes les valeurs de ces capteurs de type température dans la pièce X
+				require 'modele/Requetes_de_suivi_consommation/recup_jointure.php';
+
+				$jointure =$bdd->query('CREATE TABLE jointure SELECT c.type type_capteur, c.id_capteur id_capteur, d.valeur valeur_capteur, d.dates date_capteur FROM capteur c RIGHT JOIN donnee_capteur d on c.id_capteur=d.id_capteur');
+				$final=$recup_jointure->fetch();
+				$tableau_temp = $bdd->query('SELECT AVG (valeur_capteur) AS temperature_moyenne FROM jointure ');
+				$temp_moy=$tableau_temp->fetch();
+				echo $temp_moy['temperature_moyenne'];
+				$ecrase=$bdd->query('DROP TABLE jointure');
+			}
+			
 	}
+	
+	
+	$req_capteur->closeCursor();
+
+
+
+
+		
+		
 	?>
 
 <!--Fin du tableau après la fin des boucles relatives à chaque pièce-->	
-</table>
+
 
 							<?php
 								/*

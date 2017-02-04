@@ -24,8 +24,8 @@
       		$recherche=$bdd->prepare('SELECT * FROM capteur WHERE id_client = ?');
       		$recherche->execute(array($_POST['idclient']));
 
-      		$precis=$bdd->prepare('SELECT * FROM donnee_capteur WHERE idclient=? and dates=?');
-			$recherche->exexute(array($_POST['idclient'], $_POST['date']));
+      		$precis=$bdd->prepare('SELECT date_format(dates, \'%d%m%Y à %Hh%imin%ss\') AS dates_fr FROM donnee_capteur WHERE id_client=? ORDER BY dates DESC LIMIT 0,1');
+			$recherche->execute(array($_POST['idclient'], $_POST['date']));
 
       		while($bonnedate=$precis->fetch)
       		{
@@ -36,7 +36,7 @@
       				while($nom=$nompiece->fetch())
       				{
       					?>
-      					<p> <?php echo "L'état du capteur".$trouve['type']."de la pièce".$nom['nom_piece']."est associé à la valeur".$trouve['etat']; ?> </p>
+      					<p> <?php echo "L'état du capteur".htmlspecialchars($trouve['type'])."de la pièce".htmlspecialchars($nom['nom_piece'])."est associé à la valeur".htmlspecialchars($trouve['etat']); ?> </p>
       					<?php
       				}
       				
