@@ -39,7 +39,7 @@
 		
 		//Sélection des différents capteurs de cette pièce en fonction de leur type
 		//require 'modele/Requetes_de_suivi_consommation/selection_capteur_piece.php';
-		$req_capteur = $bdd -> prepare('SELECT id_capteur,type FROM capteur WHERE  id_client=?, id_piece=?');
+		$req_capteur = $bdd -> prepare('SELECT id_capteur,type FROM capteur WHERE  id_client=? AND id_piece=?');
 		$req_capteur->execute(array($_SESSION['id_client'], $nom_des_pieces['id_piece']));
 
 		$donnees_capteurs=$req_capteur->fetch(); /*Récupération des caractéristiques des capteurs appartenant
