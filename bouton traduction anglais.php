@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="style/bouton_traduction.css" />
        <div>
         <h2 class="titre">DHomeLab</h2>
-        <h4><a href="index_service_client.php?redirection=boutontraductionanglais">English website</a></h4>
+        <h4><a href="index_client.php?redirection=boutontraductionanglais">English website</a></h4>
 </div>
 </head>
 <?php
