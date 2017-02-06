@@ -9,7 +9,6 @@
     </head>
     <body>
     <?php include("en_tete_client.php");
-          ?>
  
 
 
@@ -177,10 +176,12 @@
 
 
                             // Affichage de l etat actuel
-                                    echo 'Vous êtes en mode '.$valeur ;?>
+                                    echo 'Vous êtes en mode '.$valeur ;?><br />
 
-                                    <div class='mode'>
-                                        <div  class='eco'>
+                                    <div class='mode'><?php
+                                    if ($valeur == 'normal')
+                                    {
+                                        ?><div  class='eco'>
                                             <form method="post"><?php
                                                 echo' <input type="submit" name="eco'.$i.'" value="ECO">'?>
                                             </form>
@@ -189,14 +190,53 @@
                                             <form method="post"><?php
                                                 echo' <input type="submit" name="confort'.$i.'" value="CONFORT">'?>
                                             </form>
+                                        </div><?php
+                                    }
+                                    elseif ($valeur == 'eco')
+                                    {
+                                        ?><div  class='normal'>
+                                            <form method="post"><?php
+                                                echo' <input type="submit" name="normal'.$i.'" value="NORMAL">'?>
+                                            </form>
                                         </div>
-                                    </div><?php
+                                        <div class='confort'>
+                                            <form method="post"><?php
+                                                echo' <input type="submit" name="confort'.$i.'" value="CONFORT">'?>
+                                            </form>
+                                        </div><?php
+                                    }
+                                    elseif ($valeur == 'confort')
+                                    {
+                                        ?><div  class='eco'>
+                                            <form method="post"><?php
+                                                echo' <input type="submit" name="eco'.$i.'" value="ECO">'?>
+                                            </form>
+                                        </div>
+                                        <div class='normal'>
+                                            <form method="post"><?php
+                                                echo' <input type="submit" name="normal'.$i.'" value="NORMAL">'?>
+                                            </form>
+                                        </div><?php
+                                    }
+                                    ?></div><?php
 
                                     if (isset($_POST['eco'.$i.'']))
                                     {
 
                                         $b = $bdd -> prepare('UPDATE donnee_capteur SET valeur=? WHERE id_capteur=? AND id_client=?');
                                         $var1='eco';
+                                        $b -> execute(array(
+                                            $var1,
+                                            $id_capteur,
+                                            $_SESSION['id_client']));
+
+                                        ?><meta http-equiv="refresh" content="0" /><?php
+                                    }
+                                    elseif (isset($_POST['normal'.$i.'']))
+                                    {
+
+                                        $b = $bdd -> prepare('UPDATE donnee_capteur SET valeur=? WHERE id_capteur=? AND id_client=?');
+                                        $var1='normal';
                                         $b -> execute(array(
                                             $var1,
                                             $id_capteur,
