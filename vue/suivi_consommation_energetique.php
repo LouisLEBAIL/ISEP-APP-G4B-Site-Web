@@ -12,6 +12,7 @@
     <?php
     session start();
     include("vue/en_tete_client.php");?>
+    <form method="post" class='questionnaire' action="index.php?redirection=suiviconsommationenergetique">
 
 
 <p>Bienvenue
