@@ -2,7 +2,6 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="style/style-acceuil.css" />
         <link rel="stylesheet" href="style/page_de_connexion.css" />
         <link rel="stylesheet" href="style/banniere.css" />
        
@@ -11,11 +10,11 @@
     </head>
     <body>
       <?php include 'en_tete.php';?>
-      <div >
-        
 
-        <div id="container">
-          <div id="login">
+        <div class="container">
+
+
+          <div class="container" id="login">
           <h2>Connexion Client</h2>
           <form method="post" action="">
             <fieldset>
@@ -36,11 +35,18 @@
               </div>
             </fieldset>
           </form>
-        </div>
-          <div id="login">
+          </div> 
+
+                
+          <div class="container">         
+           <img  src="picture/accueil.png" alt="smart" id="smart"/>
+          </div>
+
+
+          <div class="container" id="login" class="login2">
           <h2>Inscription</h2>
-        <form method="post" action="">
-              <fieldset>
+          <form method="post" action="">
+              <fieldset >
                   <p>
                     <label for="Identifiant">Numero Série ceMAC:</label>
                   </p>
@@ -74,7 +80,7 @@
 
                                 <input type="submit" name="formvalider" value="Ajouter"/>  
                              </p>
-                </div>
+                            </div>
             </fieldset>
             </form>
                 <?php 
@@ -82,10 +88,11 @@
                 {
                   echo $erreur1;
                 }
-          ?>
-          </div>
+            ?>
+            </div> 
 
-        </div>
+
+           </div>
       <?php include 'pied_de_page.php';?>
       </div>
   </body>

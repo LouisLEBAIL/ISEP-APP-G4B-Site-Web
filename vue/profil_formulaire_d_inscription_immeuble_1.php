@@ -3,9 +3,9 @@
 <html>
 
     <head>
-        <meta charset="utf-8" /> <link rel="stylesheet" href="style/banniere.css" />
-        <link rel="stylesheet" href="style/profil_immeuble.css">
-        
+
+                <link rel="stylesheet" href="style/modifier-profil.css" />
+        <link rel="stylesheet" href="style/banniere.css" />
 
         <title>Page de connexion</title>
         <title>Présentation de DomLab</title>
@@ -13,11 +13,11 @@
         <body>
             <div id="bloc_page_3">
                 <?php include("vue/en_tete_client.php");?>
-                <div id="container_3">
+                <div id="id">
 
 
                     <form method="post" action="#">
-                        
+                        <fieldset>
                             <p>
                                 <label for="codepostal">Code Postal:</label>
                             </p>
@@ -55,7 +55,7 @@
                                         }
                                 ?>
                             </p>
-                        
+                        </fieldset>
                     </form>
                 </div>
 

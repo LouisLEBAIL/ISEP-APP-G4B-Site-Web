@@ -4,13 +4,14 @@
         <meta charset="utf-8" />
         <link rel="stylesheet" href="../style/page_de_connexion.css" />
         
-        <link rel="stylesheet" href="style/banniere.css" />
+        <link rel="stylesheet" href="../style/banniere.css" />
+        <link rel="stylesheet" href="style/page_de_connexion.css" />
 
         <title>Page d'accueil administrateur</title>
     </head>
     <body>
         <div>
-            <?php include '../vue/en_tete_administrateur_non_connecte.php';?>
+            <?php include '../vue/en_tete_adminco.php';?>
 
             <div id="container">
               <div id="login">
