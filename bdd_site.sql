@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 06 Février 2017 à 19:52
+-- Généré le :  Lun 06 Février 2017 à 20:41
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -103,7 +103,8 @@ INSERT INTO `capteur` (`id_capteur`, `type`, `numero_serie_capteur`, `numero_cap
 (0000000030, 'Alarme', 'A0000000001', 56, 0, 0000000003, 0000000003),
 (0000000034, 'Mode_temperature', 'TA0000000001', 84, 0, 0000000003, 0000000003),
 (0000000035, 'Mode_temperature', 'TA0000000002', 96, 0, 0000000005, 0000000003),
-(0000000037, 'Alarme', 'A0000000002', 51, 0, 0000000006, 0000000003);
+(0000000037, 'Alarme', 'A0000000002', 51, 0, 0000000006, 0000000003),
+(0000000040, 'Alarme', 'A0000000003', 55, 0, 0000000007, 0000000003);
 
 -- --------------------------------------------------------
 
@@ -404,9 +405,10 @@ INSERT INTO `donnee_capteur` (`id_donnee_capteur`, `dates`, `valeur`, `id_capteu
 (0000000339, '2017-03-26 00:21:35', '22', 0000000022, 0000000004),
 (0000000340, '2017-01-23 05:18:14', '0', 0000000028, 0000000004),
 (0000000352, '2017-01-23 05:18:14', '1', 0000000030, 0000000003),
-(0000000353, '2017-01-23 05:18:14', 'normal', 0000000034, 0000000003),
-(0000000354, '2017-01-23 05:18:14', 'eco', 0000000035, 0000000003),
-(0000000355, '2017-01-23 05:18:14', '0', 0000000037, 0000000003);
+(0000000353, '2017-01-23 05:18:14', 'confort', 0000000034, 0000000003),
+(0000000354, '2017-01-23 05:18:14', 'confort', 0000000035, 0000000003),
+(0000000355, '2017-01-23 05:18:14', '0', 0000000037, 0000000003),
+(0000000357, '2017-01-23 05:18:14', '0', 0000000040, 0000000003);
 
 -- --------------------------------------------------------
 
@@ -481,16 +483,12 @@ CREATE TABLE `numero_serie_capteur` (
 --
 
 INSERT INTO `numero_serie_capteur` (`numero_serie_capteur`) VALUES
-('	 A0000000003'),
-('	 A0000000004'),
-('	 A0000000005'),
-('	 A0000000006'),
-('	 A0000000007'),
-('	 A0000000008'),
-('	 A0000000009'),
-('	 A0000000010'),
 ('A0000000001'),
 ('A0000000002'),
+('A0000000003'),
+('A0000000004'),
+('A0000000005'),
+('A0000000006'),
 ('F0000000001'),
 ('F0000000002'),
 ('F0000000003'),
@@ -533,6 +531,8 @@ INSERT INTO `numero_serie_capteur` (`numero_serie_capteur`) VALUES
 ('T0000000010'),
 ('TA0000000001'),
 ('TA0000000002'),
+('TA0000000003'),
+('TA0000000004'),
 ('W0000000001'),
 ('W0000000002');
 
@@ -695,7 +695,7 @@ ALTER TABLE `appartement`
 -- AUTO_INCREMENT pour la table `capteur`
 --
 ALTER TABLE `capteur`
-  MODIFY `id_capteur` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_capteur` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT pour la table `client`
 --
@@ -705,7 +705,7 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT pour la table `donnee_capteur`
 --
 ALTER TABLE `donnee_capteur`
-  MODIFY `id_donnee_capteur` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=356;
+  MODIFY `id_donnee_capteur` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=358;
 --
 -- AUTO_INCREMENT pour la table `immeuble`
 --
