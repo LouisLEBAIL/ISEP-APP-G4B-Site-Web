@@ -845,6 +845,7 @@ redirection();// redirige le client vers la page client...maison ou client....ap
 
 
 
+
 <!DOCTYPE html>
 <html>
 
@@ -857,86 +858,47 @@ redirection();// redirige le client vers la page client...maison ou client....ap
     </head>
         <body>
             <?php include 'vue/en_tete_client.php';?>
-            <div id="bloc_page_3"> 
-                <div id="container_3">               
+            
+                <div id="container_3">  
+                <div class="formulaire">           
 
-        <section>
-             <form method="post" action="">
-                      <fieldset>
-                            <h1><p><strong>Contactez us</strong></p></h1>
-                            <p>
+        
+        
+             <form method="post" action="index.php?redirection=pagedecontact">
+                      
+                            <h1><p><strong>Contact us</strong></p></h1>
                                 <label for="email">Your E-mail address: </label>
-                            </p>
-                            <p>
+    
                                 <input type="text" name="email" />
-                            </p>
-
-                            <p>Would you mind inform the following fields to get to your personal data.</p>
-
-             <form action="#" method="post">
-
-                      <fieldset>
-                            <p>
-                                <label for="Nom">Lastname:</label>
-                            </p>
-                            <p>
-                                <input type="text" name="Nom" required="">
-                            </p>
-                            <p>
-                                <label for="Prenom">Firstname:</label>
-                            </p>
-                            <p>
-                                <input type="text" name="Prenom" required="">
-                            </p>
-                            <p>
-                                <label for="Nombre_de_capteurs">Number of rooms in your accommodation:</label>
-                            </p>
-                            <p>
-                                <input type="number" name="Nombre_de_capteurs" required="">
-                            </p> 
-                            <p>
-                                <label for="ID_client">Customer ID:</label>
-                            </p>
-                            <p>
-                                <input type="number" name="ID_client" required="">
-                            </p>
-                            <p>
-                                 <label for="Durée_inscription">Customer since the:</label>
-                            </p>
-                            <p> 
-                                <input type="date" name="date" required="">
-                            <p>
-                                <input type="submit" value="Envoyer" a href="#" class="bouton_rouge"></a>           
-                            </p>
-                      </fieldset>
-
-
-
-
-                            <p>
+                            
                                 <label for="produits">All our products here: </label><br/>
                                 <select name="produit" id="produit">
                                     <option value="luminosite">Light</option>
                                     <option value="temperature">Temperature</option>
                                     <option value="détecteur_de_mouvements">Motion sensor</option>
                                     <option value="incendie">Smoke sensor</option>
-                                    <option value="détecteur_de_presence">Presence sensor</option>
+                                    <option value="détecteur_de_presence">Shutter</option>
+                                    <option value="Alarme">Alarm</option>
+                                    <option value="">Other</option>
                                 </select>
-                            </p>
+                            
 
-                            <p>
+                            
                                 <label for="question">
                                 Your question
-                                </label><br/>
+                                </label></br>
        
-                            <textarea name="question" id="question" rows="10" cols="50"></textarea>
+                            <textarea name="question" id="question" rows="10" cols="35"></textarea>
                                  
-                            </p>
+                            
 
 
- <input type="submit" name="soumettre_la_requete" value="soumettre la requete" a href="#" class="bouton_rouge"></a>                  
-                      </fieldset>
+                            <input type="submit" name="soumettre_la_requete">
+                     
+
                 </form>
+                </div>
+                
                 <?php 
                   if(isset($erreur))
                 {
@@ -944,8 +906,8 @@ redirection();// redirige le client vers la page client...maison ou client....ap
                 }
           ?>
           </div>
-        </div>
-        </section>
+        
+        
 
     <?php include("vue/pied_de_page.php");?>
 
