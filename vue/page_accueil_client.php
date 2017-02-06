@@ -52,7 +52,7 @@
             require 'modele/SQL_Page_Accueil/SQL_2.php';
             $increment++;
 
-            ?><div class='une_piece'><div class='nom_piece'>
+            ?><div class='une_piece'><div class='nom_piece' id="nom">
                 <?php echo '<h2>'.$info_de_la_piece['nom_piece'];'</h2>';?><br />
             </div><?php
  

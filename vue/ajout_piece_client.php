@@ -24,7 +24,7 @@
                     <input type="text" name="pieces">
                   </p>
                   <p>
-                    <input type="submit" name="ajouter" value="ajouter"/>
+                    <input type="submit" name="ajouter" value="Ajouter" id="in"/>
                       <?php 
                         if(isset($erreur))
                             {
@@ -40,11 +40,11 @@
                 {
                   ?>
                   <ul>
-                  <form method="post" action="index.php?redirection=ajout_piece_client" >
+                  <form method="post" action="index.php?redirection=ajout_piece_client" id=piece>
                   <li>
                   <?php echo $piece['nom_piece']; ?> 
                   <?php $idpiece=$piece['id_piece'];?>
-                  <input type="submit" name="supprimer" value="supprimer" >
+                  <input type="submit" name="supprimer" value="Supprimer" id="in">
                   </input> 
                   <input type="hidden" name="idpiece" value="<?php echo "".$idpiece."" ?>">
                   </input>         

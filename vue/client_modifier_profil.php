@@ -11,22 +11,21 @@ redirection();// redirige le client vers la page client...maison ou client....ap
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" /> 
-        
+        <meta charset="utf-8" /> <link rel="stylesheet" href="style/client_modifier_profil.css" />
+        <link rel="stylesheet" href="style/modifier-profil.css" />
         <link rel="stylesheet" href="style/banniere.css" />
-        <link rel="stylesheet" href="style/modifier_profil.css">
-
 
         <title>Modification du profil</title>
     </head>
     	<body>
-        </div>
-                <?php include("vue/en_tete_client.php");?>
-    		<div id="bloc_page_3">
 
-                <div id="container_3">
-                    
+                <?php include("vue/en_tete_client.php");?>
+    		<div id="bloc">
+
+                <div id="id">
+                   
                     <?php include("vue/profil_formulaire_d_inscription.php");?>
+                    
                 </div>
                 <?php include("vue/pied_de_page.php");?>
             </div>

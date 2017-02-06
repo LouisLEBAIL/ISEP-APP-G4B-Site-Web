@@ -1,36 +1,42 @@
 <header>
+	 <div>
 
         <a href="index.php?redirection=connecte" id="logoco"  >
         <img  href="index.php?redirection=connecte" src="picture/logo_transparent.png" alt="logo DomLab" title="DomLab" id="logo"  />
         </a>
 
-    <div id="navigation">
+       </div>
+<div id="mv0">
+	
+
 	<nav>
-		<ul id="menu_navigation_verticale">
-			<li class="hid"><a href="index.php?redirection=connecte">Pieces</a></li>
-			<li id="der"><a href="index.php?redirection=voir_profil" >Profil</a>
-				<ul >
-					<li><a href="index.php?redirection=voir_profil">Voir Profil</a></li>
-					<li><a href="index.php?redirection=inscription">Modifier Profil</a></li>
-					<li><a href="index.php?redirection=ajout_piece_client">Ajouter/Supprimer une piece</a></li>
-					<li><a href="index.php?redirection=ajout_capteur_client">Ajouter/Supprimer un capteur</a></li>
-					<li><a href="index.php?redirection=ajout_capteur_piece_client">Ajouter Capteur a une piece </a></li>
-<!--	LIGNE A CACHER PAR LA SUITE		-->		
-					<li><a href="index.php?redirection=generateur">GENERATEUR</a></li>
+		<ul id="mv">
+			
+			<li class="hid"><a href="index.php?redirection=voir_profil" >Profil</a>
+				<ul class="mv2">
+					<li ><a href="index.php?redirection=inscription">Modifier Profil</a></li>
+					<li class="inter"><a href="index.php?redirection=ajout_piece_client">Gestion pièces</a></li>
+					<li class="inter"><a href="index.php?redirection=ajout_capteur_client">Gestion capteur</a></li>
+					<li id="last"><a href="index.php?redirection=ajout_capteur_piece_client">Lier capteur</a></li>
 				</ul>
 			</li>
-			<li class="hid"><a href="index.php?redirection=page_de_contact">Contact</a></li>
-			<li class="hid"><a href="index.php?redirection=suivi_consommation_energetique">Consommation énergétique</a></li>
+			<li ><a href="index.php?redirection=connecte">Pieces</a></li>
+			<li ><a href="index.php?redirection=suivi_consommation_energetique">Consommation</a></li>
+			<li ><a href="index.php?redirection=page_de_contact">Contact</a></li>
+
 		</ul>
 	</nav>
-   </div>
 
+</div>
+<div>
 
         <p class="titrep" id="domisep"> Un produit de DOMISEP</p>
+       </div>
+       <div>
         <a href="index.php?redirection=deconnexion" id="logout"> 
         <img  href="index.php?redirection=deconnexion" src="picture/logout.png" alt="logout" title="logout" />
         </a>
 
 
-                
+   </div>             
 </header>

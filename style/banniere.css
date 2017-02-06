@@ -4,7 +4,7 @@ header
   align-items: center;
   justify-content: space-between;
   background-color: #14b0bf;
-  min-width: 1100px;
+  min-width: 1000px;
   max-height:11%;
   min-height: 60px;
   position:fixed;  
@@ -12,7 +12,6 @@ header
   padding-left:10px;
   width: 100%;
  
-
 
 
 }
@@ -23,11 +22,9 @@ header
 {  
 
   width:100%;
-  justify-content: space-between;
-  align-items: center;
-  display:flex;
-
-
+display:flex;
+justify-content: space-between;
+align-items: center;
   
 }
 
@@ -48,13 +45,13 @@ min-height: 58px;
  max-height: 9vh;
 
 
+
 }
 
 
 #logout img {
 
   padding-top:10px;
-
 min-height: 45px;
  max-height: 8vh;
   padding-right: 20px;
@@ -67,8 +64,6 @@ min-height: 45px;
 {
   color:white;
   padding-right:20px;
-  padding-left:10px;
-
 
 }
 
@@ -88,7 +83,8 @@ body
 { 
   
   display:flex;
-  margin-top: 9%;
+  padding-top:10vh;
+  margin-top:60px;
 
 
   font-family: Georgia, Arial, sans-serif;
@@ -121,143 +117,154 @@ footer
 }
 
 
-.menu_navigation_verticale:nth-child(1)
+ul
 {
-display:flex;
-}
-#menu_navigation_verticale
-
-{
-  display:flex;
-  justify-content: space-between;
-  padding:10px;
-  margin-left:10px;
-
-  align-items: flex-end;
-  
-
-  list-style:none;
-  text-align: center;
-  width: 100%;
- 
-
-}
-
-
-#menu_navigation_verticale ul {
-
-  padding:0;
   margin:0;
+  padding:0;
+
+  display:flex;
   list-style:none;
-  text-align: center;
-  max-height: 0;
-
-
-
-}
-#menu_navigation_verticale li {
-   display:flex; 
-   flex-basis: 150px;
-   justify-content: center;
-   flex-direction: column;
-padding-left:5px;
-padding-right:5px;
-   height: 50px;
-
-
-
-   border-radius: 6px;
-   border:solid 1px white;
-
-
-}
-#menu_navigation_verticale li li {
-
-  display:flex; 
-  justify-content:  center;
-  max-height:0;
-  border:none;
-   overflow: hidden;
-  
-   background-color: #14b0bf; 
-   transition: all 0s;
-   box-shadow:none;
-    
-}
-#menu_navigation_verticale a {
-
-  display:flex; 
-  justify-content: center; 
-  text-decoration: none;
-  color:white;  
-
-  padding: 8px 0;
-  font-size:1.2em; 
-
-
-}
-#menu_navigation_verticale a:hover {
-
-  display:flex; 
-  justify-content: center; 
-  text-decoration: none;
-  color:#14b0bf  ;
-  padding: 8px 0;
-  font-size:1.2em;
-  
-
-}
-#menu_navigation_verticale li:hover li {
-display:flex;
-
-max-height:100%;
-color: #cc04c2;
-border-left:solid 1px white;
-border-right:solid 1px white;
-border-radius: 0px;
-
-
-}
-#menu_navigation_verticale li:hover ul li:lastchild {
-
-
-border-bottom:solid 1px white; 
+  min-width:500px;
+  max-width:900px;
+  min-height: 35px;
+  height:100%;
+  justify-content: space-around;
 
 
 
 }
 
-#lc li li 
+
+#mv0
 {
-  border-bottom:1px solid white;
-}
-#menu_navigation_verticale li:hover {
-
-background: white;
-
-
-    
-}
-#menu_navigation_verticale li li:hover {
-
-
+  flex:3;
 
 }
+ul.mv2
+{
+    height:36vh;
 
-#menu_navigation_verticale ul li:last-child {
 
-   border-radius: 0 0 6px 6px;
+  
+}
+#mv ul li
+{
+  display: flex;
+  justify-content: flex-end;
 
+
+  
 
 }
 
+li
+
+{
+
+min-width:140px;
+border-radius: 10px;
+border: 1px solid white;
+height:6vh;
+min-height: 35px;
+background-color: #14b0bf;
 
 
 
-
-#menu_navigation_verticale ul li {
-
-   border-radius: 0 0 6px 6px;
-opacity:1;   
 
 }
+li:hover ul.mv2
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width:50px;
+  max-width: 140px;
+
+}
+
+li.hid:hover
+{
+border-bottom: none;
+border-radius: 10px 10px 0 0;
+
+
+}
+
+li.hid a:hover
+{
+  border-radius: 10px 10px 0 0;
+}
+
+li a {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:white;
+  height:100%;
+  width:100%;
+  font-size: 1.1em;
+  text-decoration: none;
+  border-radius: 8px;
+
+}
+
+#mv a:hover {
+
+
+  color:#14b0bf;
+  background-color: white;
+
+
+  
+
+}
+
+
+ul ul
+{
+display: none;
+
+
+}
+
+.inter a
+{
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+ul.mv2 li
+{
+min-height:35px;
+height: 100%;
+max-height: 6vh;
+border-radius: 0;
+border:none;
+margin-left: -1px;
+border-left: 1px solid white;
+border-right: 1px solid white;
+border-radius: 0;
+
+
+
+}
+
+ul.mv2 a:hover
+{
+border-radius: 0;
+}
+
+ul.mv2 li:last-child
+{
+  border-bottom: solid 1px white;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+  
+
+
+}
+
+

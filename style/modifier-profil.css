@@ -1,0 +1,43 @@
+fieldset
+{
+  border: solid 4px white;
+  border-radius: 20px;
+  color:white;
+  font-size: 1.1em;
+  background-color: #14b0bf;
+
+}
+
+#id
+{
+	display: flex;
+	justify-content: center;
+	width:1000px;
+}
+
+input[type=date],
+input[type=text],input[type=email],input[type=password],input[type=tel] {
+  width:100%;
+  box-sizing:border-box;
+  height:2.5em;
+  border-radius:5px;
+  border:solid 1px #aaa;
+  padding:2px 8px;
+  margin-bottom:10px;
+  background:rgba(255,255,255,.9);
+}
+
+input[type=submit]
+{
+   color:white;
+ background-color:  #91d3d9;
+ font-size: 0.9em;
+ border-radius: 5px;
+ border: solid 1px white;
+ padding:5px;
+}
+
+input[type=submit]:active
+{
+    background-color: #14b0bf;
+}

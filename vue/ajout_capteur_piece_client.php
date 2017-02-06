@@ -5,13 +5,15 @@
         <meta charset="utf-8" /> <link rel="stylesheet" href="style/banniere.css" />
         <link rel="stylesheet" href="style/ajout_piece_capteur.css"
 
-        <title>Ajout Capteur</title>
+       
     </head>
 
   <body>
     <?php include("en_tete_client.php");?>
       <div id="container_3">
+      <p>Choisissez une pièce puis un capteur à lui attribuer</p>
         <form method="post" action="index.php?redirection=ajout_capteur_piece_client">
+        
           <select name="piece" id="blue" >
           <?php
               while($piece=$reqpiece->fetch())
@@ -45,10 +47,11 @@
           }
             ?>
             </select>
-            
-
+           
+            <div id="sel">
         <p><input type="submit" name="validercapteurpiece" value="Valider"/>
-        </p><?php
+        </p>
+         </div><?php
         if(isset($erreur))
         {
           echo $erreur;

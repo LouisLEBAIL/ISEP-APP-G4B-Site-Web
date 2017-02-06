@@ -1,19 +1,35 @@
 <header>
-    <div id="favicon">
-<<<<<<< HEAD
-                     <link rel="icon" type="image/gif" href="picture/favicon.gif">
-                     <link rel="icon" type="image/gif" href="image/favicon.gif">
-=======
+     <div>
 
-                     <link rel="icon" type="image/gif" href="picture/favicon.gif">
+        <a href="../index.php?redirection=connecte" id="logoco"  >
+        <img  href="../index.php?redirection=connecte" src="../picture/logo_transparent.png" alt="logo DomLab" title="DomLab" id="logo"  />
+        </a>
 
-                     <link rel="icon" type="image/gif" href="image/favicon.gif">
+       </div>
+<div id="mv0">
+    
 
->>>>>>> origin/master
-    <div id="DHomeLab">
-        <div id="logo">
-            <a href="index.php?redirection=connecte"><img  src="../picture/logo_transparent.png" alt="logo DomLab" title="DomLab"/></a>
-        </div>
-        <h2 class="titre">DHomeLab</h2>
-        <h4><a href="index_administrateur.php?redirection=deconnexion">Déconnexion</a></h4>
+    <nav>
+        <ul id="mv">
+            
+           <li><a href="../controleur/index_administrateur.php?redirection=ajouter_client">Ajouter Client</a>
+            </li>
+            <li><a href="../controleur/index_administrateur.php?redirection=visualisation_client">Voir clients</a>
+            </li>
+
+        </ul>
+    </nav>
+
+</div>
+<div>
+
+        <p class="titrep" id="domisep"> Un produit de DOMISEP</p>
+       </div>
+       <div>
+        <a href="../index.php?redirection=deconnexion" id="logout"> 
+        <img  href="../index.php?redirection=deconnexion" src="../picture/logout.png" alt="logout" title="logout" />
+        </a>
+
+
+   </div>             
 </header>

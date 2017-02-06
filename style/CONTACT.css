@@ -1,0 +1,71 @@
+fieldset
+{
+	border: solid 4px white;
+	border-radius: 20px;
+	color:white;
+	font-size: 1.1em;
+	background-color: #14b0bf;
+
+}
+
+form
+{
+	
+margin-left: 5vw;
+
+}
+
+#envoyer
+{
+color:white;
+ background-color:	#91d3d9;
+ font-size: 0.9em;
+	
+}
+#envoyer:active
+{
+	background-color: #14b0bf;
+}
+
+select
+{
+	background-color: #91d3d9;
+	color:white;
+	font-size:0.9em;
+}
+option
+{
+	background-color: #91d3d9;
+	color:white;
+}
+
+input{
+	border-radius: 5px;
+	border:solid white 1px;
+}
+textarea
+{
+	border-radius: 7px;
+	border:solid white 1px;
+}
+strong
+{
+	font-size: 1.5em;
+
+}
+
+#contactez
+{	
+	padding-top: 2%;
+	padding-bottom: 4%;
+	border-bottom:solid white 1px;
+	display:flex;
+	justify-content: center;
+}
+
+#send
+{
+	
+	display:flex;
+	justify-content: center;
+}

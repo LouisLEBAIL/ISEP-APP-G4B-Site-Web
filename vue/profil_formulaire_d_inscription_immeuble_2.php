@@ -3,19 +3,19 @@
 <html>
 
     <head>
-        <meta charset="utf-8" /> <link rel="stylesheet" href="style/banniere.css" />
-        <link rel="stylesheet" href="style/profil_immeuble.css" />
+        <link rel="stylesheet" href="style/modifier-profil.css" />
+        <link rel="stylesheet" href="style/banniere.css" />
 
         <title>Modification du profil</title>
     </head>
     	<body>
     		<div id="bloc_page_3">
                 <?php include("vue/en_tete_client.php");?>
-                <div id="container_3">
+                <div id="id">
 
 
                     <form method="post" action="#">
-                        
+                        <fieldset>
                             <p>
                                 <label for="surface">Surface : </label>
                             </p>
@@ -46,7 +46,7 @@
                                         }
                                 ?>
                             </p>
-                        
+                        </fieldset>
                     </form>
                 </div>
                 <?php include("vue/pied_de_page.php");?>

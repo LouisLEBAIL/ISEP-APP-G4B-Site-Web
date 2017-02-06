@@ -4,8 +4,8 @@
 
     <head>
         <meta charset="utf-8" /> <link rel="stylesheet" href="../style/accueil_admin.css" />
-        <link rel="stylesheet" href="style/style.css" />
-        <link rel="stylesheet" href="style/banniere.css" />
+        <link rel="stylesheet" href="../style/style.css" />
+        <link rel="stylesheet" href="../style/banniere.css" />
 
         <title>Visualisation des clients</title>
     </head>
