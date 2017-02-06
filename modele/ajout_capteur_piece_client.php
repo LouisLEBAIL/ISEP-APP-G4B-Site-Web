@@ -11,8 +11,9 @@ $reqcapteur->execute(array($_SESSION['id_client']));
 
 
 
-
-	if(isset($_POST['validercapteurpiece']))
+if(isset($_POST['validercapteurpiece']))
+{
+	if(isset($_POST['validercapteurpiece']) AND !empty($_POST['piece']) AND !empty($_POST['capteur']))
 	{
 		$idpiece=htmlspecialchars($_POST['piece']);
 		$idcapteur=htmlspecialchars($_POST['capteur']);
@@ -37,5 +38,6 @@ $reqcapteur->execute(array($_SESSION['id_client']));
 	{
 		$erreur="erreur inconnu contacter le service client";
 	}
+}
 
 ?>

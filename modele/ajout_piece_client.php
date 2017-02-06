@@ -11,6 +11,10 @@ $reqappartement = $bdd -> prepare('SELECT * FROM appartement WHERE id_client=?')
 $reqappartement -> execute(array($_SESSION['id_client']));
 $appartement = $reqappartement -> fetch();
 $reqpiece=$bdd->prepare('SELECT * FROM piece WHERE nom_piece=? AND id_client=?');
+if(isset($_POST['ajouter']))
+{
+
+
 if(isset($_POST['pieces']) AND isset($_POST['ajouter']) AND !empty($_POST['pieces']))
 {
 
@@ -37,6 +41,8 @@ if(isset($_POST['pieces']) AND isset($_POST['ajouter']) AND !empty($_POST['piece
 else
 {
   $erreur="Piece déja existant";
+}
+
 }
 
 if(isset($_POST['supprimer']))
