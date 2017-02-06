@@ -17,6 +17,8 @@ else
 		require 'modele/test_donnees_client_incompletes.php';
 		require 'modele/page_accueil_client.php';
 		require 'vue/page_accueil_client.php';
+		require 'vue/bouton traduction anglais.php';
+		require 'vue/english_website_version.php';
 	}
 	elseif ($redirection == 'inscription') /*Pour aller vers la paege d accueil du site*/
 	{

@@ -17,6 +17,8 @@
 
   <body>
     <?php include("en_tete_client.php");?>
+          include("en_tete_client.php");?>
+
       <div id="container_3">
       
       

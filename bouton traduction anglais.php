@@ -32,7 +32,7 @@ include('vue/page_accueil_client.php');
 
 <a href="#" class="bouton_bleu">English version</a> 
 
-
+</html>
 
 
 

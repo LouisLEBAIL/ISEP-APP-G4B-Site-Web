@@ -16,7 +16,9 @@
     </head>
 
   <body>
-    <?php include("en_tete_client.php");?>
+    <?php include("en_tete_client.php");
+          include('vue/bouton traduction anglais.php');?>
+
       <div id="container_3">
       
       
