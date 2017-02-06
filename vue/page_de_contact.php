@@ -28,8 +28,8 @@
                                     <option value="luminosite">Luminosité</option>
                                     <option value="temperature">Température</option>
                                     <option value="détecteur_de_mouvements">Détecteur de mouvements</option>
-                                    <option value="incendie">Fuméé</option>
-                                    <option value="détecteur_de_presence">Volet</option>
+                                    <option value="incendie">Fumée</option>
+                                    <option value="détecteur_de_presence">Volets</option>
                                     <option value="Alarme">Alarme</option>
                                     <option value="">Autre</option>
                                 </select>
