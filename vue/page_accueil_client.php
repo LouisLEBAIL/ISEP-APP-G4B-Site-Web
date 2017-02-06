@@ -9,6 +9,7 @@
     </head>
     <body>
     <?php include("en_tete_client.php");
+          ?>
  
 
 
