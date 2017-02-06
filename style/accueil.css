@@ -137,6 +137,18 @@ hr
   margin-top: 10%;
   margin-left: 2%;
 }
+.mode
+{
+  display: flex;
+  padding-top: 5%;
+}
+.eco
+{
+  margin-left: 2%;
+}
+.confort{
+  margin-left: 2%;
+}
 
 
 

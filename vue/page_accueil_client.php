@@ -104,12 +104,6 @@
             }
 
 
-// CSS d un capteur en etat critique
-
-
-// CSS si le capteur n as pas de probleme
-
-
 
 // BOUCLE POUR UN CAPTEUR
 
@@ -150,9 +144,17 @@
     // Affichage des informations
                     ?><div class='un_capteur'><?php
 
-                        echo $type_du_capteur.':'.'<hr />' ;?>
+                        if ($type_du_capteur != 'Mode_temperature')
+                        {
+                            echo $type_du_capteur.':'.'<hr />' ;                           
+                        }
+                        elseif ($type_du_capteur == 'Mode_temperature')
+                        {
+                            echo 'Chauffage :'.'<hr />' ;
+                        }
 
-                        <div class='boite_pour_un_capteur'><?php
+
+                        ?><div class='boite_pour_un_capteur'><?php
 
 
                 // Gestion du capteur de temperature
@@ -168,7 +170,52 @@
                             }
 
 
+                // Gestion du mode eco/confort                            
+                            if ($type_du_capteur == 'Mode_temperature')
+                                {
 
+
+                            // Affichage de l etat actuel
+                                    echo 'Vous êtes en mode '.$valeur ;?>
+
+                                    <div class='mode'>
+                                        <div  class='eco'>
+                                            <form method="post"><?php
+                                                echo' <input type="submit" name="eco'.$i.'" value="ECO">'?>
+                                            </form>
+                                        </div>
+                                        <div class='confort'>
+                                            <form method="post"><?php
+                                                echo' <input type="submit" name="confort'.$i.'" value="CONFORT">'?>
+                                            </form>
+                                        </div>
+                                    </div><?php
+
+                                    if (isset($_POST['eco'.$i.'']))
+                                    {
+
+                                        $b = $bdd -> prepare('UPDATE donnee_capteur SET valeur=? WHERE id_capteur=? AND id_client=?');
+                                        $var1='eco';
+                                        $b -> execute(array(
+                                            $var1,
+                                            $id_capteur,
+                                            $_SESSION['id_client']));
+
+                                        ?><meta http-equiv="refresh" content="0" /><?php
+                                    }
+                                    elseif (isset($_POST['confort'.$i.'']))
+                                    {
+
+                                        $b = $bdd -> prepare('UPDATE donnee_capteur SET valeur=? WHERE id_capteur=? AND id_client=?');
+                                        $var1='confort';
+                                        $b -> execute(array(
+                                            $var1,
+                                            $id_capteur,
+                                            $_SESSION['id_client']));
+
+                                        ?><meta http-equiv="refresh" content="0" /><?php
+                                    }
+                                }
 
 
                 // Gestion du capteur de fumee
@@ -197,10 +244,7 @@
                             }
 
 
-                // Gestion du capteur de presence
-                            if ($type_du_capteur == 'Intrusion')
-
-                                                 // Gestion du capteur d intrusion
+                // Gestion du capteur d intrusion
                             if ($type_du_capteur == 'Intrusion') 
                             {
                                 ?>
@@ -208,8 +252,7 @@
                                     <?php
                                     echo  '<img  src="picture/house.png" title="Sécurité" />';?>
                                 </div><?php   
-                            }
-                            {
+                            
                                 if ($valeur == 0) // Si il n y personne
                                 {
                                     ?><div class='pre_circle'>

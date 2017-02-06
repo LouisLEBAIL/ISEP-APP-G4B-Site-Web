@@ -1,32 +1,36 @@
 <?php
 function type_capteur($numeroserie)
 {
-  $type1=substr($numeroserie,0,1);
-  if($type1=="T")
+  $type1=substr($numeroserie,0,2);
+  if($type1=='TA')
+  {
+    $type2='Mode_temperature';
+  }
+  elseif($type1=="T0")
   {
     $type2="Temperature";
   }
-  elseif($type1=="I")
+  elseif($type1=="I0")
   {
     $type2="Presence";
   }
-  elseif($type1=="F")
+  elseif($type1=="F0")
   {
     $type2="Fumee";
   }  
-  elseif($type1=="L")
+  elseif($type1=="L0")
   {
     $type2="Luminosite";
   }
-  elseif($type1=="W")
+  elseif($type1=="W0")
   {
     $type2="Volet";
   }
-  elseif($type1=="P")
+  elseif($type1=="P0")
   {
     $type2="Prise";
   }
-  elseif($type1=="A")
+  elseif($type1=="A0")
   {
     $type2="Alarme";
   }

@@ -59,6 +59,22 @@ if(isset($_POST['validercapteur']) AND !empty($_POST['numero_de_serie']) AND !em
 					'id_capteur'=> $id_du_capteur['id_capteur'],
 					'id_client'=> $_SESSION['id_client']));
 			}
+			elseif ($type2 == 'Mode_temperature')
+			{
+				$req_1 = $bdd -> prepare('SELECT id_capteur FROM capteur WHERE numero_serie_capteur=? AND id_client=?');
+				$req_1 -> execute(array(
+					$numeroseriecapteur,
+					$_SESSION['id_client']));
+
+				$id_du_capteur = $req_1 -> fetch();
+
+				$ligne_alarme = $bdd-> prepare('INSERT INTO donnee_capteur(dates, valeur, id_capteur, id_client) VALUES (:dates, :valeur, :id_capteur, :id_client)');
+				$ligne_alarme -> execute(array(
+					'dates'=> '2017-01-23 05:18:14',
+					'valeur'=> 'normal',
+					'id_capteur'=> $id_du_capteur['id_capteur'],
+					'id_client'=> $_SESSION['id_client']));
+			}
 			$erreur="Capteur ajouté";
 		}
 		elseif (!empty($_POST['numero_de_serie']))
