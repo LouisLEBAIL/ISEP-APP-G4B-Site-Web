@@ -16,7 +16,7 @@
         <?php include("../vue/navigation_administrateur.php");?>
         <div id="preinscription">
 				<form method="post" action="">
-        			<fieldset>
+        			
           				<P>
           					<label for="Identifiant">Numero Série ceMAC:</label>
           				</P>
@@ -51,7 +51,7 @@
                               	<input type="submit" name="formvalider" value="Ajouter"/>  
                              </p>
 			   				</div>
-						</fieldset>
+					
          		</form>
                 <?php 
                   if(isset($erreur))
