@@ -26,6 +26,7 @@
 <?php
 
 include('vue/english_website_version.php');
+include('vue/page_accueil_client.php');
 
 ?>
 
