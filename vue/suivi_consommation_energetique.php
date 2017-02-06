@@ -10,7 +10,7 @@
 
 <div>
     <?php
-    session_start();
+    session start();
     include("vue/en_tete_client.php");?>
 
 
@@ -34,7 +34,7 @@
 	
 
 	//Sélection des pièces d'un client X
-	require 'modele/Requetes_de_suivi_consommation/selection_pieces_client.php';
+	include 'modele/Requetes_de_suivi_consommation/selection_pieces_client.php';
 
 	while ($nom_des_pieces = $req_id_piece->fetch()) // Boucle par pièce de ce client X
 	{
@@ -52,7 +52,7 @@
 
 			{
 				//Récupération de toutes les valeurs de ces capteurs de type température dans la pièce X
-				require 'modele/Requetes_de_suivi_consommation/recup_jointure.php';
+				include 'modele/Requetes_de_suivi_consommation/recup_jointure.php';
 
 				$jointure =$bdd->query('CREATE TABLE jointure SELECT c.type type_capteur, c.id_capteur id_capteur, d.valeur valeur_capteur, d.dates date_capteur FROM capteur c RIGHT JOIN donnee_capteur d on c.id_capteur=d.id_capteur');
 				$final=$recup_jointure->fetch();
