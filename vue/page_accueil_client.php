@@ -326,6 +326,19 @@
                                     echo '<img  src="picture/volet.png" title="Volets" />';
                                     echo ' ';?><br /><br />
                                 </div><?php
+
+                                if ($valeur == 1)
+                                {
+                                    ?><br /><?php
+                                    echo 'Volet ouvert';
+                                }
+                                elseif ($valeur == 0)
+                                {
+                                    ?><br /><?php
+                                    echo 'Volet fermé';
+                                }
+                                
+                                
                             }
 
 
@@ -388,7 +401,7 @@
                                     <form method="post" class='onoff'>
                                     <?php
 
-                                  echo' <input type="submit" name="padlockoff'.$i.'" value="Alarme OFF">'?>
+                                  echo' <input type="submit" name="padlockoff'.$i.'" value="OFF">'?>
                                     </form><?php
                                     
 
@@ -407,7 +420,7 @@
                                 elseif ($alarme['valeur'] == 0)
                                 {
                                     ?><form method="post" class='onoff'>
-                                        <?php echo'<input type="submit" name="padlockon'.$i.'" value="Alarme ON">'?>
+                                        <?php echo'<input type="submit" name="padlockon'.$i.'" value="ON">'?>
                                     </form><?php
 
                                     if (isset($_POST['padlockon'.$i.'']))

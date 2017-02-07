@@ -43,7 +43,7 @@ if(isset($_POST['validercapteur']) AND !empty($_POST['numero_de_serie']) AND !em
     		'etat'=>$a,
     		'id_client'=>$_SESSION['id_client']
 			));
-			if ($type2 == 'Alarme')
+			if ($type2 == 'Alarme' OR $type2 == 'Volet')
 			{
 				$req_1 = $bdd -> prepare('SELECT id_capteur FROM capteur WHERE numero_serie_capteur=? AND id_client=?');
 				$req_1 -> execute(array(
