@@ -13,7 +13,7 @@
 	<body>
 		<?php include("../vue/en_tete_administrateur_connecte.php");?>
 			<div id="container_3">
-      			<?php include("../vue/navigation_administrateur.php");?>
+      			
       				<div id="preinscription">
       				<?php 
 						include("../modele/fonctions_administrateur.php");

@@ -20,6 +20,10 @@ else
 	{
 		require '../vue/administrateur_visualisation_client.php';
 	}
+	if ($redirection == 'voir_message'){
+	
+		require '../vue/visualisation_message.php';
+	}
 	if ($redirection == 'deconnexion') /*Pour se deconnecter de la session*/
 	{
 		$_SESSION = array(); /*vider la variable session*/

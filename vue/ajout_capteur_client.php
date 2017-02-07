@@ -37,31 +37,33 @@
         $reqcapteur2 = $bdd -> prepare('SELECT * FROM capteur WHERE id_client=?');
         $reqcapteur2 -> execute(array($_SESSION['id_client']));?>
 
-<ul>
+<div class="trois">
 <?php
+
                         while($capteur = $reqcapteur2 -> fetch())
                 {
                   ?>
                   
-                  <form method="post" action="index.php?redirection=ajout_capteur_client" >
-                  <li>
+                  <form method="post" action="index.php?redirection=ajout_capteur_client" class="deux">
+                  
                   <?php 
                   echo $capteur['numero_serie_capteur'].'<br/>';
                   echo $capteur['numero_capteur'].'-'. $capteur['type'].'<br/>';
                   ?> 
                   <?php $idcapteur=$capteur['id_capteur'];?>
                   <input type="submit" name="supprimer" value="supprimer" >
-                  </input> 
+                  
                   <input type="hidden" name="idcapteur" value="<?php echo "".$idcapteur."" ?>">
-                  </input>         
-                  </li>
+                          
+                  
                   </form>
                   
                   <?php
                 }
 
                 ?>
-                <ul>
+                
+                </div>
 
       </div>
     <?php include("pied_de_page.php");?>   

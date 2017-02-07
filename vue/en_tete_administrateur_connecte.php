@@ -16,6 +16,8 @@
             </li>
             <li><a href="../controleur/index_administrateur.php?redirection=visualisation_client">Voir clients</a>
             </li>
+            <li><a href="../controleur/index_administrateur.php?redirection=voir_message">Voir message</a>
+            </li>
 
         </ul>
     </nav>

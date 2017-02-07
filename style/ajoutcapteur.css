@@ -28,6 +28,26 @@ input[type=text]{
     color: white;
 
 }
+#container_3 .deux{
+    border:solid 1px white;
+  width:200px;
+  padding:20px;
+  height:40px;
+  margin:40px auto;
+
+  background-color: #14b0bf;
+  border-radius:10px;
+  box-shadow: 0 1px 12px rgba(0,0,0,.5);
+  -webkit-transition: box-shadow .15s, 
+    border .15s;
+    color: white;
+
+
+}
+.trois{
+  display:flex;
+  flex-direction:column;
+}
  input[type=submit]{
  color:white;
  background-color:  #91d3d9;

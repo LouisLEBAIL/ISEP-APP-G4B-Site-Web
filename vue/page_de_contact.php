@@ -43,6 +43,12 @@
                             <textarea name="question" id="question" rows="10" cols="50"  placeholder="Tapez votre message ici " ></textarea>
                                  
                             </p>
+                            <?php 
+                                 if(isset($erreur))
+                                    {
+                                        echo $erreur;
+                                    }
+                            ?>
 
 <div id="send">
  <input type="submit" name="soumettre_la_requete" value="Envoyer" id="envoyer"/>  
@@ -50,12 +56,7 @@
                     
                       </fieldset>
                 </form>
-                <?php 
-                  if(isset($erreur))
-                {
-                  echo $erreur;
-                }
-          ?>
+                
           </div>
         </div>
 

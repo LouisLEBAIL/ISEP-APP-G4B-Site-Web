@@ -14,12 +14,12 @@ if(isset($_POST['soumettre_la_requete']))
           'message' => $message,
           'id_client' => $_SESSION['id_client'],
           'date_message'=> $datetime ));
-        $erreur="good";
+        $erreur="Message envoyé a l'administrateur , il vous contactera dans les plus bref delais.";
 
   }
   else
   {
-    $erreur= "Veuillez compléter tous les champs";
+    $erreur= "Veuillez compléter tous les champs.";
   }
 } 
 ?>
